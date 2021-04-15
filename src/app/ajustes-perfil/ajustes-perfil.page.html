@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="header-back-btn" defaultHref="/perfil" text="" icon="arrow-back-outline"
+        (click)="goBackDefault()"></ion-back-button>
+    </ion-buttons>
+    <div>
+      <ion-title class="header-title">Ajustes</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<!--Menú en ajustes-->
+<ion-content>
+  <ion-list class="settings-options">
+    <ion-item class="item">
+      <ion-label class="settings-opts-label" [routerLink]="['/editar-perfil']">Perfil</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="settings-opts-label">Contacto y soporte</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="settings-opts-label">Legal</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="settings-opts-label" (click)='presentLogOutAlert()'>Cerrar sesión</ion-label>
+    </ion-item>
+  </ion-list>
+  <span class="version-contact">V1.0.0 (506) | minegrita@basílica.cr</span>
+</ion-content>

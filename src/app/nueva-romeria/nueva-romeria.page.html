@@ -1,0 +1,102 @@
+<ion-header class="ion-no-border">
+  <ion-button fill="clear" (click)="cancel()">
+    <ion-icon slot="icon-only" color="azul" name="arrow-back-outline"></ion-icon>
+  </ion-button>
+  <br>
+  <span>Nueva Romería</span>
+</ion-header>
+
+<ion-content>
+  <br>
+  <br>
+  <ion-grid>
+    <ion-row>
+      <form [formGroup]="romeriaForm"
+        style="width: 100%; margin-right: 0px; margin-left: 0px; padding-left: 0px; padding-right: 0px;">
+        <ion-col size="12" size-sm>
+          <ion-text class="subtitle" color="azul">Propósito de tu romería</ion-text>
+          <ion-text style="color:#87B9C3;">(opcional)</ion-text>
+          <ion-input autocomplete="off" formControlName="proposito" type="text" placeholder="Por la paz mundial"
+            color="azul" class="shadow-red"></ion-input>
+        </ion-col>
+        <br>
+        <ion-col size="12" size-sm>
+          <ion-label color="azul">Punto de partida</ion-label>
+          <ion-select formControlName="puntoPartida" interface="popover" value="Seleccioná una ubicación"
+            placeholder="Seleccioná una ubicación" class="shadow-red ion-no-border" (click)="Clean()"
+            (ionChange)="Select($event)">
+            <ion-select-option *ngFor="let diocesis of diocesis" value="{{diocesis.nombre}}">{{diocesis.nombre}}
+            </ion-select-option>
+          </ion-select>
+          <div>
+            <ng-container *ngFor="let tex of text">
+              <small class="error-message">{{tex.tex}}</small>
+            </ng-container>
+          </div>
+        </ion-col>
+      </form>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col size="12">
+        <h4>Elegí como te gustaría contabilizar tu progreso</h4>
+      </ion-col>
+      <ion-col *ngIf="pasos" size="6">
+        <ion-card class="selected" (click)="progressPasos()">
+          <h1>Pasos</h1>
+        </ion-card>
+      </ion-col>
+      <ion-col *ngIf="!pasos" size="6">
+        <ion-card class="not_selected" (click)="progressPasos()">
+          <h1>Pasos</h1>
+        </ion-card>
+      </ion-col>
+      <ion-col *ngIf="pasos" size="6">
+        <ion-card class="not_selected" (click)="progressTiempo()">
+          <h1>Tiempo</h1>
+        </ion-card>
+      </ion-col>
+      <ion-col *ngIf="!pasos" size="6">
+        <ion-card class="selected" (click)="progressTiempo()">
+          <h1>Tiempo</h1>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngIf="pasos" size="12">
+        <ion-text class="confirm-message">
+          <i>Cuando activés el botón de “Continuar Romería” se iniciará un <b>contador de pasos</b> para que podás
+            realizar la Romería a la Virgen de los Ángeles desde donde querás.</i>
+        </ion-text>
+      </ion-col>
+      <ion-col *ngIf="!pasos" size="12">
+        <ion-text Class="confirm-message">
+          <i>Cuando activés el botón de “Continuar Romería” se iniciará un <b>contador de tiempo</b> para que podás
+            realizar la Romería a la Virgen de los Ángeles desde donde querás.</i>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col size="12">
+        <ion-button (click)="confirm()" [disabled]="disableButtonConfirmar">
+          Confirmar
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text (click)="cancel()">Cancelar</ion-text>
+      </ion-col>
+      <ion-col size="12">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

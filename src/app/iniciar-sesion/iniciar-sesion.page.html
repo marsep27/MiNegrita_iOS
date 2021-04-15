@@ -1,0 +1,72 @@
+<ion-content color="celeste">
+  <ion-toolbar color="celeste">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon color="azul" name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <!--Encabezado-->
+  <ion-title color="azul">Iniciar Sesión</ion-title>
+  <br>
+  <br>
+  <ion-grid>
+    <ion-row>
+      <!--Campos del registro-->
+      <form [formGroup]="loginForm"
+        style="width: 100%; margin-right: 0px; margin-left: 0px; padding-left: 0px; padding-right: 0px;">
+        <ion-col size="12">
+          <ion-label color="azul">Correo</ion-label>
+          <ion-input formControlName="email" type="email" color="azul" class="shadow-red" (click)="Clean()"></ion-input>
+          <div>
+            <ng-container *ngFor="let tex of text">
+              <small class="error-message">{{tex.tex}}</small>
+            </ng-container>
+          </div>
+          <div *ngFor="let error of errorMessages.email">
+            <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+        </ion-col>
+        <br>
+        <ion-col size="12">
+          <ion-label color="azul">Contraseña</ion-label>
+          <ion-input formControlName="password" type="password" color="azul" class="shadow-red" (click)="Clean2()">
+          </ion-input>
+          <div>
+            <ng-container *ngFor="let tex of pass">
+              <small class="error-message">{{tex.tex}}</small>
+            </ng-container>
+          </div>
+          <div *ngFor="let error of errorMessages.password">
+            <ng-container *ngIf="password.hasError(error.type) && (password.dirty || password.touched)">
+              <small class="error-message">{{error.message}}</small>
+            </ng-container>
+          </div>
+          <ion-text color="azul" routerLink="/olvido-contrasena">
+            <p>¿Olvidaste tu contraseña?</p>
+          </ion-text>
+        </ion-col>
+      </form>
+    </ion-row>
+  </ion-grid>
+  <br>
+  <br>
+
+  <!--Botón-->
+  <ion-grid>
+    <ion-row class="ion-text-center">
+      <ion-col size="12">
+        <ion-button (click)="login()" color="azul-claro">
+          Iniciar Sesión
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-text color="azul">
+          <p>¿No tenés cuenta? <b routerLink="/registro-datos">Registrate</b></p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

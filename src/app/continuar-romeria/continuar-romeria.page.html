@@ -1,0 +1,253 @@
+<ion-header class="ion-no-border">
+  <ion-button fill="clear" (click)="back()">
+    <ion-icon slot="icon-only" color="azul" name="arrow-back-outline"></ion-icon>
+  </ion-button>
+  <br>
+  <span>Romería</span>
+
+  <!--Muestra la información de la romeria en pasos en la parte superior-->
+  <div *ngIf="pasos && contentLoaded">
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col size="12">
+          <h1>{{PasosIncial}}</h1>
+          <h2>pasos</h2>
+          <br>
+        </ion-col>
+        <ion-col size="12">
+          <h4 id="CuentaAdelanteKmPTop">{{kmInicial}}</h4>
+          <h5>km</h5>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div *ngIf="!Play" class="play_pause" (click)="playPasos()">
+      <img src="assets/imágenes/play-romería.svg" alt="">
+    </div>
+    <div *ngIf="Play" class="play_pause" (click)="pausePasos()">
+      <img src="assets/imágenes/pause-romería.svg" alt="">
+    </div>
+  </div>
+
+  <!--Muestra la información de la romeria cargándose en la parte superior-->
+  <div *ngIf="!contentLoaded">
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col size="12">
+          <h1>
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </h1>
+          <h2>
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </h2>
+          <br>
+        </ion-col>
+        <ion-col size="12">
+          <h4>
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </h4>
+          <h5>km</h5>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="play_pause">
+      <img src="assets/imágenes/play-romería.svg" alt="">
+    </div>
+  </div>
+
+  <!--Muestra la información de la romeria en tiempo en la parte superior-->
+  <div *ngIf="!pasos && contentLoaded">
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col size="12">
+          <h1 id='tiempo' class="tiempo">{{currentRomeria.timeConteo | date :"HH:mm":'UTC'}}</h1>
+          <h2>tiempo</h2>
+          <br>
+        </ion-col>
+        <ion-col size="12">
+          <h4 id="CuentaAdelanteKmTop">{{kmInicial}}</h4>
+          <h5>km</h5>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div *ngIf="!Play" class="play_pause" (click)="playTime()">
+      <img src="assets/imágenes/play-romería.svg" alt="">
+    </div>
+    <div *ngIf="Play && !Pause" class="play_pause" (click)="pauseTime()">
+      <img src="assets/imágenes/pause-romería.svg" alt="">
+    </div>
+    <div *ngIf="Pause" class="play_pause" (click)="continueTime()">
+      <img src="assets/imágenes/play-romería.svg" alt="">
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <!--Muestra la información de la romeria en pasos en la parte inferior-->
+  <div *ngIf="pasos && contentLoaded">
+    <ion-grid class="content">
+      <ion-row>
+        <ion-col size="5">
+          <h3>Avance total</h3>
+        </ion-col>
+        <ion-col size="7">
+          <ion-progress-bar class="romeria-info-progress" [value]="progress"></ion-progress-bar>
+          <!--<ion-range color="anaranjado" #range (touchmove)="touchMove()" (touchend)="touchEnd()" (touchstart)="touchStart()"
+        max="{{maxRangeValue}}" [(ngModel)]="currRangeTime"></ion-range>-->
+          <br>
+        </ion-col>
+        <ion-col size="3">
+          <p class="pasos">{{PasosIncial}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">Pasos<br>totales
+          </sub>
+        </ion-col>
+        <ion-col size="3">
+          <p id="PasosRestantes" class="pasos">{{PasosCurr}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">Pasos<br>restantes</sub>
+          <br><br>
+        </ion-col>
+        <ion-col size="3">
+          <p id="CuentaAdelanteKmP" class="pasos">{{kmInicial}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">km<br>totales</sub>
+        </ion-col>
+        <ion-col size="3">
+          <p id="KmRestantesP" class="pasos">{{kmCurr}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">km<br>restantes</sub>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!--Muestra la información de la romeria cargándose en la parte inferior-->
+  <div *ngIf="!contentLoaded">
+    <ion-grid class="content">
+      <ion-row>
+        <ion-col size="5">
+          <h3>Avance total</h3>
+        </ion-col>
+        <ion-col size="7">
+          <ion-progress-bar class="romeria-info-progress" [value]="progress"></ion-progress-bar>
+          <!--<ion-range color="anaranjado" #range (touchmove)="touchMove()" (touchend)="touchEnd()" (touchstart)="touchStart()"
+          max="{{maxRangeValue}}" [(ngModel)]="currRangeTime"></ion-range>-->
+          <br>
+        </ion-col>
+        <ion-col size="3">
+          <p class="pasos">
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text><br>
+            <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+          </sub>
+        </ion-col>
+        <ion-col size="3">
+          <p class="pasos">
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text><br>
+            <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+          </sub>
+          <br><br>
+        </ion-col>
+        <ion-col size="3">
+          <p class="pasos">
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">km<br>totales</sub>
+        </ion-col>
+        <ion-col size="3">
+          <p class="pasos">
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">km<br>restantes</sub>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!--Muestra la información de la romeria en tiempo en la parte inferior-->
+  <div *ngIf="!pasos && contentLoaded">
+    <ion-grid class="content">
+      <ion-row>
+        <ion-col size="5">
+          <h3>Avance total</h3>
+        </ion-col>
+        <ion-col size="7">
+          <ion-progress-bar class="romeria-info-progress" [value]="progress"></ion-progress-bar>
+          <!--<ion-range color="anaranjado" #range (touchmove)="touchMove()" (touchend)="touchEnd()" (touchstart)="touchStart()"
+        max="{{maxRangeValue}}" [(ngModel)]="currRangeTime"></ion-range>-->
+          <br>
+        </ion-col>
+        <ion-col size="3">
+          <p>{{currentRomeria.timeConteo | date :"HH:mm":'UTC'}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">Tiempo<br>total
+          </sub>
+        </ion-col>
+        <ion-col size="3">
+          <p id="CuentaAtras">{{cerohor}}{{horas}}:{{ceromin}}{{minutos}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">Tiempo<br>restante</sub>
+          <br><br>
+        </ion-col>
+        <ion-col size="3">
+          <p id="CuentaAdelanteKm">{{kmInicial}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">km<br>totales</sub>
+        </ion-col>
+        <ion-col size="3">
+          <p id="CuentaAtrasKm">{{kmCurr}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <sub class="p">km<br>restantes</sub>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <br><br><br><br><br>
+
+  <!--<ion-img id="footer" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)="update()" (click)="pauseTime()" (click)="pausePasos()"></ion-img>
+<ion-footer class="ion-no-border">
+<ion-tab-bar>
+  <ion-tab-button [routerLink]="['/eventos']" (click)="update()" (click)="pauseTime()" (click)="pausePasos()">
+    <ion-img id="eventos" src="assets/imágenes/eventos.svg"></ion-img>
+    <ion-label color="azul">Eventos</ion-label>
+  </ion-tab-button>
+  <ion-tab-button [routerLink]="['/devocionario']" (click)="update()" (click)="pauseTime()" (click)="pausePasos()">
+    <ion-img id="devocionario" src="assets/imágenes/devocionario.svg"></ion-img>
+    <ion-label color="azul">Devocionario</ion-label>
+  </ion-tab-button>
+  <ion-tab-button [routerLink]="['/donacion']" (click)="update()" (click)="pauseTime()" (click)="pausePasos()">
+    <ion-label color="celeste"></ion-label>
+  </ion-tab-button>
+  <ion-tab-button [routerLink]="['/romeria']" (click)="update()" (click)="pauseTime()" (click)="pausePasos()">
+    <ion-img id="romeria" src="assets/imágenes/romeria_select.svg"></ion-img>
+    <ion-label id="select" color="azul">Basílica</ion-label>
+  </ion-tab-button>
+  <ion-tab-button [routerLink]="['/perfil']" (click)="update()" (click)="pauseTime()" (click)="pausePasos()">
+    <ion-img id="perfil" src="assets/imágenes/tapPerfil.svg"></ion-img>
+    <ion-label color="azul">Perfil</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
+</ion-footer>-->
+</ion-content>

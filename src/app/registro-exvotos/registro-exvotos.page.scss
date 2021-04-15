@@ -1,0 +1,146 @@
+ion-content {
+  //Imagen pequeña del logo de la aplicación
+  ion-img {
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 10px;
+    width: 35%;
+    height: 20%;
+  }
+  #Encabezado {
+    vertical-align: middle;
+    margin-right: 0px;
+    margin-left: 0;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  ion-grid {
+    vertical-align: middle;
+    margin-right: 0px;
+    margin-left: 0;
+    padding-left: 42px;
+    padding-right: 42px;
+    ion-row {
+      ion-col {
+        ion-text {
+          h5 {
+            font-family: "VisbyCF-DemiBold";
+            font-size: 20.2697px;
+          }
+          p {
+            font-family: "VisbyCF-Light";
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  #Exvotos {
+    vertical-align: middle;
+    margin-right: 0px;
+    margin-left: 0;
+    padding-left: 42px;
+    padding-right: 42px;
+    position: relative;
+    top: -20px;
+    ion-row {
+      ion-col {
+        //Exvotos sin seleccionar
+        .sin-seleccionar {
+          height: 7vh;
+          width: 7vh;
+          --background: #fafeff;
+          --border-radius: 100%;
+        }
+        //Exvotos seleccionados
+        .seleccionado {
+          height: 7vh;
+          width: 7vh;
+          --background: #c1eaf2;
+          --border-radius: 100%;
+        }
+        .img {
+          max-width: 5vh;
+          max-height: 5vh;
+        }
+        .imgc {
+          max-width: 7vh;
+          max-height: 7vh;
+        }
+        ion-text {
+          h5 {
+            font-family: "VisbyCF-DemiBold";
+            font-size: 20.2697px;
+          }
+          p {
+            font-family: "VisbyCF-Light";
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+ion-footer {
+  margin: 0px;
+  padding: 0px;
+  height: 56px;
+  background: #e0f3f8;
+  --background: #e0f3f8;
+  border-color: #e0f3f8;
+  border-top-color: #e0f3f8 !important;
+  box-shadow: none !important;
+  // Cambio de pasos con el himno
+  #fin {
+    display: block;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    ion-label {
+      font-family: "VisbyCF-MediumOblique";
+      font-style: italic;
+      font-size: 17px;
+    }
+  }
+  ion-grid {
+    margin: 0px;
+    padding: 0px;
+    ion-row {
+      margin: 0px;
+      padding: 0px;
+      ion-col {
+        margin: 0px;
+        padding: 0px;
+        //Botón Anterior
+        #anterior {
+          margin: 0px;
+          padding: 0px;
+          text-transform: none;
+          width: 100%;
+          height: 56px;
+          top: 0px;
+          font-family: "VisbyCF-Bold";
+          font-size: 20.2697px;
+          --border-radius: 0px 22px 0px 0px;
+        }
+        //Botón Finalizar
+        #finalizar {
+          margin: 0px;
+          padding: 0px;
+          text-transform: none;
+          width: 100%;
+          height: 56px;
+          top: 0px;
+          font-family: "VisbyCF-Bold";
+          font-size: 20.2697px;
+          --border-radius: 22px 0px 0px 0px;
+        }
+      }
+    }
+  }
+}

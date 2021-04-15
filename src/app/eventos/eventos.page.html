@@ -1,0 +1,281 @@
+<ion-header class="ion-no-border" id="headerEve">
+  <span class="header-title">Eventos</span>
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button checked value="Actividades">Actividades</ion-segment-button>
+    <ion-segment-button value="Horarios">Horarios</ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="segment" id="segmentEve">
+    <!--Sección para mostrar las actividades y eventos-->
+    <div *ngSwitchCase="'Actividades'">
+      <ion-card id="Actividades" (click)="popmisa()">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="5">
+              <img src="assets/imágenes/Misa.svg">
+            </ion-col>
+            <ion-col size="7">
+              <ion-text>
+                <h1>¡Reservá tú cupo en la Santa Eucaristía!
+                  <br>
+                  <p>
+                    Aplica solamente para fines de semana.
+                  </p>
+                </h1>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <ion-grid class="Eventos">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text style="margin-left: 13px;">
+              Eventos
+            </ion-text>
+          </ion-col>
+          <br>
+          <ion-col size="12" *ngIf="!contentLoaded">
+            <ion-card *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="3">
+                    <ion-text>
+                      <h5>
+                        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                      </h5>
+                      <h4>
+                        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                      </h4>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="8">
+                    <ion-text>
+                      <h3>
+                        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                        <p>
+                          <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                        </p>
+                      </h3>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="1">
+                    <ion-card-content class="ion-no-padding">
+                      <ion-skeleton-text animated style="width: 10%"></ion-skeleton-text>
+                    </ion-card-content>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+          <ion-col size="12" *ngIf="contentLoaded">
+            <ion-card *ngFor="let evento of eventos"
+              (click)="PopEvento(evento.nombre, evento.direccion, evento.fecha, evento.informacion, evento.reserva, evento.link, evento.eventoId);$event.stopPropagation();">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="3">
+                    <ion-text>
+                      <h5>{{evento.dia}}</h5>
+                      <h4>
+                        {{evento.mes}}
+                      </h4>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="8">
+                    <ion-text>
+                      <h3><b>{{evento.nombre}}</b>
+                        <p>
+                          {{evento.hora}}
+                        </p>
+                      </h3>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="1">
+                    <ion-card-content class="ion-no-padding">
+                      <img src="assets/imágenes/3puntos.svg" />
+                    </ion-card-content>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+
+    <div *ngSwitchCase="'Horarios'">
+      <!--Se muestran los horarios de las misas, confesiones y demás-->
+      <ion-grid id="Horarios">
+        <ion-row>
+          <ion-col>
+            <ion-text>
+              <h5 [innerHTML]="misa"></h5>
+              <p [innerHTML]="horMisa">
+              </p>
+              <h5 [innerHTML]="confesion"></h5>
+              <p [innerHTML]="horConfesion">
+              </p>
+              <h5 [innerHTML]="horaSanta"></h5>
+              <p [innerHTML]="horHoraSanta">
+              </p>
+              <ion-text [innerHTML]="consejo"></ion-text>
+              <ion-text style="font-size: 19px; color:#87B9C3;">(Llamar a la oficina)</ion-text>
+              <p [innerHTML]="horaConsejo">
+              </p>
+              <h5 [innerHTML]="pilaYpiedra"></h5>
+              <p [innerHTML]="horPyP">
+              </p>
+              <h5 [innerHTML]="oficina"></h5>
+              <p [innerHTML]="horOficina">
+              </p>
+              <br>
+              <br>
+              <br>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <!--Full pop misa-->
+  <div id="PopMisa">
+
+    <!-- Minimize Icon -->
+    <ion-buttons slot="end">
+      <ion-button (click)="minimize()">
+        <img src="assets/imágenes/x.svg">
+      </ion-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <h2>
+            Reservá tú cupo en la Santa Eucaristía
+          </h2>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text>
+            <img src="assets/imágenes/ubicacion.svg"> Basílica de los Ángeles
+            <br>
+            <img src="assets/imágenes/calendario.svg"> Fines de semana
+          </ion-text>
+        </ion-col><br>
+        <ion-col size="12">
+          <p>
+            <b>1.</b> Ingresá al link.
+            <br><br>
+            <b>2.</b> Presioná “Comprar Tickets”
+            <br><br>
+            <b>3.</b> Seleccioná el horario de la Santa Eucaristía a la que querés asistir y presioná “Reservar ahora”.
+            <br><br>
+            <b>4.</b> Indicá la cantidad de cupos que deseás reservar (máximo burbujas sociales de 5 personas) y presioná
+            “Register”.
+            <br><br>
+            <b>5.</b> Ingresá los datos solicitados.
+            <br><br>
+            <b>6.</b> A continuación se mostrará el detalle de tú reserva y si es correcto presioná “Enviar registro”.
+            <br><br>
+            <b>7.</b> Se mostrará la confirmación de tus cupos y podrás descargarlos.
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <br>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button class="reserva" (click)="reservar()">
+            Ir a reservaciones
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!--Full pop Eventos-->
+  <div id="PopEvento">
+
+    <!-- Minimize Icon -->
+    <ion-buttons slot="end">
+      <ion-button (click)="minimize2()">
+        <img src="assets/imágenes/x.svg">
+      </ion-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <h2>
+            {{currNombre}}
+          </h2>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text>
+            <img src="assets/imágenes/ubicacion.svg"> {{currDireccion}}
+            <br>
+            <img src="assets/imágenes/calendario.svg"> {{currFecha}}
+          </ion-text>
+        </ion-col><br>
+        <ion-col size="12">
+          <p [innerHTML]="currInfo">
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <br>
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col size="12" style="height: 55px;">
+          <ion-button *ngIf="bookable" class="reserva" (click)="reservar2(currLink)">
+            Más información
+          </ion-button>
+        </ion-col>
+        <ion-col *ngIf="!favourites.includes(currOptionId)" size="12" (click)="addOrRemoveFavourite()">
+          <img style="vertical-align: bottom; margin-bottom: 7px;" src="assets/imágenes/starpop.svg" />
+          <sub class="favoritos">
+            Añadir a mis eventos
+          </sub>
+        </ion-col>
+        <ion-col *ngIf="favourites.includes(currOptionId)" size="12" (click)="addOrRemoveFavourite()">
+          <img style="vertical-align: bottom; margin-bottom: 7px;" src="assets/imágenes/starpopfull.svg" />
+          <sub class="favoritos">
+            Eliminar de mis eventos
+          </sub>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+  <ion-footer class="ion-no-border" id="footEve">
+    <ion-img id="footer" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']"></ion-img>
+    <ion-tab-bar>
+      <ion-tab-button [routerLink]="['/eventos']">
+        <ion-img id="eventos" src="assets/imágenes/eventos_select.svg"></ion-img>
+        <ion-label id="select" color="azul">Eventos</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/devocionario']">
+        <ion-img id="devocionario" src="assets/imágenes/devocionario.svg"></ion-img>
+        <ion-label color="azul">Devocionario</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/donacion']">
+        <ion-label color="celeste"></ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/romeria']">
+        <ion-img id="romeria" src="assets/imágenes/romeria.svg"></ion-img>
+        <ion-label color="azul">Basílica</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/perfil']">
+        <ion-img id="perfil" src="assets/imágenes/tapPerfil.svg"></ion-img>
+        <ion-label color="azul">Perfil</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-footer>
+</ion-content>

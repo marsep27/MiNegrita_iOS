@@ -1,0 +1,145 @@
+<ion-content color="celeste">
+  <ion-img src="assets/imágenes/Logo2.svg"></ion-img>
+
+  <!--Encabezado-->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-text color="azul">
+          <h5>¿Qué deseas poner en manos de la Virgen?</h5>
+          <p>Podés selecionar hasta 3 intenciones</p>
+        </ion-text>
+      </ion-col>
+
+      <!--Contenido previo sin llenar intenciones-->
+      <ion-col *ngIf="!intenciones" size="12" style="height: 42px; background-color: #F6FBFD; border-radius: 10px;">
+      </ion-col>
+
+      <!--Contenido posterior al llenar las intenciones-->
+      <ion-col *ngIf="intenciones" size="12" style="background-color: #F6FBFD; border-radius: 10px;">
+        <ion-button *ngIf="ButtonFamilia" (click)="change('Familia')" color="azul-claro">Familia
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="ButtonSaludFisica" (click)="change('Salud Física')" color="azul-claro">Salud Física
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="ButtonTrabajo" (click)="change('Trabajo')" color="azul-claro">Trabajo
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="ButtonSaludEspiritual" (click)="change('Salud Espiritual')" color="azul-claro">Salud
+          Espiritual
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="ButtonAgradecimiento" (click)="change('Agradecimiento')" color="azul-claro">Acción de Gracias
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="ButtonPaz" (click)="change('Paz')" color="azul-claro">Paz
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="ButtonPeticion" (click)="change('Petición')" color="azul-claro">Petición
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="ButtonPerdon" (click)="change('Perdón')" color="azul-claro">Perdón
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="ButtonConversion" (click)="change('Conversión')" color="azul-claro">Conversión
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="ButtonFavor" (click)="change('Favor')" color="azul-claro">Favor
+          <ion-icon slot="end" name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+      <!--Intenciones para mostrar-->
+      <ion-col>
+        <ion-button id="sin" *ngIf="!ButtonFamilia" (click)="change('Familia')" fill="outline"
+          class="containerIntenciones"> Familia</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonSaludFisica" (click)="change('Salud Física')" fill="outline"
+          class="containerIntenciones"> Salud física</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonTrabajo" (click)="change('Trabajo')" fill="outline"
+          class="containerIntenciones"> Trabajo</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonSaludEspiritual" (click)="change('Salud Espiritual')" fill="outline"
+          class="containerIntenciones"> Salud Espiritual</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonAgradecimiento" (click)="change('Agradecimiento')" fill="outline"
+          class="containerIntenciones"> Acción de Gracias</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonPaz" (click)="change('Paz')" fill="outline" class="containerIntenciones">
+          Paz</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonPeticion" (click)="change('Petición')" fill="outline"
+          class="containerIntenciones"> Petición</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonPerdon" (click)="change('Perdón')" fill="outline"
+          class="containerIntenciones"> Perdón</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonConversion" (click)="change('Conversión')" fill="outline"
+          class="containerIntenciones"> Conversión</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonFavor" (click)="change('Favor')" fill="outline" class="containerIntenciones">
+          Favor</ion-button>
+      </ion-col>
+
+      <!--Contador de intenciones seleccionadas-->
+      <ion-col size="12">
+        <ion-text *ngIf="plural" color="azul">
+          <p>Llevás {{Contador}} intención selecionada</p>
+        </ion-text>
+        <ion-text *ngIf="!plural" color="azul">
+          <p>Llevás {{Contador}} intenciones selecionadas</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!--<div *ngIf="!isComplete">
+  <ion-img id="footer" src="assets/imágenes/ContinuarClaro2.svg"></ion-img>
+  <ion-footer class="ion-no-border">
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/registro-cuenta">
+    </ion-tab-button>
+    <ion-tab-button>
+    </ion-tab-button>
+    </ion-tab-bar>
+  </ion-footer>
+</div>
+  <div *ngIf="isComplete">
+    <ion-img id="footer" src="assets/imágenes/Continuar2.svg"></ion-img>
+    <ion-footer class="ion-no-border">
+    <ion-tab-bar>
+      <ion-tab-button routerLink="/registro-cuenta">
+      </ion-tab-button>
+      <ion-tab-button routerLink="/registro-exvotos">
+      </ion-tab-button>
+      </ion-tab-bar>
+    </ion-footer>
+  </div>-->
+</ion-content>
+
+<ion-footer color="celeste" class="ion-no-border">
+
+  <!--Cambio de pasos con el himno-->
+  <ion-grid id="fin" class="ion-text-center">
+    <ion-row>
+      <ion-col size="12">
+        <ion-label color="azul">
+          A tí aclamamos, Señora
+        </ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <img src="/assets/imágenes/paso3.svg">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--Botones de retroceder y continuar-->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button id="anterior" color="azul-claro" (click)="back()">
+          Anterior
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button id="continuar" color="anaranjado" [disabled]="disableButtonContinuar" (click)="exvotos()">
+          Continuar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

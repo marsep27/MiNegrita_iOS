@@ -1,0 +1,588 @@
+* {
+    font-family: "VisbyCF-Light";
+}
+
+ion-header {
+    background: #f4fcfd;
+    box-shadow: 0px 5px 8px rgba(255, 255, 255, 0.3);
+
+    .header-title {
+        display: inline-block;
+        font-size: 3.4vh;
+        font-family: "VisbyCF-Bold";
+        --background: #f4fcfd;
+        color: #0f7386;
+        margin: 5vh 0 1.5vh 4vw;
+    }
+
+    ion-segment {
+        background-color: #f4fcfd;
+        text-transform: none;
+        ion-segment-button {
+            text-transform: none;
+            min-width: fit-content;
+            --color: #0f7386 !important;
+            --color-checked: #f3a34f !important;
+            font-family: "VisbyCF-Medium";
+            --indicator-color-checked: #f3a34f !important;
+            --indicator-box-shadow: transparent !important;
+            font-size: 2.2vh;
+            --background: transparent !important;
+            --background-checked: transparent !important;
+            --indicator-transition: center !important;
+            --indicator-transform: center !important;
+            --transition: center !important;
+            --indicator-height: 3px !important;
+        }
+    }
+}
+
+ion-content {
+    .segment-img {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+    }
+
+    .oraciones-container {
+        margin: 1.6vh 4vw 13.5vh 4vw;
+    }
+
+    .rosario-title {
+        font-size: 2.3vh;
+        font-family: "VisbyCF-Bold";
+        color: #1390a1;
+        margin-left: 4.3vw;
+        display: inline-block;
+        margin-top: 0.6vh;
+    }
+
+    .devociones-list {
+        margin-top: 3vh;
+    }
+
+    .item {
+        --inner-padding-end: 0px;
+
+        &-border {
+            border-bottom: 0.5px solid rgba(15, 115, 134, 0.5);
+        }
+
+        &-lectura {
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+        }
+
+        &-meditacion {
+            padding-top: 1.5vh;
+            padding-bottom: 1.5vh;
+        }
+    }
+
+    .title {
+        font-family: "VisbyCF-Bold";
+        color: #1390a1;
+        font-size: 1.8vh;
+        margin-left: 4.3vw;
+        line-height: 136.5%;
+        margin-bottom: 0.2vh;
+    }
+
+    .subtitle {
+        font-family: "VisbyCF-Light";
+        color: #1390a1;
+        font-size: 1.5vh;
+        margin-left: 4.3vw;
+    }
+
+    .time {
+        font-family: "VisbyCF-Light";
+        color: #1390a1;
+        font-size: 1.1vh;
+        margin-left: 4.3vw;
+    }
+
+    .dots-icon {
+        z-index: 10;
+        font-size: 1.7vh;
+        margin-right: 3vw;
+    }
+
+    .lecturas-container {
+        margin: 0.5vh 4vw 13.5vh 4vw;
+    }
+
+    .meditaciones-container {
+        margin: 1vh 4vw 13.5vh 4vw;
+    }
+
+    .canciones-container {
+        margin: 1.6vh 4vw 13.5vh 4vw;
+    }
+
+    .song-icon {
+        font-size: 2.5vh;
+        margin: 0 1vw 0 5vw;
+    }
+}
+
+ion-content {
+    --background: #ffffff;
+
+    ion-list {
+        background: white;
+    }
+
+    .lectura {
+        display: none;
+        transition: 0.5s;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        position: fixed;
+
+        &-toolbar {
+            background-color: #0f7386 !important;
+            --background: url("../../assets/imágenes/blur-bg-lectura.svg") no-repeat left top;
+            --min-height: 30vh;
+            background-size: 100vw 30vh !important;
+        }
+
+        &-back-btn {
+            position: absolute;
+            top: 2.5vh;
+            left: 1.5vw;
+        }
+
+        &-title {
+            margin: 0;
+            width: 75%;
+            color: white;
+            font-family: "VisbyCF-Bold";
+            font-size: 22px;
+            line-height: 22px;
+            position: absolute;
+            top: 8vh;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &-subtitle {
+            margin: 0;
+            color: white;
+            width: fit-content;
+            font-size: 15px;
+            line-height: 136.5%;
+            position: absolute;
+            top: 14vh;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &-next-btn {
+            --border-radius: 8px;
+            width: 155px;
+            min-height: 40px;
+            font-size: 10px;
+            white-space: normal;
+            word-wrap: break-word;
+
+            span.ion-text-left {
+                margin-right: auto;
+            }
+
+            &-icon {
+                font-size: 8px;
+                position: absolute;
+                right: 0;
+                margin-top: -5px;
+            }
+
+            &-container {
+                position: absolute;
+                top: 17vh;
+                right: 20px;
+            }
+        }
+
+        &-text {
+            margin: 35px 30px 30px 30px;
+            font-family: "VisbyCF-Light";
+            font-size: 16px;
+            line-height: 22px;
+            color: #1390a1;
+            white-space: pre-wrap;
+
+            &-area {
+                overflow-y: scroll;
+                height: 75vh;
+
+                &-container {
+                    margin-top: -5vh;
+                    position: fixed;
+                    background-color: white !important;
+                    border-top-left-radius: 22px !important;
+                    border-top-right-radius: 22px !important;
+                    z-index: 20;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .meditacion {
+        display: none;
+        transition: 0.5s;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        position: fixed;
+
+        &-toolbar {
+            background-color: #aae5eb !important;
+            --background: url("../../assets/imágenes/blur-bg-meditacion.svg") no-repeat left top;
+            --min-height: 30vh;
+            background-size: 100vw 30vh !important;
+        }
+
+        &-back-btn {
+            position: absolute;
+            top: 2.5vh;
+            left: 1.5vw;
+        }
+
+        &-title {
+            margin: 0;
+            width: 75%;
+            color: #0f7386;
+            font-family: "VisbyCF-Bold";
+            font-size: 22px;
+            line-height: 22px;
+            position: absolute;
+            top: 10vh;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &-next-btn {
+            --border-radius: 8px;
+            width: 155px;
+            min-height: 50px;
+            font-size: 10px;
+            white-space: normal;
+            word-wrap: break-word;
+            padding: 5px !important;
+
+            span.ion-text-left {
+                margin-right: auto;
+            }
+
+            &-icon {
+                font-size: 8px;
+                position: absolute;
+                right: 0;
+                margin-top: -5px;
+            }
+
+            &-container {
+                position: absolute;
+                top: 17vh;
+                right: 20px;
+            }
+        }
+
+        &-text {
+            margin: 35px 30px 30px 30px;
+            font-family: "VisbyCF-Light";
+            font-size: 16px;
+            line-height: 22px;
+            color: #1390a1;
+            white-space: pre-wrap;
+
+            &-area {
+                overflow-y: scroll;
+                height: 75vh;
+
+                &-container {
+                    margin-top: -5vh;
+                    position: fixed;
+                    background-color: white !important;
+                    border-top-left-radius: 22px !important;
+                    border-top-right-radius: 22px !important;
+                    z-index: 20;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .player {
+        display: none;
+        transition: 0.5s;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+        top: 0;
+        left: 0;
+        position: fixed;
+
+        &-toolbar {
+            background-color: #0f7386 !important;
+            --background: url("../../assets/imágenes/blur-bg-cancion.svg") no-repeat left top;
+            --min-height: 20vh;
+            background-size: 100vw 20vh !important;
+        }
+
+        &-back-btn {
+            position: absolute;
+            top: 3.5vh;
+            left: 2.5vw;
+        }
+
+        &-title {
+            margin: 0;
+            max-width: 75%;
+            color: white;
+            font-family: "VisbyCF-Bold";
+            font-size: 27px;
+            position: absolute;
+            top: 9vh;
+            left: 50%;
+            font-weight: 800;
+            transform: translate(-50%, -50%);
+        }
+
+        &-container {
+            margin-top: -5vh;
+            position: fixed;
+            background-color: white !important;
+            border-top-left-radius: 22px !important;
+            border-top-right-radius: 22px !important;
+            z-index: 20;
+            width: 100%;
+            height: 85vh;
+        }
+
+        &-image {
+            display: block;
+            margin: 10vh auto;
+            height: 24vh;
+        }
+
+        &-song-title {
+            font-family: "VisbyCF-Bold";
+            color: #1390a1;
+            font-size: 24px;
+            margin: 6vh 0 0 0;
+            font-weight: 800;
+        }
+
+        &-song-author {
+            font-family: "VisbyCF-Light";
+            color: #f8a957;
+            font-size: 20px;
+            margin: 0 auto 4vh 0;
+        }
+
+        &-range {
+            --bar-background: rgba(19, 144, 161, 0.35) !important;
+            --bar-height: 3px;
+            --knob-size: 11px;
+            --knob-background: #0f7386;
+            width: 90vw;
+            margin: 0 5vw 0 5vw;
+            display: block;
+            --height: 25px;
+        }
+
+        &-curr-time {
+            font-size: 12px;
+            max-width: fit-content;
+            position: fixed;
+            left: 5vw;
+        }
+
+        &-total-time {
+            font-size: 12px;
+            max-width: fit-content;
+            position: fixed;
+            right: 5vw;
+        }
+
+        .buttons-container {
+            width: fit-content;
+            height: 62px;
+            margin: 3vh auto !important;
+        }
+
+        .play-prev-icon {
+            font-size: 33px;
+        }
+
+        .play-pause-icon {
+            font-size: 62px;
+
+            &-container {
+                height: 62px;
+            }
+        }
+
+        .play-next-icon {
+            font-size: 33px;
+        }
+
+        .opts-btns-container {
+            position: absolute;
+            bottom: 6vh;
+            width: 100%;
+            height: fit-content;
+
+            .opts-btns-btn {
+                height: 40px;
+                width: 40px;
+            }
+
+            .opts-btns-icon {
+                font-size: 35px;
+            }
+
+            .btn-favourite {
+                position: absolute;
+                left: 4.5vh;
+            }
+
+            .btn-share {
+                position: absolute;
+                right: 4.5vh;
+            }
+        }
+    }
+
+    .dots-modal {
+        margin: 0;
+        display: none;
+        padding: 25px;
+        transition: 0.5s;
+        z-index: 20;
+        width: fit-content;
+        position: fixed;
+        bottom: 2vh;
+        border-radius: 12px;
+        background: white !important;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90%;
+
+        &-title {
+            margin: 0 auto;
+            width: 100%;
+            color: #1390a1;
+            font-family: "VisbyCF-Bold";
+            font-size: 20px;
+            line-height: 28px;
+        }
+
+        &-subtitle {
+            margin: 0 auto;
+            width: 100%;
+            color: #1390a1;
+            font-family: "VisbyCF-Light";
+            font-size: 12px;
+            line-height: 17px;
+            margin-bottom: 25px;
+        }
+
+        &-grid {
+            &-row {
+                width: fit-content;
+            }
+
+            &-icon {
+                font-size: 15px;
+
+                &-container {
+                    margin-right: 30px;
+                    margin-bottom: 20px;
+                }
+            }
+
+            &-span {
+                font-size: 14px;
+                line-height: 19px;
+                color: #1390a1;
+                font-family: "VisbyCF-Light";
+            }
+        }
+
+        &-cancel-btn {
+            margin-top: 1vh;
+            font-family: "VisbyCF-Bold";
+            font-size: 14px;
+            line-height: 19px;
+            color: #1390a1;
+        }
+    }
+}
+
+#footer {
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+}
+
+ion-footer {
+    background: transparent;
+    --background: transparent;
+    background-image: none;
+    text-align: center;
+    width: 100%;
+    bottom: 0%;
+    position: fixed;
+
+    ion-tab-bar {
+        --background: transparent;
+        border-color: transparent;
+        height: 85px;
+        left: 0px;
+        top: 727px;
+
+        ion-tab-button {
+            #eventos {
+                width: 27px;
+                height: 32px;
+            }
+
+            #devocionario {
+                width: 27px;
+                height: 32px;
+            }
+
+            #romeria {
+                width: 29.24px;
+                height: 32px;
+            }
+
+            #perfil {
+                width: 27px;
+                height: 30px;
+            }
+
+            ion-label {
+                font-family: "VisbyCF-Light";
+                font-size: 10.7033px;
+            }
+
+            #select {
+                font-family: "VisbyCF-DemiBold";
+                font-size: 10.7033px;
+            }
+        }
+    }
+}

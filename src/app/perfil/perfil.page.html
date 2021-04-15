@@ -1,0 +1,504 @@
+<ion-header class="ion-no-border" id="headerPer">
+  <ion-toolbar></ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="false" slot="fixed">
+  <div class="scroll-content" id="segmentPer">
+    <div class="profile">
+      <ion-buttons slot="primary">
+        <span class="profile-title">Perfil</span>
+        <ion-button class="profile-settings" [routerLink]="['/ajustes-perfil']">
+          <ion-icon class="profile-settings-icon" slot="icon-only" src="assets/imágenes/settings-icon.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <div class="avatar" *ngIf="contentLoaded">
+        <img src={{avatar}} alt="">
+      </div>
+      <div class="avatar" *ngIf="!contentLoaded">
+        <ion-avatar>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+      </div>
+    </div>
+    <div class="profile-info">
+      <div class="user-meta ion-text-center" *ngIf="contentLoaded">
+        <h2 class="user-name">¡Hola {{name}}!</h2>
+        <h5 class="intentions-title">Intenciones</h5>
+        <div class="intentions-list">
+          <span class="intention" *ngFor="let intention of intenciones">{{intention}}</span>
+        </div>
+      </div>
+      <div class="user-meta ion-text-center" *ngIf="!contentLoaded">
+        <h2 class="user-name">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h2>
+        <h5 class="intentions-title">Intenciones</h5>
+        <div>
+          <span *ngFor="let item of [1,2,3]">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </span>
+        </div>
+      </div>
+      <h2 class="cards-title">Devociones favoritas</h2>
+      <ion-card
+        *ngIf="oraciones.length==0 && meditaciones.length==0 && canciones.length==0 && lecturas.length==0 && contentLoaded"
+        [routerLink]="['/devocionario']">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2">
+              <img class="card-image" src="assets/imágenes/devocionario_select.svg">
+            </ion-col>
+            <ion-col size="10">
+              <ion-card-content class="ion-no-padding">
+                <p class="card-info">Visita el <b>Devocionario</b> para guardar tus devociones favoritas.</p>
+              </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <ion-card
+        *ngIf="oraciones.length==0 && meditaciones.length==0 && canciones.length==0 && lecturas.length==0 && !contentLoaded"
+        [routerLink]="['/devocionario']">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2">
+              <img class="card-image" src="assets/imágenes/devocionario_select.svg">
+            </ion-col>
+            <ion-col size="10">
+              <ion-card-content class="ion-no-padding">
+                <p class="card-info">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </p>
+              </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <ng-container *ngIf="oraciones.length!=0">
+        <ion-card *ngFor="let oracion of oraciones" [routerLink]="[oracion.route]">
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-no-padding" size="4">
+                <img class="card-image-devocion" src="assets/imágenes/oracion.svg">
+              </ion-col>
+              <ion-col class="ion-no-padding" size="8">
+                <ion-card-content class="ion-no-padding">
+                  <p class="card-info-title">{{oracion.title}}</p>
+                  <p class="card-info-subtitle">{{oracion.subtitle}}</p>
+                </ion-card-content>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ng-container>
+      <ng-container *ngIf="meditaciones.length!=0">
+        <ion-card *ngFor="let meditacion of meditaciones"
+          (click)="viewMeditacion(meditacion.title, meditacion.text, meditacion.id)">
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-no-padding" size="4">
+                <img class="card-image-devocion" src="assets/imágenes/oracion.svg">
+              </ion-col>
+              <ion-col class="ion-no-padding" size="8">
+                <ion-card-content class="ion-no-padding">
+                  <p class="card-info-title-meditacion">{{meditacion.title}}</p>
+                </ion-card-content>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ng-container>
+      <ng-container *ngIf="lecturas.length!=0">
+        <ion-card *ngFor="let lectura of lecturas"
+          (click)="viewLectura(lectura.title, lectura.subtitle, lectura.text, lectura.id)">
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-no-padding" size="4">
+                <img class="card-image-devocion" src="assets/imágenes/lectura.svg">
+              </ion-col>
+              <ion-col class="ion-no-padding" size="8">
+                <ion-card-content class="ion-no-padding">
+                  <p class="card-info-title">{{lectura.title}}</p>
+                  <p class="card-info-subtitle">{{lectura.subtitle}}</p>
+                </ion-card-content>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ng-container>
+      <ng-container *ngIf="canciones.length!=0">
+        <ion-card *ngFor="let cancion of canciones"
+          (click)="listenSong(cancion.title, cancion.subtitle, cancion.audio, cancion.id)">
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-no-padding" size="4">
+                <img class="card-image-devocion" src="assets/imágenes/cancion.svg">
+              </ion-col>
+              <ion-col class="ion-no-padding" size="8">
+                <ion-card-content class="ion-no-padding">
+                  <p class="card-info-title">{{cancion.title}}</p>
+                  <p class="card-info-subtitle">{{cancion.subtitle}}</p>
+                </ion-card-content>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ng-container>
+      <h2 class="cards-title">Tus próximos eventos</h2>
+      <ion-card *ngIf="eventos.length==0 && contentLoaded" [routerLink]="['/eventos']">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2">
+              <img class="card-image" src="assets/imágenes/eventos_select.svg">
+            </ion-col>
+            <ion-col size="10">
+              <ion-card-content class="ion-no-padding">
+                <p class="card-info">Visita la sección de <b>Eventos</b> para guardar las actividades de tu interés.</p>
+              </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <ion-card *ngIf="eventos.length==0 && !contentLoaded" [routerLink]="['/eventos']">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2">
+              <img class="card-image" src="assets/imágenes/eventos_select.svg">
+            </ion-col>
+            <ion-col size="10">
+              <ion-card-content class="ion-no-padding">
+                <p class="card-info">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </p>
+              </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <ng-container *ngIf="eventos.length!=0">
+        <ion-card class="event-card" *ngFor="let evento of eventos"
+          (click)="popupEvento(evento.nombre, evento.direccion, evento.fecha, evento.informacion, evento.reserva, evento.link, evento.eventoId);$event.stopPropagation();">
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-no-padding" size="3">
+                <ion-text>
+                  <h5>{{evento.dia}}</h5>
+                  <h4>
+                    {{evento.mes}}
+                  </h4>
+                </ion-text>
+              </ion-col>
+              <ion-col class="ion-no-padding" size="8">
+                <ion-text>
+                  <h3><b>{{evento.nombre}}</b>
+                    <p>
+                      {{evento.hora}}
+                    </p>
+                  </h3>
+                </ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <ion-card-content class="ion-no-padding">
+                  <img src="assets/imágenes/3puntos.svg" />
+                </ion-card-content>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ng-container>
+      <h2 class="cards-title">Tu Romería</h2>
+      <ion-card *ngIf="!romeria && contentLoaded" [routerLink]="['/romeria']">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2">
+              <img class="card-image" src="assets/imágenes/romeria_select.svg">
+            </ion-col>
+            <ion-col size="10">
+              <ion-card-content class="ion-no-padding">
+                <p class="card-info">Programa tu romería visitando la sección de <b>Basílica</b>.</p>
+              </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <ion-card *ngIf="!romeria && !contentLoaded" [routerLink]="['/romeria']">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2">
+              <img class="card-image" src="assets/imágenes/romeria_select.svg">
+            </ion-col>
+            <ion-col size="10">
+              <ion-card-content class="ion-no-padding">
+                <p class="card-info">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </p>
+              </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <ion-card class="romeria-info" *ngIf="romeria" [routerLink]="['/romeria-perfil']">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="1">
+              <ion-icon class="romeria-info-partida-icon" src="assets/imágenes/ubicacion.svg"></ion-icon>
+            </ion-col>
+            <ion-col class="romeria-info-partida" size="11">
+              {{currentRomeria.puntoPartida}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="romeria-info-subtitle" size="6">
+              Ya caminaste:
+            </ion-col>
+            <ion-col class="romeria-info-subtitle" size="5">
+              Solo faltan:
+            </ion-col>
+            <ion-col size="1">
+              <ion-icon class="romeria-info-partida-icon" src="assets/imágenes/go.svg"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="!pasos">
+            <ion-row>
+              <ion-col class="romeria-info-number ion-no-padding" size="3">
+                {{currentRomeria.timeConteo | date :"HH:mm":'UTC'}}
+              </ion-col>
+              <ion-col class="romeria-info-medida ion-no-padding" size="3">
+                {{currentRomeria.TipoRomeria}}
+              </ion-col>
+              <br>
+              <ion-col class="romeria-info-number ion-no-padding" size="3" id="CuentaAtrasPer">
+                {{cerohor}}{{horas}}:{{ceromin}}{{minutos}}
+              </ion-col>
+              <ion-col class="romeria-info-medida ion-no-padding" size="3">
+                {{currentRomeria.TipoRomeria}}
+              </ion-col>
+            </ion-row>
+          </div>
+          <div *ngIf="pasos">
+            <ion-row>
+              <ion-col class="romeria-info-number ion-no-padding" size="3">
+                {{currentRomeria.pasosConteo}}
+              </ion-col>
+              <ion-col class="romeria-info-medida ion-no-padding" size="3">
+                {{currentRomeria.TipoRomeria}}
+              </ion-col>
+              <br>
+              <ion-col class="romeria-info-number ion-no-padding" size="3">
+                {{currentRomeria.pasosRestantes}}
+              </ion-col>
+              <ion-col class="romeria-info-medida ion-no-padding" size="3">
+                {{currentRomeria.TipoRomeria}}
+              </ion-col>
+            </ion-row>
+          </div>
+
+          <ion-row>
+            <ion-progress-bar class="romeria-info-progress" [value]="progress"></ion-progress-bar>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <h5 class="exvotes-title ion-text-center">Exvotos</h5>
+      <div class="exvotes-list ion-text-center">
+        <ion-button shape="round" class="exvote-container ion-no-padding" *ngFor="let exvoto of exvotos">
+          <img class="exvote-img" src={{exvoto}}>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!--Full reading view-->
+  <div class="lectura" id="lecturaPer">
+    <ion-toolbar class="ion-text-center ion-no-padding lectura-toolbar">
+      <ion-buttons class="lectura-back-btn" slot="start">
+        <ion-button (click)="hideLectura()">
+          <ion-icon color="light" name="arrow-back-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <h1 class="lectura-title">{{currTitle}}</h1>
+      <h2 class="lectura-subtitle">{{currSubtitle}}</h2>
+      <ion-buttons class="lectura-next-btn-container" slot="end">
+        <ion-button text-left color="light" class="lectura-next-btn" expand="block" fill="outline"
+          (click)="showNextReading()">
+          <span class="ion-text-left">
+            Siguiente
+            <br>
+            {{upNextTitle}}
+          </span>
+          <ion-icon class="lectura-next-btn-icon" color="light" slot="end" name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <div class="lectura-text-area-container">
+      <div class="lectura-text-area scroll-content" scrollY=true>
+        <p class="lectura-text">{{currText}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!--Full meditation view-->
+  <div class="meditacion" id="meditacionPer">
+    <ion-toolbar class="ion-text-center ion-no-padding meditacion-toolbar">
+      <ion-buttons class="meditacion-back-btn" slot="start">
+        <ion-button (click)="hideMeditation()">
+          <ion-icon color="light" name="arrow-back-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <h1 class="meditacion-title">{{currTitle}}</h1>
+      <ion-buttons class="meditacion-next-btn-container" slot="end">
+        <ion-button text-left color="azul" class="meditacion-next-btn" expand="block" fill="outline"
+          (click)="showNextMeditation()">
+          <span class="ion-text-left">
+            Siguiente
+            <br>
+            {{upNextTitle}}
+          </span>
+          <ion-icon class="meditacion-next-btn-icon" color="azul" slot="end" name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <div class="meditacion-text-area-container">
+      <div class="meditacion-text-area scroll-content" scrollY=true>
+        <p [innerHTML]="currText" class="meditacion-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <!--Full song player view-->
+  <div class="player" id="playerPer">
+    <ion-toolbar class="ion-text-center ion-no-padding player-toolbar">
+      <ion-buttons class="player-back-btn" slot="start">
+        <ion-button (click)="hidePlayer()">
+          <ion-icon color="light" name="arrow-back-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <h1 class="player-title">Canciones</h1>
+    </ion-toolbar>
+    <div class="player-container">
+      <img class="player-image" src="assets/imágenes/song-player-img.svg" />
+      <h1 class="ion-text-center player-song-title">{{currTitle}}</h1>
+      <h1 class="ion-text-center player-song-author">{{currSubtitle}}</h1>
+      <ion-range class="ion-no-padding player-range" color="azul" #range (touchmove)="touchMove()"
+        (touchend)="touchEnd()" (touchstart)="touchStart()" max="{{maxRangeValue}}" [(ngModel)]="currRangeTime">
+      </ion-range>
+      <ion-label class="player-curr-time" slot="start">
+        <ion-text color="azul">{{currSecsText}}</ion-text>
+      </ion-label>
+      <ion-label class="player-total-time" slot="end">
+        <ion-text color="azul">{{durationText}}</ion-text>
+      </ion-label>
+
+      <ion-buttons class="buttons-container">
+        <!-- Play Previous Button -->
+        <ion-button fill="clear" (click)="playPrev()">
+          <ion-icon class="play-prev-icon" color="anaranjado" name="play-back"></ion-icon>
+        </ion-button>
+
+        <!-- Play Button -->
+        <ion-button class="play-pause-icon-container" fill="clear" *ngIf="!isPlaying" (click)="play()">
+          <ion-icon class="play-pause-icon" color="anaranjado" name="play-circle-sharp"></ion-icon>
+        </ion-button>
+
+        <!-- Pause Button -->
+        <ion-button class="play-pause-icon-container" fill="clear" *ngIf="isPlaying" (click)="pause()">
+          <ion-icon class="play-pause-icon" color="anaranjado" name="pause-circle-sharp"></ion-icon>
+        </ion-button>
+
+        <!-- Play Next Button -->
+        <ion-button fill="clear" (click)="playNext()">
+          <ion-icon class="play-next-icon" color="anaranjado" name="play-forward"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons class="opts-btns-container" slot="primary">
+        <ion-button class="opts-btns-btn btn-favourite" slot="start" (click)="addOrRemoveFavourite()">
+          <ion-icon class="opts-btns-icon" *ngIf="!favourites.includes(currOptionId)" src="assets/imágenes/star.svg">
+          </ion-icon>
+          <ion-icon class="opts-btns-icon" *ngIf="favourites.includes(currOptionId)" src="assets/imágenes/starfull.svg">
+          </ion-icon>
+        </ion-button>
+        <ion-button class="opts-btns-btn btn-share" slot="end" (click)="share(currTitle)">
+          <ion-icon class="opts-btns-icon" src="assets/imágenes/share.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+
+  <!--Full popUp Evento-->
+  <div id="PopUpEvento">
+
+    <!-- Minimize Icon -->
+    <ion-buttons slot="end">
+      <ion-button (click)="minimize2()">
+        <img src="assets/imágenes/x.svg">
+      </ion-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <h2>
+            {{currNombre}}
+          </h2>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text>
+            <img src="assets/imágenes/ubicacion.svg"> {{currDireccion}}
+            <br>
+            <img src="assets/imágenes/calendario.svg"> {{currFecha}}
+          </ion-text>
+        </ion-col><br>
+        <ion-col size="12">
+          <p [innerHTML]="currInfo">
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <br>
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col size="12" style="height: 55px;">
+          <ion-button *ngIf="bookable" class="reserva" (click)="reservar2(currLink)">
+            Más información
+          </ion-button>
+        </ion-col>
+        <ion-col *ngIf="!favourites.includes(currOptionId)" size="12" (click)="addOrRemoveFavouriteEvent()">
+          <img style="vertical-align: bottom; margin-bottom: 7px;" src="assets/imágenes/starpop.svg" />
+          <sub class="favoritos">
+            Añadir a mis eventos
+          </sub>
+        </ion-col>
+        <ion-col *ngIf="favourites.includes(currOptionId)" size="12" (click)="addOrRemoveFavouriteEvent()">
+          <img style="vertical-align: bottom; margin-bottom: 7px;" src="assets/imágenes/starpopfull.svg" />
+          <sub class="favoritos">
+            Eliminar de mis eventos
+          </sub>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border" id="footPer">
+  <ion-img id="donate-img" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']"></ion-img>
+  <ion-tab-bar>
+    <ion-tab-button [routerLink]="['/eventos']">
+      <ion-img id="eventos" src="assets/imágenes/eventos.svg"></ion-img>
+      <ion-label color="azul">Eventos</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/devocionario']">
+      <ion-img id="devocionario" src="assets/imágenes/devocionario.svg"></ion-img>
+      <ion-label color="azul">Devocionario</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/donacion']">
+      <ion-label color="celeste"></ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/romeria']">
+      <ion-img id="romeria" src="assets/imágenes/romeria.svg"></ion-img>
+      <ion-label color="azul">Basílica</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/perfil']">
+      <ion-img id="perfil" src="assets/imágenes/tapPerfil_select.svg"></ion-img>
+      <ion-label id="select" color="azul">Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

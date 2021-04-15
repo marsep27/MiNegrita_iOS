@@ -1,0 +1,77 @@
+* {
+    font-family: "VisbyCF-Light";
+}
+
+ion-content {
+    ion-grid {
+        margin-right: 18px;
+        margin-left: 18px;
+        padding-left: 0px;
+        padding-right: 0px;
+        ion-row {
+            ion-col {
+                ion-text {
+                    color: #6c6c6c;
+                    h3 {
+                        font-family: "VisbyCF-Bold";
+                        font-size: 24px;
+                        color: #6c6c6c;
+                    }
+                    p {
+                        font-family: "VisbyCF-Light";
+                        font-size: 18px;
+                        color: #6c6c6c;
+                    }
+                    sub {
+                        font-family: "VisbyCF-Bold";
+                        font-size: 15px;
+                        color: #6c6c6c;
+                        text-align: center;
+                    }
+                }
+                ion-card {
+                    text-transform: none;
+                    text-align: left;
+                    width: 100%;
+                    height: 50px;
+                    --background: #fbdeb4;
+                    border-radius: 10px;
+                    margin-right: 0px;
+                    margin-left: 0px;
+                    ion-grid {
+                        margin-left: 10px;
+                        ion-row {
+                            ion-col {
+                                ion-text {
+                                    h5 {
+                                        margin-top: 3px;
+                                        font-family: "VisbyCF-Medium";
+                                        font-size: 20px;
+                                        color: #6c6c6c;
+                                        text-align: left;
+                                    }
+                                }
+                                img {
+                                    z-index: 10;
+                                    font-size: 1.5vh;
+                                    margin-top: 8px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.shadow {
+    border-radius: 10px;
+    background: #f6ce93;
+}
+
+.copiar {
+    --background: var(--ion-color-azul);
+    font-family: "VisbyCF-Light";
+    text-align: center;
+}

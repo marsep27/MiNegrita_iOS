@@ -1,0 +1,8 @@
+<svg width="58" height="8" viewBox="0 0 58 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="4" r="4" transform="rotate(-180 40 4)" fill="#0F7386"/>
+<circle cx="28" cy="4" r="4" transform="rotate(-180 28 4)" fill="#0F7386" fill-opacity="0.6"/>
+<circle cx="16" cy="4" r="4" transform="rotate(-180 16 4)" fill="#0F7386" fill-opacity="0.6"/>
+<circle cx="4" cy="4" r="4" transform="rotate(-180 4 4)" fill="#0F7386" fill-opacity="0.6"/>
+<rect x="52" y="8" width="16" height="8" rx="4" transform="rotate(-180 52 8)" fill="#0F7386"/>
+<rect x="36" width="22" height="8" rx="4" fill="#0F7386"/>
+</svg>

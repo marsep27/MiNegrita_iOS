@@ -1,0 +1,251 @@
+<ion-content color="celeste">
+  <ion-img src="assets/imágenes/Logo2.svg"></ion-img>
+
+  <ion-grid id="Encabezado" class="ion-text-center">
+    <ion-row>
+
+      <!--Encabezado-->
+      <ion-col size="12" size-sm>
+        <ion-text color="azul">
+          <h5>La Virgen quiere escucharte,
+            seleccioná tus exvotos</h5>
+          <p>Podés selecionar hasta 5 exvotos</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--Botones de los Exvotos-->
+  <ion-grid id="Exvotos" class="ion-text-center">
+    <ion-row>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonCuerpo" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Cuerpo', '/assets/imágenes/Cuerpo.svg')">
+          <img class="imgc" src="/assets/imágenes/Cuerpo.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonCuerpo" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Cuerpo', '/assets/imágenes/Cuerpo.svg')">
+          <img class="imgc" src="/assets/imágenes/Cuerpo.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonPierna" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Pierna', '/assets/imágenes/Pierna.svg')">
+          <img class="img" src="/assets/imágenes/Pierna.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonPierna" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Pierna', '/assets/imágenes/Pierna.svg')">
+          <img class="img" src="/assets/imágenes/Pierna.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonCorazon" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Corazón', '/assets/imágenes/Corazón.svg')">
+          <img class="img" src="/assets/imágenes/Corazón.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonCorazon" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Corazón', '/assets/imágenes/Corazón.svg')">
+          <img class="img" src="/assets/imágenes/Corazón.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonEsqueleto" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Esqueleto', '/assets/imágenes/Esqueleto.svg')">
+          <img class="img" src="/assets/imágenes/Esqueleto.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonEsqueleto" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Esqueleto', '/assets/imágenes/Esqueleto.svg')">
+          <img class="img" src="/assets/imágenes/Esqueleto.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonSistdigestivo" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('SistDigestivo', '/assets/imágenes/SistDigestivo.svg')">
+          <img class="img" src="/assets/imágenes/SistDigestivo.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonSistdigestivo" class="seleccionado ion-no-padding"
+          (click)="seleccionar('SistDigestivo', '/assets/imágenes/SistDigestivo.svg')">
+          <img class="img" src="/assets/imágenes/SistDigestivo.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonPulmones" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Pulmones', '/assets/imágenes/Pulmones.svg')">
+          <img class="img" src="/assets/imágenes/Pulmones.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonPulmones" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Pulmones', '/assets/imágenes/Pulmones.svg')">
+          <img class="img" src="/assets/imágenes/Pulmones.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonOjo" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Ojo', '/assets/imágenes/Ojo.svg')">
+          <img class="img" src="/assets/imágenes/Ojo.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonOjo" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Ojo', '/assets/imágenes/Ojo.svg')">
+          <img class="img" src="/assets/imágenes/Ojo.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonBebe" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Bebé', '/assets/imágenes/Bebe.svg')">
+          <img class="img" src="/assets/imágenes/Bebe.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonBebe" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Bebé', '/assets/imágenes/Bebe.svg')">
+          <img class="img" src="/assets/imágenes/Bebe.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonPechos" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Pechos', '/assets/imágenes/Pechos.svg')">
+          <img class="img" src="/assets/imágenes/Pechos.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonPechos" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Pechos', '/assets/imágenes/Pechos.svg')">
+          <img class="img" src="/assets/imágenes/Pechos.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonOreja" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Oreja', '/assets/imágenes/Oreja.svg')">
+          <img class="img" src="/assets/imágenes/Oreja.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonOreja" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Oreja', '/assets/imágenes/Oreja.svg')">
+          <img class="img" src="/assets/imágenes/Oreja.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonCabeza" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Cabeza', '/assets/imágenes/Cabeza.svg')">
+          <img class="img" src="/assets/imágenes/Cabeza.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonCabeza" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Cabeza', '/assets/imágenes/Cabeza.svg')">
+          <img class="img" src="/assets/imágenes/Cabeza.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonBrazo" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Brazo', '/assets/imágenes/Brazo.svg')">
+          <img class="img" src="/assets/imágenes/Brazo.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonBrazo" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Brazo', '/assets/imágenes/Brazo.svg')">
+          <img class="img" src="/assets/imágenes/Brazo.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonCostaRica" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('CostaRica', '/assets/imágenes/CostaRica.svg')">
+          <img class="img" src="/assets/imágenes/CostaRica.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonCostaRica" class="seleccionado ion-no-padding"
+          (click)="seleccionar('CostaRica', '/assets/imágenes/CostaRica.svg')">
+          <img class="img" src="/assets/imágenes/CostaRica.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonMatrimonio" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Matrimonio', '/assets/imágenes/Matrimonio.svg')">
+          <img class="img" src="/assets/imágenes/Matrimonio.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonMatrimonio" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Matrimonio', '/assets/imágenes/Matrimonio.svg')">
+          <img class="img" src="/assets/imágenes/Matrimonio.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonCasa" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Casa', '/assets/imágenes/Casa.svg')">
+          <img class="img" src="/assets/imágenes/Casa.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonCasa" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Casa', '/assets/imágenes/Casa.svg')">
+          <img class="img" src="/assets/imágenes/Casa.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="3" size-sm>
+        <ion-button *ngIf="buttonEstudios" class="sin-seleccionar ion-no-padding"
+          (click)="seleccionar('Estudios', '/assets/imágenes/Estudios.svg')">
+          <img class="img" src="/assets/imágenes/Estudios.svg">
+        </ion-button>
+        <ion-button *ngIf="!buttonEstudios" class="seleccionado ion-no-padding"
+          (click)="seleccionar('Estudios', '/assets/imágenes/Estudios.svg')">
+          <img class="img" src="/assets/imágenes/Estudios.svg">
+        </ion-button>
+      </ion-col>
+
+      <!--Contador de exvotos seleccionados-->
+      <ion-col size="12">
+        <ion-text *ngIf="plural" color="azul">
+          <p>Llevás {{Contador}} exvoto selecionado</p>
+        </ion-text>
+        <ion-text *ngIf="!plural" color="azul">
+          <p>Llevás {{Contador}} exvotos selecionados</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!--<div *ngIf="!isComplete">
+<ion-img id="footer" src="assets/imágenes/FinalizarClaro.svg"></ion-img>
+  <ion-footer class="ion-no-border">
+    <ion-tab-bar>
+      <ion-tab-button routerLink="/registro-intenciones">
+      </ion-tab-button>
+      <ion-tab-button>
+      </ion-tab-button>
+      </ion-tab-bar>
+  </ion-footer>
+</div>
+  
+  <div *ngIf="isComplete">
+    <ion-img id="footer" src="assets/imágenes/Finalizar.svg"></ion-img>
+    <ion-footer class="ion-no-border">
+      <ion-tab-bar>
+        <ion-tab-button routerLink="/registro-intenciones">
+        </ion-tab-button>
+        <ion-tab-button routerLink="/home" >
+        </ion-tab-button>
+        </ion-tab-bar>
+    </ion-footer>
+  </div>-->
+</ion-content>
+
+<ion-footer color="celeste" class="ion-no-border">
+
+  <!--Cambio de pasos con el himno-->
+  <ion-grid id="fin" class="ion-text-center">
+    <ion-row>
+      <ion-col size="12">
+        <ion-label color="azul">
+          Escucha nuestros clamores
+        </ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <img src="/assets/imágenes/paso4.svg">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--Botones de retroceder y finalizar-->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button id="anterior" color="azul-claro" (click)="back()">
+          Anterior
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button id="finalizar" color="anaranjado" [disabled]="disableButtonFinalizar" (click)="finalizar()">
+          Finalizar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

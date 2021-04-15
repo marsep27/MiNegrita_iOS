@@ -1,0 +1,7 @@
+{
+  "name": "Romeria0.0",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

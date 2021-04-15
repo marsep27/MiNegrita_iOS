@@ -1,0 +1,122 @@
+<ion-content color="celeste">
+  <ion-img src="assets/imágenes/Logo2.svg"></ion-img>
+
+  <ion-grid class="ion-text-center">
+    <ion-row>
+
+      <!--Encabezado-->
+      <ion-col size="12" size-sm>
+        <ion-text color="azul">
+          <h5>Seleccioná la cuenta que más te represente</h5>
+        </ion-text>
+      </ion-col>
+
+      <!--Rosario-->
+      <ion-col id="rosario">
+        <ion-img src="/assets/imágenes/rosario.svg"></ion-img>
+        <br>
+        <ion-button color="anaranjado" (click)="seleccion()">Confirmar</ion-button>
+        <br>
+        <br>
+        <br>
+        <br>
+      </ion-col>
+
+      <!--Slides-->
+      <ion-col id="slides">
+        <ion-slides [options]="slideOpts" #slider (ionSlideWillChange)="slideChange()">
+          <ion-slide *ngFor="let slid of slide">
+            <ion-grid id="name" class="ion-text-center">
+              <ion-row>
+                <ion-col style="background: #E0F3F8; height: 20px;" size="12">
+                  <ion-label color="azul">{{slid.titulo}}</ion-label>
+                </ion-col><br><br>
+                <ion-col size="12">
+                  <img src="{{slid.img}}">
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid id="flechas" class="ion-text-center">
+    <ion-row>
+      <ion-col size="2">
+      </ion-col>
+      <ion-col size="3">
+        <ion-button fill="clear" (click)="Prev()">
+          <img src="/assets/imágenes/flecha derecha.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="2">
+      </ion-col>
+      <ion-col size="3">
+        <ion-button fill="clear" (click)="Next()">
+          <img src="/assets/imágenes/flecha izquierda.svg">
+        </ion-button>
+      </ion-col>
+      <ion-col size="2">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--<div *ngIf="!isComplete">
+    <ion-img id="footer" src="assets/imágenes/ContinuarClaro2.svg"></ion-img>
+  <ion-footer class="ion-no-border">
+  <ion-tab-bar>
+    <ion-tab-button routerLink="/registro-datos">
+    </ion-tab-button>
+    <ion-tab-button>
+    </ion-tab-button>
+    </ion-tab-bar>
+  </ion-footer>
+  </div>
+  
+  <div *ngIf="isComplete">
+    <ion-img id="footer" src="assets/imágenes/Continuar2.svg"></ion-img>
+    <ion-footer class="ion-no-border">
+    <ion-tab-bar>
+      <ion-tab-button routerLink="/registro-datos">
+      </ion-tab-button>
+      <ion-tab-button routerLink="/registro-intenciones">
+      </ion-tab-button>
+      </ion-tab-bar>
+    </ion-footer>
+  </div>-->
+</ion-content>
+
+<ion-footer color="celeste" class="ion-no-border">
+
+  <!--Cambio de pasos con el himno-->
+  <ion-grid id="fin" class="ion-text-center">
+    <ion-row>
+      <ion-col size="12">
+        <ion-label color="azul">
+          Amparo de pecadores
+        </ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <img src="/assets/imágenes/paso2.svg">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--Botones de retroceder y continuar-->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button id="anterior" color="azul-claro" (click)="back()">
+          Anterior
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button id="continuar" color="anaranjado" [disabled]="disableButtonContinuar" (click)="registrar()">
+          Continuar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

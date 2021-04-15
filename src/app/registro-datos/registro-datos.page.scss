@@ -1,0 +1,126 @@
+ion-content {
+  //Imagen pequeña del logo de la aplicación
+  ion-img {
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 10px;
+    width: 35%;
+    height: 20%;
+  }
+  ion-grid {
+    vertical-align: middle;
+    margin-right: 18px;
+    margin-left: 18px;
+    padding-left: 0px;
+    padding-right: 0px;
+    ion-row {
+      ion-col {
+        ion-text {
+          h5 {
+            font-family: "VisbyCF-DemiBold";
+            font-size: 19px;
+          }
+        }
+        ion-label {
+          margin-left: 10px;
+          font-family: "VisbyCF-Light";
+          font-size: 16px;
+        }
+        ion-input {
+          border-radius: 10px;
+          width: 100%;
+          height: 42px;
+          font-size: 16px;
+          line-height: 18px;
+          font-family: "VisbyCF-Light";
+
+          .style {
+            padding-left: 16px;
+            padding-top: 12px;
+            padding-bottom: 9px;
+          }
+          ::placeholder {
+            left: 16px;
+          }
+        }
+      }
+      .error-message {
+        color: var(--ion-color-danger);
+      }
+    }
+  }
+}
+
+ion-footer {
+  margin: 0px;
+  padding: 0px;
+  height: 56px;
+  background: #e0f3f8;
+  --background: #e0f3f8;
+  border-color: #e0f3f8;
+  border-top-color: #e0f3f8 !important;
+  box-shadow: none !important;
+  // Cambio de pasos con el himno
+  #fin {
+    display: block;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    ion-label {
+      font-family: "VisbyCF-MediumOblique";
+      font-style: italic;
+      font-size: 17px;
+    }
+  }
+  ion-grid {
+    margin: 0px;
+    padding: 0px;
+    ion-row {
+      margin: 0px;
+      padding: 0px;
+      ion-col {
+        margin: 0px;
+        padding: 0px;
+        //Botón Continuar
+        ion-button {
+          margin: 0px;
+          padding: 0px;
+          text-transform: none;
+          width: 100%;
+          height: 56px;
+          top: 0px;
+          font-family: "VisbyCF-Bold";
+          font-size: 20.2697px;
+          --border-radius: 22px 0px 0px 0px;
+        }
+      }
+    }
+  }
+}
+
+.text-input::-moz-placeholder {
+  color: #0f7386;
+}
+
+.text-input:-ms-input-placeholder {
+  color: #0f7386;
+}
+
+.text-input::-webkit-input-placeholder {
+  text-indent: 0;
+  color: #0f7386;
+}
+
+.shadow-red {
+  border-radius: 35px;
+  background: #ffffff;
+}
+
+.error-message {
+  font-family: "VisbyCF-Light";
+  font-size: 12px;
+}

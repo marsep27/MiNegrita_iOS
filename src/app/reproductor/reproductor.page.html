@@ -1,0 +1,183 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()" routerLink="/devocionario">
+        <ion-icon color="azul" name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="assets/imágenes/Logo.png"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="inset" *ngFor="let song of songs" (click)="playSong(song.title,song.subtitle,song.img,song.path)">
+    <ion-thumbnail slot="start">
+      <img src="{{song.img}}" />
+    </ion-thumbnail>
+    <ion-label color="azul">
+      <h2>{{song.title}}</h2>
+      <p>{{song.subtitle}}</p>
+    </ion-label>
+  </ion-item>
+
+  <!--Full player view-->
+  <div class="ion-text-center" id="fullPlayer">
+
+    <!-- Minimize Icon -->
+    <ion-toolbar>
+      <ion-img style="display: block; margin: auto;  margin-left: 43.5%; width: 30%; height: 30%;"
+        src="assets/imágenes/Logo.png"></ion-img>
+      <ion-buttons slot="end">
+        <ion-button (click)="minimize()">
+          <ion-icon color="azul" name="close" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <img src="{{currImage}}" alt="" id="currImg">
+
+    <h2>
+      <b>{{currTitle}}</b>
+    </h2>
+    <p>
+      {{currSubtitle}}
+    </p>
+    <br>
+
+    <ion-item lines="none">
+      <ion-range color="anaranjado" #range (touchmove)="touchMove()" (touchend)="touchEnd()" (touchstart)="touchStart()"
+        max="{{maxRangeValue}}" [(ngModel)]="currRangeTime">
+
+        <ion-label slot="start">
+          <ion-text color="azul-claro">
+            <b>
+              {{currSecsText}}
+            </b>
+          </ion-text>
+        </ion-label>
+
+        <ion-label slot="end">
+          <ion-text color="azul-claro">
+            <b>
+              {{durationText}}
+            </b>
+          </ion-text>
+        </ion-label>
+      </ion-range>
+    </ion-item>
+
+
+    <!-- Play Previous Button -->
+    <ion-button fill="clear" (click)="playPrev()">
+      <ion-icon color="anaranjado" name="play-skip-back-outline" style="font-size: 30px;"></ion-icon>
+    </ion-button>
+
+    <!-- Play Button -->
+    <ion-button fill="clear" *ngIf="!isPlaying" (click)="play()">
+      <ion-icon color="anaranjado" name="play" style="font-size: 40px;"></ion-icon>
+    </ion-button>
+
+    <!-- Pause Button -->
+    <ion-button fill="clear" *ngIf="isPlaying" (click)="pause()">
+      <ion-icon color="anaranjado" name="pause" style="font-size: 40px;"></ion-icon>
+    </ion-button>
+
+    <!-- Play Next Button -->
+    <ion-button fill="clear" (click)="playNext()">
+      <ion-icon color="anaranjado" name="play-skip-forward-outline" style="font-size: 30px;"></ion-icon>
+    </ion-button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <ion-list-header>
+      <b>Siguiente canción:</b>
+    </ion-list-header>
+    <!-- Up Next Song -->
+    <ion-item (click)="playNext()">
+      <ion-thumbnail slot="start">
+        <img src="{{upNextImg}}" />
+      </ion-thumbnail>
+      <ion-label color="azul">
+        <h2>
+          {{upNextTitle}}
+        </h2>
+        <p>
+          {{upNextSubtitle}}
+        </p>
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <!-- Minimized Player View-->
+  <ion-toolbar id="miniPlayer">
+    <ion-item>
+      <ion-thumbnail slot="start" (click)="maximize()">
+        <img src="{{currImage}}" />
+      </ion-thumbnail>
+      <ion-label color="azul" (click)="maximize()">
+        <h2>{{currTitle}}</h2>
+        <p>{{currSubtitle}}</p>
+      </ion-label>
+
+      <!-- Play Button -->
+      <ion-button (click)="play()" fill="clear" *ngIf="!isPlaying">
+        <ion-icon color="anaranjado" name="play" style="font-size: x-large;"></ion-icon>
+      </ion-button>
+      <!-- Pause Button -->
+      <ion-button (click)="pause()" fill="clear" *ngIf="isPlaying">
+        <ion-icon color="anaranjado" name="pause" style="font-size: x-large;"></ion-icon>
+      </ion-button>
+      <!-- Cancel Song Button -->
+      <ion-button (click)="cancel()" fill="clear">
+        <ion-icon color="anaranjado" name="close" style="font-size: x-large;"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <!-- Song Progress Bar -->
+    <ion-progress-bar color="anaranjado" value="{{progress}}"></ion-progress-bar>
+  </ion-toolbar>
+
+  <!-- <ion-list>
+<ion-item>
+  <ion-label>Himno a la Virgen De Los Ángeles</ion-label>
+  <ion-button color="light" (click) = "play()" ><ion-icon name="play"></ion-icon></ion-button>
+</ion-item>
+  </ion-list>-->
+
+  <!--<ion-card>
+    <ion-card-header>
+    <ion-card-subtitle>Himno a la Virgen De Los Ángeles</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button color="light" (click) = "play()" ><ion-icon name="play"></ion-icon></ion-button>
+      <ion-button color="light"><ion-icon name="pause"></ion-icon></ion-button>
+    </ion-card-content>
+  </ion-card>-->
+
+  <ion-img id="footer" src="assets/imágenes/tab.svg" (click)="cancel()" routerLink="/donacion"></ion-img>
+  <ion-footer class="ion-no-border">
+    <ion-tab-bar>
+      <ion-tab-button (click)="cancel()" routerLink="/eventos">
+        <ion-img src="assets/imágenes/eventos.svg"></ion-img>
+        <ion-label color="azul">Eventos</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="cancel()" routerLink="/romeria">
+        <ion-img src="assets/imágenes/romeria.svg"></ion-img>
+        <ion-label color="azul">Romería</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="cancel()" routerLink="/donacion">
+        <ion-label color="celeste"></ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="cancel()" routerLink="/devocionario">
+        <ion-img src="assets/imágenes/devocionario.svg"></ion-img>
+        <ion-label color="azul">Devocionario</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="cancel()" routerLink="/perfil">
+        <ion-img src="assets/imágenes/tapPerfil.svg"></ion-img>
+        <ion-label color="azul">Perfil</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-footer>
+</ion-content>

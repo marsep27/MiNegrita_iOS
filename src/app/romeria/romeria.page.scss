@@ -1,0 +1,270 @@
+* {
+    font-family: "VisbyCF-Light";
+}
+
+ion-header {
+    background: #f4fcfd;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+    height: 115px;
+    vertical-align: middle;
+    span {
+        font-size: 27px;
+        font-family: "VisbyCF-Bold";
+        --background: #f4fcfd;
+        color: #0f7386;
+        margin-left: 4vw;
+        height: 115px;
+    }
+}
+
+.final-header {
+    background: radial-gradient(75.38% 75.38% at 50.15% 81.35%, #d3f6ff 22.58%, #c9edf6 74.01%);
+    height: 446px;
+    ion-card {
+        margin: 0;
+        height: 423px;
+
+        background: radial-gradient(75.38% 75.38% at 50.15% 81.35%, #d3f6ff 22.58%, #c9edf6 74.01%);
+        box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.12);
+        border-radius: 0px 0px 22px 22px;
+        ion-grid {
+            ion-row {
+                ion-col {
+                    h1 {
+                        font-family: "VisbyCF-Bold";
+                        font-size: 33.6px;
+                        text-align: center;
+                        color: #187385;
+                    }
+                    p {
+                        font-family: "VisbyCF-Bold";
+                        font-size: 14.8605px;
+                        text-align: center;
+                        color: #187385;
+                    }
+                }
+            }
+        }
+    }
+}
+
+ion-content {
+    --background: #ffffff;
+    .not_finished {
+        ion-grid {
+            ion-row {
+                ion-col {
+                    ion-card {
+                        height: 272px;
+
+                        background: radial-gradient(75.38% 75.38% at 50.15% 81.35%, #d3f6ff 22.58%, #c9edf6 74.01%);
+                        box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.12);
+                        border-radius: 22px;
+                        p {
+                            font-size: 22px;
+                            font-family: "VisbyCF-Bold";
+                            color: #0f7386;
+                        }
+                    }
+                    ion-button {
+                        text-transform: none;
+                    }
+                }
+            }
+        }
+        .not_romeria {
+            ion-list-header {
+                ion-title {
+                    font-family: "VisbyCF-Bold";
+                    font-size: 20px;
+                }
+            }
+            ion-card {
+                margin-left: 20px;
+                margin-right: 20px;
+                height: 62px;
+
+                background: rgba(244, 252, 253, 0.9);
+                box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+                border-radius: 12px;
+                ion-grid {
+                    ion-row {
+                        ion-col {
+                            img {
+                                height: 5.1vh;
+                            }
+                            p {
+                                margin-top: 10px;
+                                height: 5.1vh;
+                                font-family: "VisbyCF-Bold";
+                                font-size: 16px;
+                                text-align: center;
+                                color: #5aa5b3;
+                                vertical-align: top;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .romeria {
+            ion-list-header {
+                ion-title {
+                    font-family: "VisbyCF-Bold";
+                    font-size: 20px;
+                }
+            }
+            .continuar_romeria {
+                margin-left: 20px;
+                margin-right: 20px;
+                height: 62px;
+
+                background: #f6d198;
+                box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+                border-radius: 12px;
+                ion-grid {
+                    ion-row {
+                        ion-col {
+                            img {
+                                height: 5.1vh;
+                            }
+                            p {
+                                margin-top: 10px;
+                                height: 5.1vh;
+                                font-family: "VisbyCF-Bold";
+                                font-size: 16px;
+                                text-align: center;
+                                color: #ffffff;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
+            }
+            .mi_romeria {
+                margin-left: 20px;
+                margin-right: 20px;
+                height: 62px;
+
+                background: rgba(244, 252, 253, 0.9);
+                box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+                border-radius: 12px;
+                ion-grid {
+                    ion-row {
+                        ion-col {
+                            img {
+                                margin-top: 16px;
+                                width: 9px;
+                                height: 12px;
+                                vertical-align: middle;
+                            }
+                            p {
+                                margin-top: 10px;
+                                height: 5.1vh;
+                                font-family: "VisbyCF-Bold";
+                                font-size: 16px;
+                                color: #5aa5b3;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .finished {
+        ion-grid {
+            ion-row {
+                ion-col {
+                    p {
+                        margin-left: 30px;
+                        margin-right: 30px;
+                        font-family: "VisbyCF-DemiBold";
+                        font-size: 14px;
+                        color: #187385;
+                    }
+                    ion-card {
+                        margin-left: 20px;
+                        margin-right: 20px;
+                        height: 62px;
+
+                        background: rgba(244, 252, 253, 0.9);
+                        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
+                        border-radius: 12px;
+                        ion-grid {
+                            ion-row {
+                                ion-col {
+                                    .image {
+                                        width: 60.11px;
+                                        height: 57.16px;
+                                    }
+                                    ion-label {
+                                        h2 {
+                                            font-family: "VisbyCF-Light";
+                                            font-size: 16px;
+
+                                            color: #5aa5b3;
+                                        }
+                                    }
+                                    .img {
+                                        margin-top: 18px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #footer {
+        text-align: center;
+        width: 100%;
+        bottom: 0;
+        position: fixed;
+    }
+    ion-footer {
+        background: transparent;
+        --background: transparent;
+        background-image: none;
+        text-align: center;
+        width: 100%;
+        bottom: 0%;
+        position: fixed;
+        ion-tab-bar {
+            --background: transparent;
+            border-color: transparent;
+            height: 85px;
+            left: 0px;
+            top: 727px;
+            ion-tab-button {
+                #eventos {
+                    width: 27px;
+                    height: 32px;
+                }
+                #devocionario {
+                    width: 27px;
+                    height: 32px;
+                }
+                #romeria {
+                    width: 29.24px;
+                    height: 32px;
+                }
+                #perfil {
+                    width: 27px;
+                    height: 30px;
+                }
+                ion-label {
+                    font-family: "VisbyCF-Light";
+                    font-size: 10.7033px;
+                }
+                #select {
+                    font-family: "VisbyCF-DemiBold";
+                    font-size: 10.7033px;
+                }
+            }
+        }
+    }
+}

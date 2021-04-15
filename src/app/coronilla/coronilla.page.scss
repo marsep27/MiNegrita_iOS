@@ -1,0 +1,108 @@
+* {
+    font-family: "VisbyCF-Light";
+}
+
+ion-header {
+    width: 100%;
+
+    .header {
+        &-back-btn {
+            position: absolute;
+            top: 3.5vh;
+            left: 1.5vw;
+        }
+
+        &-title {
+            margin: 0;
+            width: fit-content;
+            color: white;
+            font-family: "VisbyCF-Bold";
+            font-size: 24.5px;
+            line-height: 136.5%;
+            position: absolute;
+            top: 12vh;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .toolbar {
+        background-color: #0f7386 !important;
+        --background: url("../../assets/imágenes/blur-bg-oracion.svg") no-repeat left top;
+        --min-height: 30vh;
+        background-size: 100vw 30vh !important;
+    }
+}
+
+ion-content {
+    --background: #0f7386 !important;
+
+    .text-area {
+        overflow-y: scroll;
+        height: 52vh;
+
+        &-container {
+            position: fixed;
+            background-color: white !important;
+            border-top-left-radius: 22px !important;
+            border-top-right-radius: 22px !important;
+
+            &-player {
+                margin-top: -5vh;
+                position: fixed;
+                background-color: white !important;
+                border-top-left-radius: 22px !important;
+                border-top-right-radius: 22px !important;
+                z-index: 20;
+            }
+        }
+
+        &-player {
+            overflow-y: scroll;
+            height: 75vh;
+        }
+    }
+
+    .subtitle {
+        font-family: "VisbyCF-Bold";
+        margin: 35px 30px 20px 30px;
+        font-size: 16px;
+        color: #0f7386;
+        line-height: 22px;
+
+        &-decenas {
+            margin: 15px 30px 25px 30px;
+        }
+
+        &-decena {
+            margin: 0 30px 0 30px;
+            line-height: auto;
+            font-size: 14px;
+        }
+    }
+
+    .text {
+        font-family: "VisbyCF-Light";
+        margin: 0 30px 0 30px;
+        font-size: 16px;
+        color: #1390a1;
+        line-height: 22px;
+
+        &-decena {
+            margin: 0 30px 20px 30px;
+            font-family: "VisbyCF-Light";
+            font-style: italic;
+            font-size: 12px;
+        }
+    }
+
+    .amen {
+        font-family: "VisbyCF-Light";
+        display: inline-block;
+        margin: 0px 30px 5px 30px;
+        font-size: 16px;
+        font-style: italic;
+        color: #f8a957;
+        line-height: 22px;
+    }
+}

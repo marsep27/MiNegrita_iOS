@@ -1,0 +1,144 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="anaranjado-claro">
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/devocionario']">
+        <ion-icon color="light" name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="anaranjado-claro" class="ion-no-border">
+
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col size="12">
+        <img src="assets/imágenes/corazón1.svg">
+      </ion-col>
+      <br>
+      <br>
+      <ion-col size="12">
+        <ion-text>
+          <h3>
+            Ayuda a conservar<br>la Basílica
+          </h3>
+          <p>
+            Podés hacer una contribución voluntaria a la<br>Basílica de Nuestra Señora<br>de los Ángeles en Cartago
+          </p>
+        </ion-text>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text class="ion-text-center">
+          <sub>
+            Banco Nacional
+          </sub>
+        </ion-text>
+        <ion-card (click)="copiarAlPortapapeles('BN')">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="11" *ngIf="!contentLoaded">
+                <ion-text>
+                  <h5>
+                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                  </h5>
+                </ion-text>
+              </ion-col>
+              <ion-col size="11" *ngIf="contentLoaded">
+                <ion-text>
+                  <h5 id="BN">{{BN}}</h5>
+                </ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <img src="assets/imágenes/copy-icon.svg">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text class="ion-text-center">
+          <sub>
+            Cuenta Cliente
+          </sub>
+        </ion-text>
+        <ion-card (click)="copiarAlPortapapeles('CC')">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="11" *ngIf="!contentLoaded">
+                <ion-text>
+                  <h5>
+                    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                  </h5>
+                </ion-text>
+              </ion-col>
+              <ion-col size="11" *ngIf="contentLoaded">
+                <ion-text>
+                  <h5 id="CC">{{CC}}</h5>
+                </ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <img src="assets/imágenes/copy-icon.svg">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text class="ion-text-center">
+          <sub>
+            Cuenta IBAN
+          </sub>
+        </ion-text>
+        <ion-card (click)="copiarAlPortapapeles('CI')">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="11" *ngIf="!contentLoaded">
+                <ion-text>
+                  <h5>
+                    <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                  </h5>
+                </ion-text>
+              </ion-col>
+              <ion-col size="11" *ngIf="contentLoaded">
+                <ion-text>
+                  <h5 id="CI">{{CI}}</h5>
+                </ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <img src="assets/imágenes/copy-icon.svg">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text class="ion-text-center">
+          <sub>
+            SINPE Móvil
+          </sub>
+        </ion-text>
+        <ion-card (click)="copiarAlPortapapeles('SM')">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="11" *ngIf="!contentLoaded">
+                <ion-text>
+                  <h5>
+                    <ion-skeleton-text animated style="width: 45%"></ion-skeleton-text>
+                  </h5>
+                </ion-text>
+              </ion-col>
+              <ion-col size="11" *ngIf="contentLoaded">
+                <ion-text>
+                  <h5 id="SM">{{SM}}</h5>
+                </ion-text>
+              </ion-col>
+              <ion-col size="1">
+                <img src="assets/imágenes/copy-icon.svg">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

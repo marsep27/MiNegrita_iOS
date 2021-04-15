@@ -1,0 +1,166 @@
+* {
+    font-family: "VisbyCF-Light";
+}
+
+ion-header {
+    background: #f4fcfd;
+    height: 115px;
+    span {
+        font-size: 27px;
+        font-family: "VisbyCF-Bold";
+        --background: #f4fcfd;
+        color: #0f7386;
+        margin-left: 4vw;
+        height: 115px;
+    }
+}
+
+ion-content {
+    --background: #ffffff;
+    ion-grid {
+        vertical-align: middle;
+        margin-right: 18px;
+        margin-left: 18px;
+        padding-left: 0px;
+        padding-right: 0px;
+        ion-row {
+            ion-col {
+                .subtitle {
+                    margin-left: 4px;
+                    font-family: "VisbyCF-Light";
+                    font-size: 16px;
+                }
+                ion-label {
+                    margin-left: 4px;
+                    font-family: "VisbyCF-Light";
+                    font-size: 16px;
+                }
+                ion-input {
+                    border-radius: 10px;
+                    width: 100%;
+                    height: 42px;
+                    font-size: 16px;
+                    line-height: 18px;
+                    font-family: "VisbyCF-Light";
+
+                    .style {
+                        padding-left: 16px;
+                        padding-top: 12px;
+                        padding-bottom: 9px;
+                    }
+                    ::placeholder {
+                        left: 16px;
+                    }
+                }
+                h4 {
+                    font-family: "VisbyCF-Light";
+                    font-size: 16px;
+                    color: #0f7386;
+                }
+                .selected {
+                    //width: 172px;
+                    height: 58px;
+                    background: #1390a1;
+                    border-radius: 12px;
+                    h1 {
+                        font-size: 17px;
+                        font-family: "VisbyCF-Bold";
+                        vertical-align: medium;
+                        text-align: center;
+                        color: #ffffff;
+                    }
+                }
+                .not_selected {
+                    //width: 172px;
+                    height: 58px;
+                    background: #f4fcfd;
+                    border-radius: 12px;
+                    h1 {
+                        font-size: 15px;
+                        font-family: "VisbyCF-Medium";
+                        vertical-align: medium;
+                        text-align: center;
+                        color: #5aa5b3;
+                    }
+                }
+                .confirm-message {
+                    font-family: "VisbyCF-Ligth";
+                    font-size: 10px;
+                    color: rgba(15, 115, 134, 0.8);
+                }
+            }
+            .error-message {
+                color: var(--ion-color-danger);
+                font-family: "VisbyCF-Light";
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+ion-footer {
+    margin: 0px;
+    padding: 0px;
+    background: #ffffff;
+    --background: #ffffff;
+    border-color: #ffffff;
+    border-top-color: #ffffff !important;
+    box-shadow: none !important;
+    top: -20px;
+    left: 0;
+    right: 0;
+    ion-grid {
+        margin: 0px;
+        padding: 0px;
+        top: -20px;
+        left: 0;
+        right: 0;
+        ion-row {
+            margin: 0px;
+            padding: 0px;
+            ion-col {
+                margin: 0px;
+                padding: 0px;
+                ion-text {
+                    //width: 57px;
+                    height: 17px;
+                    font-family: "VisbyCF-Light";
+                    font-size: 14px;
+                    color: rgba(24, 115, 132, 0.8);
+                }
+                ion-button {
+                    width: 341px;
+                    height: 35px;
+                    font-family: "VisbyCF-Bold";
+                    --background: #f3a34f;
+                    text-transform: none;
+                    font-size: 17.2174px;
+                    --border-radius: 7.17391px;
+                }
+            }
+        }
+    }
+}
+
+.shadow-red {
+    background: #f4fcfd;
+    border-radius: 10px;
+    width: 100%;
+    height: 42px;
+    font-size: 16px;
+    line-height: 18px;
+    font-family: "VisbyCF-Light";
+    color: var(--ion-color-azul);
+    --color: var(--ion-color-azul);
+    border-color: #f4fcfd;
+    .placeholder {
+        color: var(--ion-color-azul);
+    }
+}
+
+.diocesis {
+    --color: var(--ion-color-azul);
+    --button-color: #f4fcfd;
+    --background: #f4fcfd;
+    color: var(--ion-color-azul);
+}

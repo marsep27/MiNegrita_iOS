@@ -1,0 +1,207 @@
+* {
+    font-family: "VisbyCF-Light";
+}
+
+ion-header {
+    width: 100%;
+
+    .toolbar-start {
+        background-color: #0f7386 !important;
+        --background: url("../../assets/imágenes/oracion-bg.svg") no-repeat center center;
+        --min-height: 48vh;
+        --background-size: 100vw 48vh !important;
+    }
+
+    .header {
+        &-back-btn {
+            position: absolute;
+            top: 3.5vh;
+            left: 1.5vw;
+        }
+
+        &-title {
+            margin: 0;
+            width: fit-content;
+            color: white;
+            font-family: "VisbyCF-Bold";
+            font-size: 24.5px;
+            line-height: 136.5%;
+            position: absolute;
+            top: 7vh;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &-subtitle {
+            margin: 0;
+            color: white;
+            width: fit-content;
+            font-size: 17px;
+            line-height: 136.5%;
+            position: absolute;
+            top: 11.2vh;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &-play-btn {
+            height: 5vh;
+
+            &-container {
+                position: absolute;
+                top: 16.5vh;
+                left: 50%;
+                height: 5vh;
+                transform: translate(-50%, -50%);
+            }
+
+            &-icon {
+                font-size: 5vh;
+            }
+        }
+    }
+
+    .toolbar-player {
+        background-color: #0f7386 !important;
+        --background: url("../../assets/imágenes/blur-bg-oracion.svg") no-repeat left top;
+        --min-height: 30vh;
+        background-size: 100vw 30vh !important;
+
+        .audio {
+            &-range {
+                position: absolute;
+                top: 16vh;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 70vw;
+                --bar-background: rgba(255, 255, 255, 0.5) !important;
+                --knob-size: 8px;
+                --knob-background: #f5c987;
+            }
+
+            &-btn {
+                height: 30px;
+                position: absolute;
+                top: 20vh;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                &-icon {
+                    font-size: 30px;
+                }
+            }
+        }
+
+        .curr-time {
+            font-size: 10px;
+            position: absolute;
+            top: 17vh;
+            left: 12%;
+        }
+
+        .total-time {
+            font-size: 10px;
+            position: absolute;
+            top: 17vh;
+            right: 12%;
+        }
+    }
+}
+
+ion-content {
+    --background: #0f7386 !important;
+
+    .text-area {
+        overflow-y: scroll;
+        height: 52vh;
+
+        &-container {
+            position: fixed;
+            background-color: white !important;
+            border-top-left-radius: 22px !important;
+            border-top-right-radius: 22px !important;
+
+            &-player {
+                margin-top: -5vh;
+                position: fixed;
+                background-color: white !important;
+                border-top-left-radius: 22px !important;
+                border-top-right-radius: 22px !important;
+                z-index: 20;
+            }
+        }
+
+        &-player {
+            overflow-y: scroll;
+            height: 75vh;
+        }
+    }
+
+    .subtitle {
+        font-family: "VisbyCF-Bold";
+        margin: 35px 30px 20px 30px;
+        font-size: 16px;
+        color: #0f7386;
+        line-height: 22px;
+
+        &-misterios {
+            margin: 15px 30px 25px 30px;
+        }
+
+        &-misterio {
+            margin: 0 30px 0 30px;
+            line-height: auto;
+            font-size: 14px;
+        }
+    }
+
+    .text {
+        font-family: "VisbyCF-Light";
+        margin: 0 30px 0 30px;
+        font-size: 16px;
+        color: #1390a1;
+        line-height: 22px;
+
+        &-misterio {
+            margin: 0 30px 20px 30px;
+            font-family: "VisbyCF-Light";
+            font-style: italic;
+            font-size: 12px;
+            line-height: 15px;
+        }
+    }
+
+    .amen {
+        font-family: "VisbyCF-Light";
+        display: inline-block;
+        margin: 0px 30px 5px 30px;
+        font-size: 16px;
+        font-style: italic;
+        color: #f8a957;
+        line-height: 22px;
+    }
+
+    .letanias {
+        margin: 0px 30px 20px 30px;
+    }
+
+    .letania {
+        &-text {
+            margin: 0;
+            font-family: "VisbyCF-Light";
+            font-size: 14px;
+            color: #1390a1;
+            line-height: 22px;
+        }
+
+        &-answer {
+            margin: 0;
+            font-family: "VisbyCF-Light";
+            font-style: italic;
+            font-size: 11px;
+            color: #0f7386;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+}

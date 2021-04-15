@@ -1,0 +1,35 @@
+<ion-content color="celeste">
+  <ion-img src="assets/imágenes/Logo.svg"></ion-img>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <!--Botones-->
+      <ion-col class="ion-align-center" size="12">
+        <ion-button color="azul-claro" routerLink="/iniciar-sesion">Iniciar sesión</ion-button>
+      </ion-col>
+      <ion-col class="ion-align-center" size="12">
+        <ion-button color="anaranjado" routerLink="/registro-datos">Registrarse</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+<!--Para implementar el inicio de Facebook y Google-->
+<ion-footer class="ion-no-border">
+  <ion-tab-bar>
+    <ion-grid class="ion-text-center">
+      <ion-row>
+        <ion-col>
+          <ion-text color="azul">Registrarse con</ion-text>
+          <ion-button fill="clear" (click)="loginFacebook()">
+            <img id="facebook" src="assets/imágenes/facebook.svg" />
+          </ion-button>
+          <ion-text color="azul">ó</ion-text>
+          <ion-button fill="clear" (click)="loginGoogle()">
+            <img id="google" src="assets/imágenes/google.svg" />
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-tab-bar>
+</ion-footer>

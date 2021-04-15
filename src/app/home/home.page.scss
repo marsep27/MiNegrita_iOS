@@ -1,0 +1,88 @@
+ion-content {
+    //Imagen grande del logo de la aplicación
+    ion-img {
+        display: block;
+        margin: auto;
+        width: 50%;
+        height: 50%;
+    }
+    ion-grid {
+        vertical-align: middle;
+        padding-left: 0;
+        margin-left: -6px;
+        padding-right: 0;
+        margin-right: -6px;
+
+        ion-row {
+            ion-col {
+                //Botones de Iniciar sesión y Regristrar
+                ion-button {
+                    text-transform: none;
+                    width: 287px;
+                    height: 52px;
+                    --border-radius: 15px;
+                    font-family: "VisbyCF-DemiBold";
+                    font-size: 20px;
+                }
+                //Botón para iniciar con facebook
+                #facebook {
+                    text-transform: none;
+                    width: 287px;
+                    height: 52px;
+                    --border-radius: 15px;
+                    font-family: "VisbyCF-DemiBold";
+                    font-size: 19px;
+                }
+            }
+        }
+    }
+}
+
+ion-footer {
+    margin: 0px;
+    padding: 0px;
+    height: 56px;
+    background: #e0f3f8;
+    --background: #e0f3f8;
+    border-color: #e0f3f8;
+    border-top-color: #e0f3f8 !important;
+    box-shadow: none !important;
+    ion-tab-bar {
+        --background: transparent;
+        border-color: transparent;
+        display: block;
+        margin: auto;
+        text-align: center;
+        position: absolute;
+        top: -30px;
+        left: 0;
+        right: 0;
+        ion-grid {
+            margin: 0px;
+            padding: 0px;
+            ion-row {
+                margin: 0px;
+                padding: 0px;
+                ion-col {
+                    margin: 0px;
+                    padding: 0px;
+                    ion-text {
+                        font-family: "VisbyCF-DemiBold";
+                        font-size: 20.2817px;
+                        vertical-align: middle;
+                    }
+                    ion-button {
+                        #facebook {
+                            width: 21.35px;
+                            height: 21.35px;
+                        }
+                        #google {
+                            width: 28.82px;
+                            height: 28.82px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

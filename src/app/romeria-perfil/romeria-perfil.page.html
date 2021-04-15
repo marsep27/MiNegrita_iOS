@@ -1,0 +1,182 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="header-back-btn" defaultHref="/perfil" text="" icon="arrow-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <div>
+      <ion-title class="header-title">Mi Romería</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="false" slot="fixed">
+  <div class="romeria-info">
+    <h2 class="romeria-info-subtitle general-subt">Datos generales</h2>
+    <ion-grid class="general-stats ion-no-padding">
+      <ion-row>
+        <ion-col class="general-stats-number ion-no-padding" size="6" *ngIf="contentLoaded">
+          {{cantidadRomerias}}
+        </ion-col>
+        <ion-col class="ion-no-padding general-stats-number" size="6" *ngIf="contentLoaded">
+          {{totalHoras}}
+        </ion-col>
+        <ion-col class="general-stats-number ion-no-padding" size="6" *ngIf="!contentLoaded">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-col>
+        <ion-col class="ion-no-padding general-stats-number" size="6" *ngIf="!contentLoaded">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding general-stats-subtitle" size="4">
+          Romerías completadas
+        </ion-col>
+        <ion-col size="2"></ion-col>
+        <ion-col class="ion-no-padding general-stats-subtitle" size="4">
+          Horas totales recorridas
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="general-stats ion-no-padding">
+      <ion-row>
+        <ion-col class="general-stats-number ion-no-padding" size="6" *ngIf="contentLoaded">
+          {{totalKm}}
+        </ion-col>
+        <ion-col class="ion-no-padding general-stats-number" size="6" *ngIf="contentLoaded">
+          {{totalPasos}}
+        </ion-col>
+        <ion-col class="general-stats-number ion-no-padding" size="6" *ngIf="!contentLoaded">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-col>
+        <ion-col class="ion-no-padding general-stats-number" size="6" *ngIf="!contentLoaded">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding general-stats-subtitle" size="4">
+          Kilometros totales recorridos
+        </ion-col>
+        <ion-col size="2"></ion-col>
+        <ion-col class="ion-no-padding general-stats-subtitle" size="4">
+          Pasos totales dados
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size="6" class="ion-no-padding">
+          <h2 class="romeria-info-subtitle">Romería actual</h2>
+        </ion-col>
+        <ion-col class="ion-no-padding romeria-info-btn-container" size="4">
+          <ion-button class="romeria-info-btn" expand="block" [routerLink]="['/continuar-romeria']">Continuar
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-no-padding romeria-info-btn-container" size="2">
+          <ion-button class="romeria-info-btn-rm" expand="block" (click)="deleteRomeria()">
+            X
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <h3 class="romeria-info-proposito" *ngIf="contentLoaded">{{currentRomeria.proposito}}</h3>
+    <h3 class="romeria-info-proposito" *ngIf="!contentLoaded">
+      <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+    </h3>
+    <ion-grid class="current-stats ion-no-padding" *ngIf="!pasos && contentLoaded">
+      <ion-row>
+        <ion-col class="ion-no-padding current-stats-number" size="6">
+          {{currentRomeria.timeConteo | date :"HH:mm":'UTC'}}
+        </ion-col>
+        <ion-col class="ion-no-padding current-stats-number" size="6" id="CuentaAtrasRP">
+          {{cerohor}}{{horas}}:{{ceromin}}{{minutos}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding current-stats-subtitle" size="3">
+          Horas recorridas
+        </ion-col>
+        <ion-col size="3"></ion-col>
+        <ion-col class="ion-no-padding current-stats-subtitle" size="3">
+          Horas restantes
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="current-stats ion-no-padding" *ngIf="!contentLoaded">
+      <ion-row>
+        <ion-col class="ion-no-padding current-stats-number" size="6">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-col>
+        <ion-col class="ion-no-padding current-stats-number" size="6">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding current-stats-subtitle" size="3">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-col>
+        <ion-col size="3"></ion-col>
+        <ion-col class="ion-no-padding current-stats-subtitle" size="3">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="current-stats ion-no-padding" *ngIf="pasos && contentLoaded">
+      <ion-row>
+        <ion-col class="ion-no-padding current-stats-number" size="6">
+          {{currentRomeria.pasosConteo}}
+        </ion-col>
+        <ion-col class="ion-no-padding current-stats-number" size="6">
+          {{currentRomeria.pasosRestantes}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding current-stats-subtitle" size="3">
+          Pasos dados
+        </ion-col>
+        <ion-col size="3"></ion-col>
+        <ion-col class="ion-no-padding current-stats-subtitle" size="3">
+          Pasos restantes
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col class="ion-no-padding" size="7.5">
+          <ion-progress-bar class="romeria-info-progress" [value]="progress"></ion-progress-bar>
+        </ion-col>
+        <ion-col size="0.5"></ion-col>
+        <ion-col class="ion-no-padding romeria-info-percentage" size="4">{{porcentaje}}% completado</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-img id="donate-img" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" [queryParams]="{}"></ion-img>
+  <ion-tab-bar>
+    <ion-tab-button [routerLink]="['/eventos']" [queryParams]="">
+      <ion-img id="eventos" src="assets/imágenes/eventos.svg"></ion-img>
+      <ion-label color="azul">Eventos</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/devocionario']" [queryParams]="{}">
+      <ion-img id="devocionario" src="assets/imágenes/devocionario.svg"></ion-img>
+      <ion-label color="azul">Devocionario</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/donacion']" [queryParams]="{}">
+      <ion-label color="celeste"></ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/romeria']" [queryParams]="{}">
+      <ion-img id="romeria" src="assets/imágenes/romeria.svg"></ion-img>
+      <ion-label color="azul">Basílica</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/perfil']" [queryParams]="{}">
+      <ion-img id="perfil" src="assets/imágenes/tapPerfil_select.svg"></ion-img>
+      <ion-label id="select" color="azul">Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

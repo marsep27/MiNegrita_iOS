@@ -1,0 +1,149 @@
+ion-content {
+  //Imagen pequeña del logo de la aplicación
+  ion-img {
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 10px;
+    width: 35%;
+    height: 20%;
+  }
+  #name {
+    width: 30%;
+    max-width: 50%;
+  }
+  ion-grid {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    ion-row {
+      ion-col {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        ion-text {
+          h5 {
+            font-family: "VisbyCF-DemiBold";
+            font-size: 20.2697px;
+          }
+        }
+      }
+      //Posición de la imagen del rosario
+      #rosario {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        position: absolute;
+        top: 25vh;
+        z-index: 1;
+        ion-img {
+          display: block;
+          margin: auto;
+          width: 100%;
+          height: auto;
+        }
+        ion-button {
+          text-transform: none;
+          width: 79px;
+          height: 23px;
+          font-family: "VisbyCF-Medium";
+          font-size: 12px;
+          --border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+//Posicion de los slides
+#slides {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 31vh;
+  z-index: 1;
+  ion-label {
+    font-family: "VisbyCF-Light";
+    font-size: 17.736px;
+    background: #e0f3f8;
+  }
+  img {
+    width: 87px;
+    height: 87px;
+  }
+}
+//Posicion de las Flechas
+#flechas {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 48vh;
+  z-index: 1;
+}
+
+ion-footer {
+  margin: 0px;
+  padding: 0px;
+  height: 56px;
+  background: #e0f3f8;
+  --background: #e0f3f8;
+  border-color: #e0f3f8;
+  border-top-color: #e0f3f8 !important;
+  box-shadow: none !important;
+  // Cambio de pasos con el himno
+  #fin {
+    display: block;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    ion-label {
+      font-family: "VisbyCF-MediumOblique";
+      font-style: italic;
+      font-size: 17px;
+    }
+  }
+  ion-grid {
+    margin: 0px;
+    padding: 0px;
+    ion-row {
+      margin: 0px;
+      padding: 0px;
+      ion-col {
+        margin: 0px;
+        padding: 0px;
+        //Botón Anterior
+        #anterior {
+          margin: 0px;
+          padding: 0px;
+          text-transform: none;
+          width: 100%;
+          height: 56px;
+          top: 0px;
+          font-family: "VisbyCF-Bold";
+          font-size: 20.2697px;
+          --border-radius: 0px 22px 0px 0px;
+        }
+        //Botón Continuar
+        #continuar {
+          margin: 0px;
+          padding: 0px;
+          text-transform: none;
+          width: 100%;
+          height: 56px;
+          top: 0px;
+          font-family: "VisbyCF-Bold";
+          font-size: 20.2697px;
+          --border-radius: 22px 0px 0px 0px;
+        }
+      }
+    }
+  }
+}
+
+//.text-input:-placeholder-color: #0F7386;

@@ -1,0 +1,171 @@
+* {
+    font-family: "VisbyCF-Light";
+}
+
+ion-header {
+    background: #f4fcfd;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+    span {
+        font-size: 27px;
+        font-family: "VisbyCF-Bold";
+        --background: #f4fcfd;
+        color: #0f7386;
+        margin-left: 4vw;
+        height: 115px;
+    }
+    ion-grid {
+        ion-row {
+            ion-col {
+                h1 {
+                    font-family: "VisbyCF-Bold";
+                    --background: #f4fcfd;
+                    color: hsl(190, 80%, 29%);
+                    font-size: 85px;
+                    margin-top: -3px;
+                    margin-bottom: 0px;
+                }
+                .tiempo {
+                    font-family: "VisbyCF-Bold";
+                    --background: #f4fcfd;
+                    color: #0f7386;
+                    font-size: 74.8284px;
+                    margin-bottom: 0px;
+                }
+                h2 {
+                    font-family: "VisbyCF-Bold";
+                    --background: #f4fcfd;
+                    color: #0f7386;
+                    font-size: 33.4118px;
+                    margin-top: 0px;
+                }
+                h4 {
+                    font-family: "VisbyCF-Bold";
+                    --background: #f4fcfd;
+                    color: #0f7386;
+                    font-size: 27px;
+                    margin-bottom: 0px;
+                }
+                h5 {
+                    font-family: "VisbyCF-Bold";
+                    --background: #f4fcfd;
+                    color: #0f7386;
+                    font-size: 18px;
+                    margin-top: 0px;
+                }
+            }
+        }
+    }
+    .play_pause {
+        height: 7.5vh;
+        width: 10.5vh;
+        position: relative;
+        margin: 0 auto;
+
+        img {
+            height: 10.5vh;
+            display: block;
+            position: absolute;
+            top: 1.3vh;
+        }
+    }
+}
+
+ion-content {
+    --background: #ffffff;
+    .content {
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        --border-radius: 100%;
+        ion-row {
+            ion-col {
+                h3 {
+                    font-family: "VisbyCF-Bold";
+                    font-size: 20px;
+                    color: #0f7386;
+                    text-align: center;
+                }
+                ion-progress-bar {
+                    margin-top: 4vh;
+                    --progress-background: #f5c987;
+                    --background: #f4fcfd !important;
+                    height: 0.8vh;
+                    border-radius: 50px;
+                    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08);
+                }
+                p {
+                    text-align: right;
+                    font-family: "VisbyCF-Bold";
+                    font-size: 25.0413px;
+                    letter-spacing: -0.04em;
+                    color: #0f7386;
+                    margin-top: 5px;
+                    margin-bottom: 0px;
+                }
+                .p {
+                    text-align: left;
+                    font-family: "VisbyCF-Medium";
+                    font-size: 14px;
+                    color: #0f7386;
+                }
+                .pasos {
+                    text-align: right;
+                    font-family: "VisbyCF-Bold";
+                    font-size: 19px;
+                    letter-spacing: -0.04em;
+                    color: #0f7386;
+                    margin-top: 13px;
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+    #footer {
+        text-align: center;
+        width: 100%;
+        bottom: 0;
+        position: fixed;
+    }
+    ion-footer {
+        background: transparent;
+        --background: transparent;
+        background-image: none;
+        text-align: center;
+        width: 100%;
+        bottom: 0%;
+        position: fixed;
+        ion-tab-bar {
+            --background: transparent;
+            border-color: transparent;
+            height: 85px;
+            left: 0px;
+            top: 727px;
+            ion-tab-button {
+                #eventos {
+                    width: 27px;
+                    height: 32px;
+                }
+                #devocionario {
+                    width: 27px;
+                    height: 32px;
+                }
+                #romeria {
+                    width: 29.24px;
+                    height: 32px;
+                }
+                #perfil {
+                    width: 27px;
+                    height: 30px;
+                }
+                ion-label {
+                    font-family: "VisbyCF-Light";
+                    font-size: 10.7033px;
+                }
+                #select {
+                    font-family: "VisbyCF-DemiBold";
+                    font-size: 10.7033px;
+                }
+            }
+        }
+    }
+}

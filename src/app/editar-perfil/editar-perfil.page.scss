@@ -1,0 +1,198 @@
+* {
+    font-family: "VisbyCF-Bold";
+}
+
+ion-header {
+    ion-toolbar {
+        --min-height: 13.7vh !important;
+
+        .header-title {
+            font-size: 3.35vh;
+            line-height: 32px;
+            margin-left: 4.3vw;
+            margin-top: 1.7vh;
+            text-align: left !important;
+            color: #0f7386;
+        }
+
+        .close-settings {
+            position: absolute;
+            right: 1vw;
+            top: 2vh;
+
+            &-icon {
+                height: 1.5vh;
+            }
+        }
+    }
+}
+
+ion-content {
+    .profile-avatar {
+        margin: 1vh auto 0 auto;
+        width: fit-content;
+        color: #0f7386;
+
+        &-arrow {
+            height: 2vh;
+
+            &-icon {
+                height: 2vh;
+            }
+        }
+
+        &-previous {
+            height: 6.2vh;
+            width: 6.2vh;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        &-actual {
+            height: 8.4vh;
+            width: 8.4vh;
+            margin-left: -3.5vw;
+        }
+
+        &-next {
+            height: 6.2vh;
+            width: 6.2vh;
+            margin-left: -3.5vw;
+            z-index: -1;
+            opacity: 0.5;
+        }
+    }
+
+    .user-name {
+        margin: 4.3vh 4.8vw 0 4.8vw;
+        color: #0f7386;
+
+        .input-label {
+            margin-left: 4vw;
+            font-weight: 300;
+            font-size: 2vh;
+            line-height: 19px;
+            font-family: "VisbyCF-Light";
+            color: #0f7386;
+        }
+
+        .input-form {
+            margin-top: 1vh;
+            margin-bottom: 1.8vh;
+            height: 5.2vh;
+            background: #f4fcfd;
+            border-radius: 10px;
+            padding-left: 4vw !important;
+            font-family: "VisbyCF-Light";
+            font-weight: 600;
+            font-size: 2.1vh;
+            line-height: 22px;
+            color: #0f7386;
+        }
+    }
+
+    .exvotes {
+        margin: 6.4vh 4.8vw 0 4.8vw;
+
+        &-list {
+            margin: 0 6.5vw 0 6.5vw;
+
+            &-row {
+                height: 8vh;
+                margin: 0 0 1.3vh 0;
+            }
+        }
+        .exvote {
+            &-container-selected {
+                height: 7vh;
+                width: 7vh;
+                --background: #b9e9f2;
+                --background-activated: #b9e9f2;
+                --border-radius: 100%;
+            }
+
+            &-container-unselected {
+                height: 7vh;
+                width: 7vh;
+                --background: #effdff;
+                --background-activated: #b9e9f2;
+                --border-radius: 100%;
+            }
+
+            &-img {
+                max-width: 5vh;
+                max-height: 5vh;
+            }
+            &-imgc {
+                max-width: 7vh;
+                max-height: 7vh;
+            }
+        }
+    }
+
+    .intentions {
+        margin: 6.4vh 4.8vw 0 4.8vw;
+
+        .selected-intentions {
+            background-color: #effdff;
+            border-radius: 10px;
+        }
+
+        .selected-intentions-empty {
+            height: 5.2vh;
+            background-color: #effdff;
+            border-radius: 10px;
+        }
+
+        .intention-selected {
+            height: 4vh;
+            text-transform: none;
+            --background: #0f7386;
+            --background-activated: #0f7386;
+            font-family: "VisbyCF-Light";
+            font-size: 1.4vh;
+            color: white;
+        }
+
+        .intention-unselected {
+            height: 4vh;
+            text-transform: none;
+            --background-activated: #b9e9f2;
+            font-family: "VisbyCF-Light";
+            font-size: 1.4vh;
+            --color: #0f7386;
+            --border-radius: 7px;
+            --border-width: 1px;
+            --border-color: #3cbbd3;
+        }
+
+        .remove-intention {
+            font-size: 12px;
+        }
+    }
+
+    .profile-settings-btns {
+        margin: 6.4vh 4.8vw 0 4.8vw;
+
+        &-confirm {
+            --background: #f8a957;
+            color: white;
+            height: 5.2vh;
+            text-transform: none;
+        }
+
+        &-cancel {
+            font-family: "VisbyCF-DemiBold";
+            color: #0f7386;
+            height: 5.2vh;
+            text-transform: none;
+        }
+    }
+
+    .section-label {
+        font-size: 2.5vh;
+        margin-bottom: 2vh !important;
+        display: inline-block;
+        color: #0f7386;
+    }
+}

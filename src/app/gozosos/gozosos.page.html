@@ -1,0 +1,200 @@
+<ion-header class="ion-no-border ion-no-padding">
+  <ion-toolbar class="ion-no-padding toolbar-start" *ngIf="!isInicio">
+    <ion-buttons class="header-back-btn" slot="start">
+      <ion-button (click)="parar()" routerLink="/devocionario">
+        <ion-icon color="light" name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <h1 class="header-title">El Santo Rosario</h1>
+    <h2 class="header-subtitle">Misterios Gozosos</h2>
+    <ion-buttons class="header-play-btn-container" slot="start">
+      <ion-button class="header-play-btn" (click)="audio()">
+        <ion-icon class="header-play-btn-icon" color="light" src="assets/imágenes/play-icon.svg" slot="icon-only">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="ion-no-padding toolbar-player" *ngIf="isInicio">
+    <ion-buttons class="header-back-btn" slot="start">
+      <ion-button (click)="parar()" routerLink="/devocionario">
+        <ion-icon color="light" name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <h1 class="header-title">El Santo Rosario</h1>
+    <h2 class="header-subtitle">Misterios Gozosos</h2>
+    <ion-range class="audio-range ion-no-padding" color="light" #range (touchmove)="touchMove()" (touchend)="touchEnd()"
+      (touchstart)="touchStart()" max="{{maxRangeValue}}" [(ngModel)]="currRangeTime">
+    </ion-range>
+    <ion-label class="curr-time" slot="start">
+      <ion-text color="light">{{currSecsText}}</ion-text>
+    </ion-label>
+    <ion-label class="total-time" slot="end">
+      <ion-text color="light">{{durationText}}</ion-text>
+    </ion-label>
+    <ion-button class="audio-btn" fill="clear" *ngIf="!isPlaying" (click)="play()">
+      <ion-icon class="audio-btn-icon" color="light" src="assets/imágenes/play-icon-2.svg"></ion-icon>
+    </ion-button>
+
+    <!-- Pause Button -->
+    <ion-button class="audio-btn" fill="clear" *ngIf="isPlaying" (click)="pause()">
+      <ion-icon class="audio-btn-icon" color="light" src="assets/imágenes/pause-icon.svg"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="text-area-container" id="text-area-container">
+    <div class="text-area scroll-content" id="text-area" scrollY=true>
+      <h5 class="subtitle">La Señal de la Cruz</h5>
+      <p class="text">
+        Por la señal de la Santa Cruz, de nuestros enemigos, líbranos Señor Dios nuestro. En el nombre del Padre,
+        del Hijo y del Espíritu Santo.
+      </p>
+      <span class="amen">Amén</span>
+      <br>
+      <h5 class="subtitle">Acto de Contrición</h5>
+      <p class="text">
+        Jesús mi Señor y Redentor, yo me arrepiento de todos los pecados que he cometido hasta hoy. Y me pesa
+        de todo corazón porque con ellos ofendí a un Dios tan bueno. Propongo firmemente no volver a pecar y confío en
+        que por tu infinita Misericordia, me has de conceder el perdón de mis culpas y me has de llevar a la vida
+        eterna.
+      </p>
+      <span class="amen">Amén</span>
+      <br>
+      <h5 class="subtitle">Gloria</h5>
+      <p class="text">
+        Gloria al Padre, al Hijo y al Espíritu Santo. Como era en un principio, ahora y siempre, por los siglos de
+        los siglos.
+      </p>
+      <span class="amen">Amén</span>
+      <br>
+      <h5 class="subtitle">Jaculatoria</h5>
+      <p class="text">
+        "Oh Jesús mío, perdona nuestros pecados,líbranos del fuego del infierno, lleva a todas las almas al cielo,
+        especialmente a las necesitadas de tu misericordia".
+      </p>
+      <br>
+      <h5 class="subtitle subtitle-misterios">Misterios Gozosos</h5>
+      <h5 class="subtitle subtitle-misterio">1) La encarnación del Hijo de Dios</h5>
+      <p class="text text-misterio">Se reza un Padre Nuestro, 10 Ave María, el Gloria y la jaculatoria.</p>
+      <h5 class="subtitle subtitle-misterio">2) La Visita de María a su prima Santa Isabel</h5>
+      <p class="text text-misterio">Se reza un Padre Nuestro, 10 Ave María, el Gloria y la jaculatoria.</p>
+      <h5 class="subtitle subtitle-misterio">3) El nacimiento de Jesús en el Portal de Belén</h5>
+      <p class="text text-misterio">Se reza un Padre Nuestro, 10 Ave María, el Gloria y la jaculatoria.</p>
+      <h5 class="subtitle subtitle-misterio">4) La presentación de Niño Jesús en el templo</h5>
+      <p class="text text-misterio">Se reza un Padre Nuestro, 10 Ave María, el Gloria y la jaculatoria.</p>
+      <h5 class="subtitle subtitle-misterio">5) El niño Jesús perdido y hallado en el templo</h5>
+      <p class="text text-misterio">Se reza un Padre Nuestro, 10 Ave María, el Gloria y la jaculatoria.</p>
+      <h5 class="subtitle">Padre nuestro</h5>
+      <p class="text">
+        Padre Nuestro, que estás en el cielo,
+        santificado sea tu nombre;
+        venga a nosotros tu reino;
+        hágase tu voluntad, en la tierra como en el cielo.
+      </p>
+      <p class="text">
+        Danos hoy nuestro pan de cada día;
+        perdona nuestras ofensas,
+        como también nosotros perdonamos a los que nos ofenden;
+        no nos dejes caer en la tentación,
+        y líbranos del mal.
+      </p>
+      <span class="amen">Amén</span>
+      <br>
+      <h5 class="subtitle">Tres Ave María</h5>
+      <p class="text">
+        Dios te salve María, Hija de Dios Padre la más poderosa, auméntanos la virtud de la fe, llena eres de
+        gracia...
+      </p>
+      <p class="text">
+        Dios te salve María, Madre de Dios Hijo la más sabia, auméntanos la virtud de la esperanza, llena eres de
+        gracia...
+      </p>
+      <p class="text">
+        Dios te salve María, Esposa de Dios Espíritu Santo la más amable, auméntanos la virtud de la caridad,
+        llena eres de gracia...
+      </p>
+      <h5 class="subtitle">Salve</h5>
+      <p class="text">
+        Dios te salve Reina y Madre de misericordia, vida, dulzura y esperanza nuestra; Dios te salve. A ti
+        llamamos los desterrados hijos de Eva; a ti suspiramos, gimiendo y llorando en este valle de lágrimas. ¡Ea
+        pues!, Señora y abogada nuestra: vuelve a nosotros tus ojos misericordiosos, y después de este destierro,
+        muéstranos a Jesús: fruto bendito de tu vientre. ¡Oh clemente, oh piadosa, oh dulce Virgen María! Ruega
+        por nosotros Santa Madre de Dios, para que seamos dignos de alcanzar las divinas gracias y promesas de
+        nuestro Señor Jesucristo.
+      </p>
+      <span class="amen">Amén</span>
+      <br>
+      <h5 class="subtitle">Letanías</h5>
+      <ion-grid class="ion-no-padding letanias">
+        <ion-row *ngFor="let letania of inicioLetanias">
+          <ion-col class="ion-no-padding letania-text">
+            {{letania.text}}
+          </ion-col>
+          <ion-col size="1.5"></ion-col>
+          <ion-col class="ion-no-padding letania-answer">
+            {{letania.answer}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="ion-no-padding letanias">
+        <ion-row *ngFor="let letania of letanias1">
+          <ion-col class="ion-no-padding letania-text">
+            {{letania.text}}
+          </ion-col>
+          <ion-col size="1.5"></ion-col>
+          <ion-col class="ion-no-padding letania-answer">
+            {{letania.answer}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="ion-no-padding letanias">
+        <ion-row *ngFor="let letania of letanias2">
+          <ion-col class="ion-no-padding letania-text">
+            {{letania.text}}
+          </ion-col>
+          <ion-col size="1.5"></ion-col>
+          <ion-col class="ion-no-padding letania-answer">
+            {{letania.answer}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="ion-no-padding letanias">
+        <ion-row *ngFor="let letania of finLetanias">
+          <ion-col class="ion-no-padding letania-text">
+            {{letania.text}}
+          </ion-col>
+          <ion-col size="1.5"></ion-col>
+          <ion-col class="ion-no-padding letania-answer">
+            {{letania.answer}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <h5 class="subtitle">Oremos</h5>
+      <p class="text">
+        Te Suplicamos, ¡Oh Dios Omnipotente!, que asistáis con tu divino favor a los que hemos rezado el rosario
+        del la Bienaventurada siempre Virgen María, para que así contemplados estos sagrados misterios en la
+        tierra, merezcamos recibir el fruto de ellos en el cielo , por nuestro Señor Jesucristo.
+      </p>
+      <span class="amen">Amén</span>
+
+      <h5 class="subtitle">Bajo tu Amparo</h5>
+      <p class="text">
+        Bajo tu amparo nos acogemos, Santa Madre de Dios;
+        no deseches las súplicas que te dirigimos en nuestras necesidades,
+        antes bien, líbranos de todo peligro,
+        ¡oh Virgen siempre, gloriosa y bendita.
+      </p>
+      <span class="amen">Amén.</span>
+      <br>
+      <h5 class="subtitle">Bendición Final</h5>
+      <p class="text">
+        Dulce Madre, no te alejes, tu vista de nosotros no apartes, ven con nosotros a todas partes y nunca solos
+        nos dejes ya que nos proteges tanto como verdadera madre. Haz que nos bendiga el Padre, El Hijo y El
+        Espíritu Santo.
+      </p>
+      <span class="amen">Amén</span>
+    </div>
+  </div>
+</ion-content>
