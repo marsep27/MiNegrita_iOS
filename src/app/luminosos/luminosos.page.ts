@@ -32,284 +32,299 @@ export class LuminososPage implements OnInit {
 
   inicioLetanias = [
     {
-      text: "Señor, ten piedad",
+      text: "Señor, ten piedad.",
       answer: "-Señor, ten piedad"
     },
     {
-      text: "Cristo, ten piedad",
+      text: "Cristo, ten piedad.",
       answer: "-Cristo, ten piedad"
     },
     {
-      text: "Señor, ten piedad",
+      text: "Señor, ten piedad.",
       answer: "-Señor, ten piedad"
     },
     {
-      text: "Cristo óyenos",
+      text: "Cristo, óyenos.",
       answer: "-Cristo óyenos"
     },
     {
-      text: "Cristo escúchanos",
-      answer: "-Cristo escúchanos"
-    },
-    {
-      text: "Cristo escúchanos.",
+      text: "Cristo, escúchanos.",
       answer: "-Cristo escúchanos"
     }
   ]
 
   letanias1 = [
     {
-      text: "Dios padre celestial,",
+      text: "Dios, Padre celestial.",
       answer: "-Ten piedad de nosotros"
     },
     {
-      text: "Dios Hijo redentor del mundo,",
+      text: "Dios, Hijo, Redentor del mundo.",
       answer: "-Ten piedad de nosotros"
     },
     {
-      text: "Dios Espíritu Santo,",
+      text: "Dios, Espíritu Santo.",
       answer: "-Ten piedad de nosotros"
     },
     {
-      text: "Santísima Trinidad un solo Dios.",
+      text: "Santísima Trinidad, un solo Dios.",
       answer: "-Ten piedad de nosotros"
     }
   ]
 
   letanias2 = [
     {
-      text: "Santa María,",
+      text: "Santa María.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Santa Madre de Dios,",
+      text: "Santa Madre de Dios.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Santa Virgen de las vírgenes,",
+      text: "Santa Virgen de las vírgenes.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre de Cristo,",
+      text: "Madre de Cristo.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre de la Iglesia,",
+      text: "Madre de la Iglesia",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre de la Misericordia,",
+      text: "Madre de la Misericordia",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre de la Divina Gracia,",
+      text: "Madre de la Divina Gracia.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre de la Esperanza,",
+      text: "Madre de la Esperanza.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre purísima,",
+      text: "Madre purísima.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre castísima,",
+      text: "Madre castísima.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre y Virgen,",
+      text: "Madre y Virgen.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre inmaculada,",
+      text: "Madre inmaculada.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre amable,",
+      text: "Madre incorrupta.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre admirable,",
+      text: "Madre amable.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre del buen consejo,",
+      text: "Madre admirable.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre del Creador,",
+      text: "Madre del Buen Consejo.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Madre del Salvador,",
+      text: "Madre del Creador.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Virgen prudentísima,",
+      text: "Madre del Salvador.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Virgen digna de veneración,",
+      text: "Virgen prudentísima.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Virgen digna de alabanza,",
+      text: "Virgen digna de veneración.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Virgen poderosa,",
+      text: "Virgen digna de alabanza.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Virgen clemente,",
+      text: "Virgen poderosa.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Virgen fiel,",
+      text: "Virgen clemente.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Espejo de justicia,",
+      text: "Virgen fiel.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Trono de la sabiduría,",
+      text: "Ideal de santidad.",
+      answer: "-Ruega por nosotros"
+    },{
+      text: "Espejo de justicia.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Causa de nuestra alegría,",
+      text: "Trono de la sabiduría.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Vaso espiritual,",
+      text: "Causa de nuestra alegría.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Vaso digno de honor,",
+      text: "Templo del Espíritu Santo.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Vaso insigne de devoción,",
+      text: "Honor de los pueblos.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Rosa mística,",
+      text: "Modelo de entrega a Dios.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Fuerte como la Torre de David,",
+      text: "Vaso espiritual.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Hermosa como la Torre de marfil,",
+      text: "Vaso digno de honor.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Casa de oro,",
+      text: "Vaso insigne de devoción.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Arca de la alianza,",
+      text: "Rosa mística.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Puerta del cielo,",
+      text: "Fuerte como la Torre de David.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Estrella de la mañana,",
+      text: "Hermosa como la Torre de marfil.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Salud de los enfermos,",
+      text: "Casa de Oro.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Refugio de los pecadores,",
+      text: "Arca de la Nueva Alianza.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Consuelo de los migrantes,",
+      text: "Puerta del cielo.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Consuelo de los afligidos,",
+      text: "Estrella de la mañana.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Auxilio de los cristianos,",
+      text: "Salud de los enfermos.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de los ángeles,",
+      text: "Refugio de los pecadores.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de los patriarcas,",
+      text: "Consuelo de los migrantes.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de los profetas,",
+      text: "Consuelo de los afligidos.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de los apóstoles,",
+      text: "Auxilio de los cristianos.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de los mártires,",
+      text: "Reina de los Ángeles.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de los confesores,",
+      text: "Reina de los Patriarcas.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de los que viven su fe,",
+      text: "Reina de los Profetas.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de los que se conservan castos,",
+      text: "Reina de los Apóstoles.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de todos los santos,",
+      text: "Reina de los Mártires.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina concebida sin pecado original,",
+      text: "Reina de los Confesores.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina elevada al cielo,",
+      text: "Reina de los que viven su fe.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina del santísimo rosario,",
+      text: "Reina de los que se conservan castos.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de las familias,",
+      text: "Reina de todos los santos.",
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Reina de la paz,",
+      text: "Reina concebida sin pecado original.",
+      answer: "-Ruega por nosotros"
+    },
+    {
+      text: "Reina elevada al cielo.",
+      answer: "-Ruega por nosotros"
+    },
+    {
+      text: "Reina del santísimo Rosario.",
+      answer: "-Ruega por nosotros"
+    },
+    {
+      text: "Reina de las familias.",
+      answer: "-Ruega por nosotros"
+    },
+    {
+      text: "Reina de la paz.",
       answer: "-Ruega por nosotros"
     },
   ]
 
   finLetanias = [
     {
-      text: "Cordero de Dios que quitas el pecado del mundo,",
+      text: "Cordero de Dios que quitas el pecado del mundo.",
       answer: "-Perdónanos, Señor"
     },
     {
-      text: "Cordero de Dios que quitas el pecado del mundo,",
+      text: "Cordero de Dios que quitas el pecado del mundo.",
       answer: "-Escúchanos, Señor"
     },
     {
-      text: "Cordero de Dios que quitas el pecado del mundo,",
+      text: "Cordero de Dios que quitas el pecado del mundo.",
       answer: "-Ten piedad de nosotros"
     },
   ]
