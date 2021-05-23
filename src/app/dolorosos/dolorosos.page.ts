@@ -237,7 +237,7 @@ export class DolorososPage implements OnInit {
       answer: "-Ruega por nosotros"
     },
     {
-      text: "Salud de los enfermos.",
+      text: "Salud de los enfermos.".bold(),
       answer: "-Ruega por nosotros"
     },
     {

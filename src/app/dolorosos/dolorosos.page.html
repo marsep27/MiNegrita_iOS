@@ -71,7 +71,7 @@
       <br>
       <h5 class="subtitle">Jaculatoria</h5>
       <p class="text">
-        "Oh Jesús mío, perdona nuestros pecados,líbranos del fuego del infierno, lleva a todas las almas al cielo,
+        "Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva a todas las almas al cielo,
         especialmente a las necesitadas de tu misericordia".
       </p>
       <br>
@@ -155,8 +155,7 @@
       </ion-grid>
       <ion-grid class="ion-no-padding letanias">
         <ion-row *ngFor="let letania of letanias2">
-          <ion-col class="ion-no-padding letania-text">
-            {{letania.text}}
+          <ion-col [innerHTML]="letania.text"  class="ion-no-padding letania-text">
           </ion-col>
           <ion-col size="1.5"></ion-col>
           <ion-col class="ion-no-padding letania-answer">
@@ -195,7 +194,7 @@
       <h5 class="subtitle">Bendición Final</h5>
       <p class="text">
         Dulce Madre, no te alejes, tu vista de nosotros no apartes, ven con nosotros a todas partes y nunca solos
-        nos dejes ya que nos proteges tanto como verdadera madre. Haz que nos bendiga el Padre, el Hijo y el
+        nos dejes, ya que nos proteges tanto como verdadera madre; haz que nos bendiga el Padre, el Hijo y el
         Espíritu Santo.
       </p>
       <span class="amen">Amén</span>
