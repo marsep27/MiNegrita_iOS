@@ -28,6 +28,20 @@ export class AjustesPerfilPage implements OnInit {
     this.router.navigate(['/perfil']);
   }
 
+  //Mostrar PopUp de patrocinadores
+  patrocinadores(){
+    document.getElementById("patrocinadores").style.bottom = "12vh";
+    document.getElementById("headAju").style.filter = "blur(2px)";
+    document.getElementById("contentAju").style.filter = "blur(2px)";
+  }
+
+  //Se miniza el popUp de los patrocinadores
+  minimizePatrocinadores() {
+    document.getElementById("patrocinadores").style.bottom = "-1000px";
+    document.getElementById("headAju").style.filter = "none";
+    document.getElementById("contentAju").style.filter = "none";
+  }
+
   //Alerta para cerrar sesión
   async presentLogOutAlert() {
     const alert = await this.alertController.create({
