@@ -1,11 +1,45 @@
-<ion-header>
-  <ion-toolbar class="ion-no-padding toolbar">
+<ion-header class="ion-no-border ion-no-padding">
+  <ion-toolbar class="ion-no-padding toolbar-start" *ngIf="!isInicio">
     <ion-buttons class="header-back-btn" slot="start">
-      <ion-button routerLink="/devocionario">
+      <ion-button (click)="parar()" routerLink="/devocionario">
         <ion-icon color="light" name="arrow-back-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <h1 class="header-title ion-text-center">Coronilla a la Divina Misericordia</h1>
+    <h1 class="header-title">Coronilla</h1>
+    <h2 class="header-subtitle">a la Divina Misericordia</h2>
+    <ion-buttons class="header-play-btn-container" slot="start">
+      <ion-button class="header-play-btn" (click)="audio()">
+        <ion-icon class="header-play-btn-icon" color="light" src="assets/imágenes/play-icon.svg" slot="icon-only">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="ion-no-padding toolbar-player" *ngIf="isInicio">
+    <ion-buttons class="header-back-btn" slot="start">
+      <ion-button (click)="parar()" routerLink="/devocionario">
+        <ion-icon color="light" name="arrow-back-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <h1 class="header-title">Coronilla</h1>
+    <h2 class="header-subtitle">a la Divina Misericordia</h2>
+    <ion-range class="audio-range ion-no-padding" color="light" #range (touchmove)="touchMove()" (touchend)="touchEnd()"
+      (touchstart)="touchStart()" max="{{maxRangeValue}}" [(ngModel)]="currRangeTime">
+    </ion-range>
+    <ion-label class="curr-time" slot="start">
+      <ion-text color="light">{{currSecsText}}</ion-text>
+    </ion-label>
+    <ion-label class="total-time" slot="end">
+      <ion-text color="light">{{durationText}}</ion-text>
+    </ion-label>
+    <ion-button class="audio-btn" fill="clear" *ngIf="!isPlaying" (click)="play()">
+      <ion-icon class="audio-btn-icon" color="light" src="assets/imágenes/play-icon-2.svg"></ion-icon>
+    </ion-button>
+
+    <!-- Pause Button -->
+    <ion-button class="audio-btn" fill="clear" *ngIf="isPlaying" (click)="pause()">
+      <ion-icon class="audio-btn-icon" color="light" src="assets/imágenes/pause-icon.svg"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -121,6 +155,46 @@
         Santo Dios, Santo Fuerte, Santo Inmortal, ten piedad de nosotros y del mundo entero.</p> <sub
         class="text text-decena">(3 veces)</sub>
       <br>
+      <h5 class="subtitle">Letanías</h5>
+      <ion-grid class="ion-no-padding letanias">
+        <ion-row *ngFor="let letania of inicioLetanias">
+          <ion-col size="7.5" class="ion-no-padding letania-text">
+            {{letania.text}}
+          </ion-col>
+          <ion-col size="4.5" class="ion-no-padding letania-answer">
+            {{letania.answer}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="ion-no-padding letanias">
+        <ion-row *ngFor="let letania of letanias1">
+          <ion-col size="7.5" class="ion-no-padding letania-text">
+            {{letania.text}}
+          </ion-col>
+          <ion-col size="4.5" class="ion-no-padding letania-answer">
+            {{letania.answer}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="ion-no-padding letanias">
+        <ion-row *ngFor="let letania of letanias2">
+          <ion-col size="9.5" [innerHTML]="letania.text"  class="ion-no-padding letania-text">
+          </ion-col>
+          <ion-col size="2.5" class="ion-no-padding letania-answer">
+            {{letania.answer}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid class="ion-no-padding letanias">
+        <ion-row *ngFor="let letania of finLetanias">
+          <ion-col size="7.5" class="ion-no-padding letania-text">
+            {{letania.text}}
+          </ion-col>
+          <ion-col size="4.5" class="ion-no-padding letania-answer">
+            {{letania.answer}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
       <h5 class="subtitle">Oración final:</h5>
       <p class="text">
         Oh Dios Eterno, en quien la misericordia es infinita y el tesoro de compasión inagotable, vuelve a
