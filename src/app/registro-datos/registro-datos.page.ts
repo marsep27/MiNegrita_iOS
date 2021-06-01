@@ -105,28 +105,22 @@ export class RegistroDatosPage implements OnInit {
       //Crea el usuario
       this.auth.createUserWithEmailAndPassword(user.email, user.password)
         .then(userData => {
-          var docRef = firebase.firestore().collection('usuarios').doc(userData.user.uid);
-          docRef.onSnapshot((async (doc) => {
-            if (doc.exists) {//Si el usuario ya está registrado muestra un error
-              this.text = [{ tex: 'El correo está registrado, intentá con otro correo.' }];
-            } else {//Si el usuario no está registrado se dirige a terminar el registro
-              //this.db.database.ref('user/'+userData.user.uid).set(this.registrationForm.value)
-              console.log(userData);
-              console.log(this.registrationForm.value);
-              this.router.navigate(['/registro-cuenta'],
-                {
-                  queryParams: {
-                    userData: userData.user.uid,
-                    name: this.registrationForm.controls['name'].value,
-                    lastname: this.registrationForm.controls['lastname'].value,
-                    email: this.registrationForm.controls['email'].value,
-                    password: this.registrationForm.controls['password'].value,
-                    provedor: 'email'
-                  }
-                });
+          console.log(userData);
+          console.log(this.registrationForm.value);
+          this.router.navigate(['/registro-cuenta'],
+            {
+              queryParams: {
+                userData: userData.user.uid,
+                name: this.registrationForm.controls['name'].value,
+                lastname: this.registrationForm.controls['lastname'].value,
+                email: this.registrationForm.controls['email'].value,
+                password: this.registrationForm.controls['password'].value,
+                provedor: 'email',
+                page: 'datos'
+              }
+            });
             }
-          }))
-        }).catch(e => {
+          ).catch(e => {
           if (e['code'] == 'auth/invalid-email') {
             this.text = [{ tex: 'El correo no es válido. ¡Intentá de nuevo!' }];
           } else if (e['code'] == 'auth/email-already-in-use') {

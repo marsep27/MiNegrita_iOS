@@ -18,7 +18,7 @@
         style="width: 100%; margin-right: 0px; margin-left: 0px; padding-left: 0px; padding-right: 0px;">
         <ion-col size="12" size-sm>
           <ion-label color="azul">Nombre</ion-label>
-          <ion-input autocomplete="off" formControlName="name" type="text" placeholder="María" color="azul"
+          <ion-input autocomplete="off" formControlName="name" type="text" placeholder="Juana" color="azul"
             class="shadow-red" (click)="Clean()" (click)="change()"></ion-input>
           <div>
             <ng-container *ngFor="let tex of nom">
@@ -34,7 +34,7 @@
         <br>
         <ion-col size="12" size-sm>
           <ion-label color="azul">Apellidos</ion-label>
-          <ion-input autocomplete="off" formControlName="lastname" type="text" placeholder="Rojas Pérez" color="azul"
+          <ion-input autocomplete="off" formControlName="lastname" type="text" placeholder="Pereira" color="azul"
             class="shadow-red" (click)="Clean2()"></ion-input>
           <div>
             <ng-container *ngFor="let tex of ape">
@@ -51,7 +51,7 @@
         <ion-col size="12" size-sm>
           <ion-label color="azul">Correo</ion-label>
           <ion-input autocomplete="off" formControlName="email" type="email" inputmode="email"
-            placeholder="minegrita@basilica.com" color="azul" class="shadow-red" (click)="Clean3()"></ion-input>
+            placeholder="minegrita@santuarionacional.org" color="azul" class="shadow-red" (click)="Clean3()"></ion-input>
           <div>
             <ng-container *ngFor="let tex of text">
               <small class="error-message">{{tex.tex}}</small>
