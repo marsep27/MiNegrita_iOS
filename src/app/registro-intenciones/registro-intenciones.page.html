@@ -30,13 +30,13 @@
           Espiritual
           <ion-icon slot="end" name="close-outline"></ion-icon>
         </ion-button>
-        <ion-button *ngIf="ButtonAgradecimiento" (click)="change('Agradecimiento')" color="azul-claro">Acción de Gracias
+        <ion-button *ngIf="ButtonAccionGracias" (click)="change('Acción de Gracias')" color="azul-claro">Acción de Gracias
           <ion-icon slot="end" name="close-outline"></ion-icon>
         </ion-button>
         <ion-button *ngIf="ButtonPaz" (click)="change('Paz')" color="azul-claro">Paz
           <ion-icon slot="end" name="close-outline"></ion-icon>
         </ion-button>
-        <ion-button *ngIf="ButtonPeticion" (click)="change('Petición')" color="azul-claro">Petición
+        <ion-button *ngIf="ButtonSantidad" (click)="change('Santidad')" color="azul-claro">Santidad
           <ion-icon slot="end" name="close-outline"></ion-icon>
         </ion-button>
         <ion-button *ngIf="ButtonPerdon" (click)="change('Perdón')" color="azul-claro">Perdón
@@ -60,12 +60,12 @@
           class="containerIntenciones"> Trabajo</ion-button>
         <ion-button id="sin" *ngIf="!ButtonSaludEspiritual" (click)="change('Salud Espiritual')" fill="outline"
           class="containerIntenciones"> Salud Espiritual</ion-button>
-        <ion-button id="sin" *ngIf="!ButtonAgradecimiento" (click)="change('Agradecimiento')" fill="outline"
+        <ion-button id="sin" *ngIf="!ButtonAccionGracias" (click)="change('Acción de Gracias')" fill="outline"
           class="containerIntenciones"> Acción de Gracias</ion-button>
         <ion-button id="sin" *ngIf="!ButtonPaz" (click)="change('Paz')" fill="outline" class="containerIntenciones">
           Paz</ion-button>
-        <ion-button id="sin" *ngIf="!ButtonPeticion" (click)="change('Petición')" fill="outline"
-          class="containerIntenciones"> Petición</ion-button>
+        <ion-button id="sin" *ngIf="!ButtonSantidad" (click)="change('Santidad')" fill="outline"
+          class="containerIntenciones"> Santidad</ion-button>
         <ion-button id="sin" *ngIf="!ButtonPerdon" (click)="change('Perdón')" fill="outline"
           class="containerIntenciones"> Perdón</ion-button>
         <ion-button id="sin" *ngIf="!ButtonConversion" (click)="change('Conversión')" fill="outline"

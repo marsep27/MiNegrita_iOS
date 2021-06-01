@@ -17,11 +17,11 @@ export class RegistroIntencionesPage implements OnInit {
   //Botones de los exvotos
   ButtonSaludFisica:      boolean = false;
   ButtonFamilia:          boolean = false;
-  ButtonAgradecimiento:   boolean = false;
+  ButtonAccionGracias:   boolean = false;
   ButtonSaludEspiritual:  boolean = false;
   ButtonTrabajo:          boolean = false;
   ButtonFavor:            boolean = false;
-  ButtonPeticion:         boolean = false;
+  ButtonSantidad:         boolean = false;
   ButtonConversion:       boolean = false;
   ButtonPaz:              boolean = false;
   ButtonPerdon:           boolean = false;
@@ -40,11 +40,11 @@ export class RegistroIntencionesPage implements OnInit {
   disableButtonSelect:          boolean = false;
   disableButtonSaludFisica:     boolean = false;
   disableButtonFamilia:         boolean = false;
-  disableButtonAgradecimiento:  boolean = false;
+  disableButtonAccionGracias:  boolean = false;
   disableButtonSaludEspiritual: boolean = false;
   disableButtonTrabajo:         boolean = false;
   disableButtonFavor:           boolean = false;
-  disableButtonPeticion:        boolean = false;
+  disableButtonSantidad:        boolean = false;
   disableButtonConversacion:    boolean = false;
   disableButtonPaz:             boolean = false;
   disableButtonPerdon:          boolean = false;
@@ -85,11 +85,11 @@ export class RegistroIntencionesPage implements OnInit {
     this.disableButtonSelect          = false;
     this.disableButtonSaludFisica     = false;
     this.disableButtonFamilia         = false;
-    this.disableButtonAgradecimiento  = false;
+    this.disableButtonAccionGracias  = false;
     this.disableButtonSaludEspiritual = false;
     this.disableButtonTrabajo         = false;
     this.disableButtonFavor           = false;
-    this.disableButtonPeticion        = false;
+    this.disableButtonSantidad        = false;
     this.disableButtonConversacion    = false;
     this.disableButtonPaz             = false;
     this.disableButtonPerdon          = false;
@@ -163,16 +163,16 @@ export class RegistroIntencionesPage implements OnInit {
         this.removeIntention(buttonName);
         this.check();
       }
-    } else if (buttonName == 'Agradecimiento') {
-      if (this.ButtonAgradecimiento == false) {
+    } else if (buttonName == 'Acción de Gracias') {
+      if (this.ButtonAccionGracias == false) {
         if (this.Contador != 3) {
-          this.ButtonAgradecimiento = true;
+          this.ButtonAccionGracias = true;
           this.Contador = this.Contador + 1;
           this.addIntention(buttonName);
           this.check();
         }
       } else {
-        this.ButtonAgradecimiento = false;
+        this.ButtonAccionGracias = false;
         this.Contador = this.Contador - 1;
         this.removeIntention(buttonName);
         this.check();
@@ -191,16 +191,16 @@ export class RegistroIntencionesPage implements OnInit {
         this.removeIntention(buttonName);
         this.check();
       }
-    } else if (buttonName == 'Petición') {
-      if (this.ButtonPeticion == false) {
+    } else if (buttonName == 'Santidad') {
+      if (this.ButtonSantidad == false) {
         if (this.Contador != 3) {
-          this.ButtonPeticion = true;
+          this.ButtonSantidad = true;
           this.Contador = this.Contador + 1;
           this.addIntention(buttonName);
           this.check();
         }
       } else {
-        this.ButtonPeticion = false;
+        this.ButtonSantidad = false;
         this.Contador = this.Contador - 1;
         this.removeIntention(buttonName);
         this.check();
@@ -354,8 +354,8 @@ export class RegistroIntencionesPage implements OnInit {
       this.disableButtonFamilia = true;
     }
 
-    else if (buttonName == 'Agradecimiento') {
-      this.disableButtonAgradecimiento = true;
+    else if (buttonName == 'Acción de Gracias') {
+      this.disableButtonAccionGracias = true;
     }
 
     else if (buttonName == 'Salud Espiritual') {
@@ -370,8 +370,8 @@ export class RegistroIntencionesPage implements OnInit {
       this.disableButtonFavor = true;
     }
 
-    else if (buttonName == 'Peticion') {
-      this.disableButtonPeticion = true;
+    else if (buttonName == 'Santidad') {
+      this.disableButtonSantidad = true;
     }
 
     else if (buttonName == 'Conversacion') {
