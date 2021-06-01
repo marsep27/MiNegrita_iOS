@@ -61,7 +61,8 @@ export class HomePage {
                 queryParams: {
                   userData: res.user.uid,
                   name: res.user.displayName,
-                  provedor: 'Facebook'
+                  provedor: 'Facebook',
+                  page: 'datos'
                 }
               });
           }
@@ -99,7 +100,8 @@ export class HomePage {
                 queryParams: {
                   userData: result.user.uid,
                   name: result.user.displayName,
-                  provedor: 'Facebook'
+                  provedor: 'Facebook',
+                  page: 'datos'
                 }
               });
           }
@@ -133,7 +135,8 @@ export class HomePage {
                 queryParams: {
                   userData: res.user.uid,
                   name: res.user.displayName,
-                  provedor: 'Google'
+                  provedor: 'Google',
+                  page: 'datos'
                 }
               });
           }
@@ -179,7 +182,8 @@ export class HomePage {
                 queryParams: {
                   userData: result.user.uid,
                   name: result.user.displayName,
-                  provedor: 'Google'
+                  provedor: 'Google',
+                  page: 'datos'
                 }
               });
           }

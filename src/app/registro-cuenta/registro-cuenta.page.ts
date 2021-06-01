@@ -109,7 +109,6 @@ export class RegistroCuentaPage implements OnInit {
     }
   ];
 
-  disableButtonContinuar: boolean = true;
   provedor:               any;
 
   constructor(private route: ActivatedRoute,
@@ -130,6 +129,7 @@ export class RegistroCuentaPage implements OnInit {
   lastName: any;
   email:    any;
   password: any;
+  page:     any;
 
   ngOnInit() {
     //Obtiene los datos del resgistro-datos o del home, dependiendo del proveedor
@@ -145,12 +145,24 @@ export class RegistroCuentaPage implements OnInit {
       this.email = params['email'];
       this.password = params['password'];
       this.provedor = params['provedor'];
+      this.page = params['page'];
       console.log(this.userId);
       console.log(this.lastName);
+      this.borrarUser(this.page);
     });
+  }
 
-    console.log(this.datos);
-    this.slideChange();
+  //Se borra al usuario proveniente del home(Facebook o Google) o de registro.datos, para eliminar la persistencia del loggeo en firebase.
+  borrarUser(pagina){
+    console.log(pagina);
+    if (pagina == "datos"){
+      var user = firebase.auth().currentUser;
+      user.delete();
+      console.log('borrado');
+      this.slideChange();
+    } else {
+      this.slideChange();
+    }
   }
 
   //Se obtiene el índice del avatar actual
@@ -164,6 +176,7 @@ export class RegistroCuentaPage implements OnInit {
   //Al seleccionar el avatar procede a continuar el registro-intenciones
   registrar() {
     //this.db.database.ref('user/').set(this.selectedSlide.values)
+    console.log(this.slide[this.index].img);
     this.router.navigate(['/registro-intenciones'],
       {
         queryParams: {
@@ -176,23 +189,6 @@ export class RegistroCuentaPage implements OnInit {
           avatar: this.slide[this.index].img
         }
       });
-  }
-
-  //Selecciona el avatar
-  seleccion() {
-    for (var index = 0; index < this.slide.length; index++) {
-      if (this.slide[index] === this.index) {
-        this.selectedSlide = this.slide[this.index].img;
-        this.datos = this.datos.push({ avatar: this.slide[this.index].img }.avatar);
-        console.log(this.datos);
-        console.log(this.slide[index].img);
-      }
-    }
-    console.log(this.selectedSlide);
-    console.log('-------');
-    console.log(this.datos);
-    console.log(this.slide[this.index].img);
-    this.disableButtonContinuar = false;
   }
 
   //Ir al avatar anterior
