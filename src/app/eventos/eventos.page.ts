@@ -31,6 +31,7 @@ export class EventosPage {
   currOptionId: string;
   eventosRef:   any;
   eventos       = [];
+  santoral      = [];
   Eventos:      any;
   dia:          string;
   hora:         string;
@@ -195,6 +196,22 @@ export class EventosPage {
         });
       this.getEventos(Eventos);
     });*/
+    //Se obtiene el santoral de la base de datos
+    firebase.firestore().collection('santoral').orderBy('orden').onSnapshot((santoralSnapshot) => {
+      this.santoral = [];
+      santoralSnapshot.forEach(async (santoralData: any) => {
+        // doc.data() is never undefined for query doc snapshots
+        const santoral = await santoralData;
+        console.log(santoral.id, " => ", santoral.data().orden);
+        this.santoral.push(
+          {
+            mes: santoral.data().mes,
+            dias: santoral.data().dias
+          },
+        );
+        console.log(this.santoral);
+      });
+    });
   }
 
   ionViewWillEnter() {
@@ -294,6 +311,24 @@ export class EventosPage {
         });
       this.getEventos(Eventos);
     });*/
+
+    //Se obtiene el santoral de la base de datos
+    firebase.firestore().collection('santoral').orderBy('orden').onSnapshot((santoralSnapshot) => {
+      this.santoral = [];
+      santoralSnapshot.forEach(async (santoralData: any) => {
+        // doc.data() is never undefined for query doc snapshots
+        const santoral = await santoralData;
+        console.log(santoral.id, " => ", santoral.data().orden);
+        this.santoral.push(
+          {
+            mes: santoral.data().mes,
+            dias: santoral.data().dias
+          },
+        );
+        console.log(this.santoral);
+      });
+    });
+
   }
 
 
@@ -313,7 +348,7 @@ export class EventosPage {
     console.log($event);
   }
 
-  //Se miniza el popUp de la misa
+  /*//Se miniza el popUp de la misa
   minimize() {
     document.getElementById("PopMisa").style.bottom = "-1000px";
     document.getElementById("headerEve").style.filter = "none";
@@ -323,14 +358,14 @@ export class EventosPage {
 
   //Se muestra el popUp de la misa
   popmisa() {
-    document.getElementById("PopMisa").style.bottom = "100px";
+    document.getElementById("PopMisa").style.bottom = "12vh";
     document.getElementById("headerEve").style.filter = "blur(2px)";
     document.getElementById("segmentEve").style.filter = "blur(2px)";
     document.getElementById("footeEve").style.filter = "blur(2px)";
-  }
+  }*/
 
   //Se miniza el popUp del evento
-  minimize2() {
+  minimize() {
     document.getElementById("PopEvento").style.bottom = "-1000px";
     document.getElementById("headerEve").style.filter = "none";
     document.getElementById("segmentEve").style.filter = "none";
@@ -339,7 +374,7 @@ export class EventosPage {
 
   //Se muestra el popUp del evento
   PopEvento(nombre, direccion, fecha, informacion, reserva, link, optId: string) {
-    document.getElementById("PopEvento").style.bottom = "100px";
+    document.getElementById("PopEvento").style.bottom = "12vh";
     document.getElementById("headerEve").style.filter = "blur(2px)";
     document.getElementById("segmentEve").style.filter = "blur(2px)";
     document.getElementById("footEve").style.filter = "blur(2px)";
@@ -362,13 +397,13 @@ export class EventosPage {
     }
   }
 
-  //Link para reservar el espacio en la misa
+  /*//Link para reservar el espacio en la misa
   reservar() {
     window.open(this.linkMisa);
-  }
+  }*/
 
   //Link para ver más información de un evento
-  reservar2(link) {
+  masInformacion(link) {
     window.open(link);
   }
 
