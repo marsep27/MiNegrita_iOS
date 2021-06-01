@@ -44,11 +44,11 @@ export class EditarPerfilPage implements OnInit {
   intentionName:              string = "";
   saludFisicaSelected:        boolean = false;
   familiaSelected:            boolean = false;
-  agradecimientoSelected:     boolean = false;
+  accionGraciasSelected:     boolean = false;
   saludEspiritualSelected:    boolean = false;
   trabajoSelected:            boolean = false;
   favorSelected:              boolean = false;
-  peticionSelected:           boolean = false;
+  santidadSelected:           boolean = false;
   conversionSelected:         boolean = false;
   pazSelected:                boolean = false;
   perdonSelected:             boolean = false;
@@ -472,15 +472,15 @@ export class EditarPerfilPage implements OnInit {
         this.Contador = this.Contador - 1;
         this.removeIntention(buttonName);
       }
-    } else if (buttonName == 'Agradecimiento') {
-      if (this.agradecimientoSelected == false) {
+    } else if (buttonName == 'Acción de Gracias') {
+      if (this.accionGraciasSelected == false) {
         if (this.Contador != 3) {
-          this.agradecimientoSelected = true;
+          this.accionGraciasSelected = true;
           this.Contador = this.Contador + 1;
           this.addIntention(buttonName);
         }
       } else {
-        this.agradecimientoSelected = false;
+        this.accionGraciasSelected = false;
         this.Contador = this.Contador - 1;
         this.removeIntention(buttonName);
       }
@@ -496,15 +496,15 @@ export class EditarPerfilPage implements OnInit {
         this.Contador = this.Contador - 1;
         this.removeIntention(buttonName);
       }
-    } else if (buttonName == 'Petición') {
-      if (this.peticionSelected == false) {
+    } else if (buttonName == 'Santidad') {
+      if (this.santidadSelected == false) {
         if (this.Contador != 3) {
-          this.peticionSelected = true;
+          this.santidadSelected = true;
           this.Contador = this.Contador + 1;
           this.addIntention(buttonName);
         }
       } else {
-        this.peticionSelected = false;
+        this.santidadSelected = false;
         this.Contador = this.Contador - 1;
         this.removeIntention(buttonName);
       }
@@ -591,15 +591,15 @@ export class EditarPerfilPage implements OnInit {
       case 'Salud Espiritual':
         this.saludEspiritualSelected = !this.saludEspiritualSelected;
         return this.saludEspiritualSelected;
-      case 'Agradecimiento':
-        this.agradecimientoSelected = !this.agradecimientoSelected;
-        return this.agradecimientoSelected;
+      case 'Acción de Gracias':
+        this.accionGraciasSelected = !this.accionGraciasSelected;
+        return this.accionGraciasSelected;
       case 'Paz':
         this.pazSelected = !this.pazSelected;
         return this.pazSelected;
-      case 'Petición':
-        this.peticionSelected = !this.peticionSelected;
-        return this.peticionSelected;
+      case 'Santidad':
+        this.santidadSelected = !this.santidadSelected;
+        return this.santidadSelected;
       case 'Perdón':
         this.perdonSelected = !this.perdonSelected;
         return this.perdonSelected;

@@ -276,15 +276,15 @@
               Espiritual
               <ion-icon slot="end" name="close-outline"></ion-icon>
             </ion-button>
-            <ion-button class="intention-selected" *ngIf="agradecimientoSelected"
-              (click)="updateIntention('Agradecimiento')">Acción de Gracias
+            <ion-button class="intention-selected" *ngIf="accionGraciasSelected"
+              (click)="updateIntention('Acción de Gracias')">Acción de Gracias
               <ion-icon slot="end" name="close-outline"></ion-icon>
             </ion-button>
             <ion-button class="intention-selected" *ngIf="pazSelected" (click)="updateIntention('Paz')">Paz
               <ion-icon slot="end" name="close-outline"></ion-icon>
             </ion-button>
-            <ion-button class="intention-selected" *ngIf="peticionSelected" (click)="updateIntention('Petición')">
-              Petición
+            <ion-button class="intention-selected" *ngIf="santidadSelected" (click)="updateIntention('Santidad')">
+              Santidad
               <ion-icon slot="end" name="close-outline"></ion-icon>
             </ion-button>
             <ion-button class="intention-selected" *ngIf="perdonSelected" (click)="updateIntention('Perdón')">Perdón
@@ -302,25 +302,25 @@
           <!--Intenciones para mostrar-->
           <ion-col>
             <ion-button class="intention-unselected" *ngIf="!familiaSelected" (click)="updateIntention('Familia')"
-              fill="outline"> Familia</ion-button>
+              fill="outline">Familia</ion-button>
             <ion-button class="intention-unselected" *ngIf="!saludFisicaSelected"
               (click)="updateIntention('Salud Física')" fill="outline"> Salud física</ion-button>
             <ion-button class="intention-unselected" *ngIf="!trabajoSelected" (click)="updateIntention('Trabajo')"
-              fill="outline"> Trabajo</ion-button>
+              fill="outline">Trabajo</ion-button>
             <ion-button class="intention-unselected" *ngIf="!saludEspiritualSelected"
-              (click)="updateIntention('Salud Espiritual')" fill="outline"> Salud Espiritual</ion-button>
-            <ion-button class="intention-unselected" *ngIf="!agradecimientoSelected"
-              (click)="updateIntention('Agradecimiento')" fill="outline"> Acción de Gracias</ion-button>
+              (click)="updateIntention('Salud Espiritual')" fill="outline">Salud Espiritual</ion-button>
+            <ion-button class="intention-unselected" *ngIf="!accionGraciasSelected"
+              (click)="updateIntention('Acción de Gracias')" fill="outline">Acción de Gracias</ion-button>
             <ion-button class="intention-unselected" *ngIf="!pazSelected" (click)="updateIntention('Paz')"
               fill="outline">Paz</ion-button>
-            <ion-button class="intention-unselected" *ngIf="!peticionSelected" (click)="updateIntention('Petición')"
-              fill="outline"> Petición</ion-button>
+            <ion-button class="intention-unselected" *ngIf="!santidadSelected" (click)="updateIntention('Santidad')"
+              fill="outline">Santidad</ion-button>
             <ion-button class="intention-unselected" *ngIf="!perdonSelected" (click)="updateIntention('Perdón')"
-              fill="outline"> Perdón</ion-button>
+              fill="outline">Perdón</ion-button>
             <ion-button class="intention-unselected" *ngIf="!conversionSelected" (click)="updateIntention('Conversión')"
-              fill="outline"> Conversión</ion-button>
+              fill="outline">Conversión</ion-button>
             <ion-button class="intention-unselected" *ngIf="!favorSelected" (click)="updateIntention('Favor')"
-              fill="outline"> Favor</ion-button>
+              fill="outline">Favor</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
