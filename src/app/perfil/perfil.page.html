@@ -93,7 +93,7 @@
       </ng-container>
       <ng-container *ngIf="meditaciones.length!=0">
         <ion-card *ngFor="let meditacion of meditaciones"
-          (click)="viewMeditacion(meditacion.title, meditacion.text, meditacion.id)">
+          (click)="viewMeditacion(meditacion.title, meditacion.text)">
           <ion-grid>
             <ion-row>
               <ion-col class="ion-no-padding" size="4">
@@ -110,7 +110,7 @@
       </ng-container>
       <ng-container *ngIf="lecturas.length!=0">
         <ion-card *ngFor="let lectura of lecturas"
-          (click)="viewLectura(lectura.title, lectura.subtitle, lectura.text, lectura.id)">
+          (click)="viewLectura(lectura.title, lectura.subtitle, lectura.text)">
           <ion-grid>
             <ion-row>
               <ion-col class="ion-no-padding" size="4">

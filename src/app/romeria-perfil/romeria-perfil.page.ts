@@ -21,6 +21,7 @@ export class RomeriaPerfilPage {
   ceroseg           = '';
   horas             = 0;
   minutos           = 0;
+  activa:   boolean = false;
   romeria:          any;
   currentRomeria:   any;
   romeriaData:      any;
@@ -30,8 +31,10 @@ export class RomeriaPerfilPage {
   totalPasos:       number;
   progress:         number;
   porcentaje:       number;
+  page:             string;
 
-  constructor(private firestoreService: FirestoreService, private router: Router, private firestore: AngularFirestore, public alertController: AlertController,) {
+  constructor(private firestoreService: FirestoreService, 
+    private route: ActivatedRoute,private router: Router, private firestore: AngularFirestore, public alertController: AlertController,) {
     this.currentRomeria = { empty: true };
     this.cantidadRomerias = 0;
     this.totalHoras = 0;
@@ -47,6 +50,10 @@ export class RomeriaPerfilPage {
   }
 
   ionViewWillEnter() {
+    this.route.queryParams.subscribe(params => {
+      this.page = params['page'];
+    });
+
     //Se carga la información de la romeria activa del usuario.
     firebase.firestore().collection('romerias').doc(firebase.auth().currentUser.uid).onSnapshot((romeriasSnapshot) => {
       const info = romeriasSnapshot.data();
@@ -129,6 +136,12 @@ export class RomeriaPerfilPage {
     this.totalHoras = Math.round((this.romeriaData.horasTotales / 1000 / 60 / 60) * 10) / 10;
     this.totalPasos = this.romeriaData.pasosTotales;
     this.totalKm = Math.round(this.romeriaData.kmTotales * 10) / 10;
+
+    if (this.romeria == true){
+      this.activa = true;
+    }else{
+      this.activa = false;
+    }
   }
 
   //Calcula el progreso por tiempo
@@ -242,12 +255,21 @@ export class RomeriaPerfilPage {
               romeriaActiva: false
             };
             this.firestoreService.updateRomeriaXUser(userId, updateData);
-            this.router.navigate(['/perfil'],
+            if (this.page == 'romería'){
+              this.router.navigate(['/romeria'],
               {
                 queryParams: {
                   romeria: this.romeria
                 }
               });
+            }else{
+              this.router.navigate(['/perfil'],
+              {
+                queryParams: {
+                  romeria: this.romeria
+                }
+              });
+            }
           }
         },
         {
@@ -257,5 +279,13 @@ export class RomeriaPerfilPage {
       ]
     });
     await alert.present();
+  }
+
+  back(){
+    if (this.page == 'romería'){
+      this.router.navigate(['/romeria'])
+    } else {
+      this.router.navigate(['/perfil'])
+    }
   }
 }

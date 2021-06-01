@@ -4,7 +4,7 @@
   <span>Basílica</span>
 </ion-header>
 
-<ion-header *ngIf="finished" class="final-header ion-no-border">
+<ion-header *ngIf="finished" class="final-header ion-no-border" id="headRo">
   <ion-button fill="clear" (click)="deleteRomeria()">
     <ion-icon slot="icon-only" color="azul" name="arrow-back-outline"></ion-icon>
   </ion-button>
@@ -17,7 +17,7 @@
           <h1>¡Felicidades!</h1>
         </ion-col>
         <ion-col size="12">
-          <p>Ahora que finalizaste tu romería, podés entrar a la Basílica y visitar a la Negrita.</p>
+          <p>Ahora que finalizaste tu romería, presioná la imagen de la Basílica y visitá a la Negrita.</p>
         </ion-col>
         <ion-col size="12">
           <ion-card-content class="ion-no-padding">
@@ -75,6 +75,20 @@
             </ion-row>
           </ion-grid>
         </ion-card>
+        <ion-card>
+          <ion-grid class="ion-text-center">
+            <ion-row>
+              <ion-col size="1">
+                <ion-card-content class="ion-no-padding">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card-content>
+              </ion-col>
+              <ion-col size="11">
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
       </div>
       <div *ngIf="contentLoaded">
         <ion-card (click)="newRomeria()">
@@ -87,6 +101,20 @@
               </ion-col>
               <ion-col size="11">
                 <p>Nueva Romería</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+        <ion-card class="mi_romeria" (click)="miRomeria()">
+          <ion-grid class="ion-text-center">
+            <ion-row>
+              <ion-col size="11">
+                <p>Mi Romería</p>
+              </ion-col>
+              <ion-col size="1">
+                <ion-card-content class="ion-no-padding">
+                  <img src="assets/imágenes/next_romeria.svg">
+                </ion-card-content>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -129,14 +157,14 @@
     </div>
   </div>
 
-  <div class="finished" *ngIf="finished">
+  <div id="fin" class="finished" *ngIf="finished">
     <br>
     <ion-grid>
       <ion-row>
         <ion-col size="12">
-          <p>Te recomendamos reproducir alguna de tus canciones favoritas para tener un momento más ameno.</p>
+          <p>Te recomendamos reproducir alguna canción para tener un momento más ameno.</p>
         </ion-col>
-        <ion-col size="12">
+        <ion-col size="12" *ngFor="let cancion of canciones">
           <ion-card>
             <ion-grid>
               <ion-row>
@@ -144,34 +172,14 @@
                   <img class="image" src="assets/imágenes/piano.svg">
                 </ion-col>
                 <ion-col size="8">
-                  <ion-label>
+                  <ion-text>
                     <h2>
-                      <b>La Fe de María</b><br>ítala Rodríguez
-                    </h2>
-                  </ion-label>
+                      <b>{{cancion.title}}</b>
+                      <p>{{cancion.subtitle}}</p>
+                    </h2>   
+                  </ion-text>
                 </ion-col>
-                <ion-col size="1">
-                  <img class="img" src="assets/imágenes/3puntos.svg">
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card>
-        </ion-col>
-        <ion-col size="12">
-          <ion-card>
-            <ion-grid>
-              <ion-row>
-                <ion-col size="3">
-                  <img class="image" src="assets/imágenes/piano.svg">
-                </ion-col>
-                <ion-col size="8">
-                  <ion-label>
-                    <h2>
-                      <b>Salve Reina de Los Ángeles</b><br>Álvaro Antonio
-                    </h2>
-                  </ion-label>
-                </ion-col>
-                <ion-col size="1">
+                <ion-col size="1" (click)="showSongsOptionsModal(cancion.title, cancion.subtitle, cancion.audio, cancion.cancionId);$event.stopPropagation();">
                   <img class="img" src="assets/imágenes/3puntos.svg">
                 </ion-col>
               </ion-row>
@@ -188,8 +196,110 @@
     <br>
   </div>
 
-  <ion-img id="footer" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']"></ion-img>
-  <ion-footer class="ion-no-border">
+  <div class="dots-modal" id="dots-modal-ro">
+    <h2 class="dots-modal-title ion-text-center">{{currTitle}}</h2>
+    <h3 class="dots-modal-subtitle ion-text-center">{{currSubtitle}}</h3>
+    <ion-grid class="dots-modal-grid" class="ion-no-padding">
+      <ion-row class="ion-no-padding dots-modal-grid-row">
+        <ion-col size="0.5" class="ion-no-padding dots-modal-grid-icon-container">
+          <ion-icon class="dots-modal-grid-icon" src="assets/imágenes/view.svg"></ion-icon>
+        </ion-col>
+        <ion-col size="0.5" class="ion-no-padding"></ion-col>
+        <ion-col class="ion-no-padding" (click)="see()">
+          <span class="dots-modal-grid-span">Ver</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding dots-modal-grid-row">
+        <ion-col size="0.5" class="ion-no-padding dots-modal-grid-icon-container" (click)="addOrRemoveFavourite(currOptionId)">
+          <ion-icon *ngIf="!favourites.includes(currOptionId)" class="dots-modal-grid-icon"
+            src="assets/imágenes/star.svg"></ion-icon>
+          <ion-icon *ngIf="favourites.includes(currOptionId)" class="dots-modal-grid-icon"
+            src="assets/imágenes/starfull.svg"></ion-icon>
+        </ion-col>
+        <ion-col size="0.5" class="ion-no-padding"></ion-col>
+        <ion-col class="ion-no-padding" (click)="addOrRemoveFavourite(currOptionId)">
+          <span *ngIf="!favourites.includes(currOptionId)" class="dots-modal-grid-span">Añadir a favoritos</span>
+          <span *ngIf="favourites.includes(currOptionId)" class="dots-modal-grid-span">Eliminar de favoritos</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding dots-modal-grid-row">
+        <ion-col size="0.5" class="ion-no-padding dots-modal-grid-icon-container" (click)="share(currTitle)">
+          <ion-icon class="dots-modal-grid-icon" src="assets/imágenes/share.svg"></ion-icon>
+        </ion-col>
+        <ion-col size="0.5" class="ion-no-padding"></ion-col>
+        <ion-col class="ion-no-padding" (click)="share(currTitle)">
+          <span class="dots-modal-grid-span">Compartir</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button fill="clear" expand="full" class="dots-modal-cancel-btn" (click)="hideOptionsModal()">
+      Cancelar
+    </ion-button>
+  </div>
+
+  <!--Full song player view-->
+  <div class="player" id="playerRo">
+    <ion-toolbar class="ion-text-center ion-no-padding player-toolbar">
+      <ion-buttons class="player-back-btn" slot="start">
+        <ion-button (click)="hidePlayer()">
+          <ion-icon color="light" name="arrow-back-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <h1 class="player-title">Canciones</h1>
+    </ion-toolbar>
+    <div class="player-container">
+      <img class="player-image" src="assets/imágenes/song-player-img.svg" />
+      <h1 class="ion-text-center player-song-title">{{currTitle}}</h1>
+      <h1 class="ion-text-center player-song-author">{{currSubtitle}}</h1>
+      <ion-range class="ion-no-padding player-range" color="azul" #range (touchmove)="touchMove()"
+        (touchend)="touchEnd()" (touchstart)="touchStart()" max="{{maxRangeValue}}" [(ngModel)]="currRangeTime">
+      </ion-range>
+      <ion-label class="player-curr-time" slot="start">
+        <ion-text color="azul">{{currSecsText}}</ion-text>
+      </ion-label>
+      <ion-label class="player-total-time" slot="end">
+        <ion-text color="azul">{{durationText}}</ion-text>
+      </ion-label>
+
+      <ion-buttons class="buttons-container">
+        <!-- Play Previous Button -->
+        <ion-button fill="clear" (click)="playPrev()">
+          <ion-icon class="play-prev-icon" color="anaranjado" name="play-back"></ion-icon>
+        </ion-button>
+
+        <!-- Play Button -->
+        <ion-button class="play-pause-icon-container" fill="clear" *ngIf="!isPlaying" (click)="play()">
+          <ion-icon class="play-pause-icon" color="anaranjado" name="play-circle-sharp"></ion-icon>
+        </ion-button>
+
+        <!-- Pause Button -->
+        <ion-button class="play-pause-icon-container" fill="clear" *ngIf="isPlaying" (click)="pause()">
+          <ion-icon class="play-pause-icon" color="anaranjado" name="pause-circle-sharp"></ion-icon>
+        </ion-button>
+
+        <!-- Play Next Button -->
+        <ion-button fill="clear" (click)="playNext()">
+          <ion-icon class="play-next-icon" color="anaranjado" name="play-forward"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons class="opts-btns-container" slot="primary">
+        <ion-button class="opts-btns-btn btn-favourite" slot="start" (click)="addOrRemoveFavourite(currOptionId)">
+          <ion-icon class="opts-btns-icon" *ngIf="!favourites.includes(currOptionId)" src="assets/imágenes/star.svg">
+          </ion-icon>
+          <ion-icon class="opts-btns-icon" *ngIf="favourites.includes(currOptionId)" src="assets/imágenes/starfull.svg">
+          </ion-icon>
+        </ion-button>
+        <ion-button class="opts-btns-btn btn-share" slot="end" (click)="share(currTitle)">
+          <ion-icon class="opts-btns-icon" src="assets/imágenes/share.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+
+  
+  <ion-footer class="ion-no-border" id="footRo">
+    <ion-img id="footer" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']"></ion-img>
     <ion-tab-bar>
       <ion-tab-button [routerLink]="['/eventos']">
         <ion-img id="eventos" src="assets/imágenes/eventos.svg"></ion-img>

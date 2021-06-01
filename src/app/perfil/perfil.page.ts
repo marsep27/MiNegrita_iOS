@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 import { FirestoreService } from '../services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { take } from 'rxjs/operators';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil',
@@ -75,6 +76,7 @@ export class PerfilPage {
   imagen:        string;
   url:           string;
   linkPlayStore: any;
+  linkAppStore:  any;
 
   eventos:       any;
   favourites:    string[] = [];
@@ -95,7 +97,7 @@ export class PerfilPage {
   timeout:        any;
   progress:       Number;
 
-  constructor(private firestoreService: FirestoreService, private firestore: AngularFirestore, public nativeAudio: NativeAudio, private socialSharing: SocialSharing, public Toast: ToastController) {
+  constructor(private firestoreService: FirestoreService, public platform: Platform, private firestore: AngularFirestore, public nativeAudio: NativeAudio, private socialSharing: SocialSharing, public Toast: ToastController) {
     this.name           = "";
     this.lastName       = "";
     this.avatar         = "";
@@ -126,6 +128,13 @@ export class PerfilPage {
       const link = linkSnapshot;
       this.linkPlayStore = link.data().link;
       console.log(this.linkPlayStore);
+    });
+
+    //Se obtiene el link de la aplicación en la AppStore
+    firebase.firestore().collection('linkApp').doc('AppStore').onSnapshot((linkSnapshot) => {
+      const link = linkSnapshot;
+      this.linkAppStore = link.data().link;
+      console.log(this.linkAppStore);
     });
 
     //Se carga la información del usuario logeado
@@ -672,18 +681,33 @@ export class PerfilPage {
     //}).catch(e => {
 
     //})
-    this.subjet = titulo;
-    this.mensaje = "Escuchá " + titulo + " en la app de Mi Negrita.";
-    this.imagen = "assets/imágenes/canciones.svg";
-    this.url = this.linkPlayStore;
-    var options = {
-      message: this.mensaje,
-      subjet: this.subjet,
-      files: this.imagen,
-      url: this.url,
-      chooserTitle: this.subjet
+    if (this.platform.is("android")) {
+      this.subjet = titulo;
+      this.mensaje = "Escuchá " + titulo + " en la app de Mi Negrita.";
+      this.imagen = "assets/imágenes/canciones.svg";
+      this.url = this.linkPlayStore;
+      var options = {
+        message: this.mensaje,
+        subjet: this.subjet,
+        files: this.imagen,
+        url: this.url,
+        chooserTitle: this.subjet
+      }
+      this.socialSharing.shareWithOptions(options);
+    } else if (this.platform.is("ios")) {
+      this.subjet = titulo;
+      this.mensaje = "Escuchá " + titulo + " en la app de Mi Negrita.";
+      this.imagen = "assets/imágenes/canciones.svg";
+      this.url = this.linkAppStore;
+      var options = {
+        message: this.mensaje,
+        subjet: this.subjet,
+        files: this.imagen,
+        url: this.url,
+        chooserTitle: this.subjet
+      }
+      this.socialSharing.shareWithOptions(options);
     }
-    this.socialSharing.shareWithOptions(options);
     console.log(this.subjet);
     console.log(this.imagen);
     console.log(this.url);
