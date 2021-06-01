@@ -1,9 +1,15 @@
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from '../services/firestore/firestore.service';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { Platform, ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
+import { auth } from 'firebase';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro-exvotos',
@@ -57,9 +63,25 @@ export class RegistroExvotosPage implements OnInit {
 
   constructor(private auth: AngularFireAuth, 
     private route: ActivatedRoute,
-    private db: AngularFireDatabase, 
+    private db: AngularFireDatabase,
+    public auth2: AuthService,
     private router: Router,
-    private firestoreService: FirestoreService) { }
+    private firestoreService: FirestoreService,
+    public platform: Platform,
+    public loadingController: LoadingController) { }
+
+  //Muestra en pantalla por unos segundos un spinner para indicar que la página se está cargando 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'spinner',
+      message: 'Espere por favor...',
+      duration: 1000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }
 
   ngOnInit() {
     //Se obtienen los datos del registro anterior registro-intenciones
@@ -359,66 +381,118 @@ export class RegistroExvotosPage implements OnInit {
     this.addIntentionInJsonFile();
   }
 
-  //Tras haber seleccionado los exvotos, se finaliza con el registro
+  //Tras haber seleccionado los exvotos, se aceptan términos y condiciones
+  terminosCondiciones(){
+    document.getElementById("TerminosCondiciones").style.bottom = "12vh";
+    document.getElementById("contentEx").style.filter = "blur(2px)";
+    document.getElementById("footEx").style.filter = "blur(2px)";
+  }
+
+  //Tras haber aceptado términos y condiciones, se finaliza con el registro
   finalizar() {
     this.romeriasCompletadas = 0;
     this.totalHoras = 0;
     this.pasosTotales = 0;
     this.kmTotales = 0;
     this.romeriaActiva = false;
-    this.datosfinales = {
-      userId: this.userId,
-      name: this.name,
-      lastname: this.lastName,
-      avatar: this.avatar,
-      intenciones: this.intenciones,
-      exvotos: this.exvotoNames
-    };
-    console.log(this.datosfinales);
-    console.log(this.email);
-    console.log(this.password);
 
     //this.db.database.ref('user/'+this.userId).set(this.datosfinales);
     if (this.provedor == "Facebook") {
-      this.lastName = "";
-      this.datosfinales = {
-        userId: this.userId,
-        name: this.name,
-        lastname: this.lastName,
-        avatar: this.avatar,
-        intenciones: this.intenciones,
-        exvotos: this.exvotoNames
-      };
-      //const provider = new firebase.auth.FacebookAuthProvider();
-      this.firestoreService.createUser(this.datosfinales);
-      this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva);
-      //firebase.auth();
-      this.router.navigate(['/perfil']);
+      if (this.platform.is("cordova")) { //Si la plaforma es cordova muestra la siguiente información
+        this.auth2.loginFacebook().then((res) => {
+          this.userId = res.user.uid;
+          this.presentLoading();
+          this.lastName = "";
+          this.datosfinales = {
+            userId: this.userId,
+            name: this.name,
+            lastname: this.lastName,
+            avatar: this.avatar,
+            intenciones: this.intenciones,
+            exvotos: this.exvotoNames
+          };
+          this.firestoreService.createUser(this.datosfinales);
+          this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva);
+          this.router.navigate(['/perfil']);
+        })
+      } else { //Si la plaforma no es cordova muestra la siguiente información
+        const provider = new firebase.auth.FacebookAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(result => {
+          this.userId = result.user.uid;
+          this.presentLoading();
+          this.lastName = "";
+          this.datosfinales = {
+            userId: this.userId,
+            name: this.name,
+            lastname: this.lastName,
+            avatar: this.avatar,
+            intenciones: this.intenciones,
+            exvotos: this.exvotoNames
+          };
+          this.firestoreService.createUser(this.datosfinales);
+          this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva);
+          this.router.navigate(['/perfil']);
+        })
+      }
     } else if (this.provedor == "Google") {
-      this.lastName = ""
-      this.datosfinales = {
-        userId: this.userId,
-        name: this.name,
-        lastname: this.lastName,
-        avatar: this.avatar,
-        intenciones: this.intenciones,
-        exvotos: this.exvotoNames
-      };
-      //const provider = new firebase.auth.GoogleAuthProvider();
-      this.firestoreService.createUser(this.datosfinales);
-      this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva);
-      //firebase.auth();
-      this.router.navigate(['/perfil']);
+      if (this.platform.is("cordova")) {//Si la plaforma es cordova muestra la siguiente información
+        this.auth2.loginGoogle().then((res) => {
+          this.userId = res.user.uid;
+          this.presentLoading();
+          this.lastName = ""
+          this.datosfinales = {
+            userId: this.userId,
+            name: this.name,
+            lastname: this.lastName,
+            avatar: this.avatar,
+            intenciones: this.intenciones,
+            exvotos: this.exvotoNames
+          };
+          this.firestoreService.createUser(this.datosfinales);
+          this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva);
+          this.router.navigate(['/perfil']);
+        })
+      } else { //Si la plaforma no es cordova muestra la siguiente información
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(result => {
+          this.userId = result.user.uid;
+          this.presentLoading();
+          this.lastName = ""
+          this.datosfinales = {
+            userId: this.userId,
+            name: this.name,
+            lastname: this.lastName,
+            avatar: this.avatar,
+            intenciones: this.intenciones,
+            exvotos: this.exvotoNames
+          };
+          this.firestoreService.createUser(this.datosfinales);
+          this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva);
+          this.router.navigate(['/perfil']);
+        })
+      }
     } else {
-      this.firestoreService.createUser(this.datosfinales);
-      this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva)
-      this.auth.signInWithEmailAndPassword(
-        this.email, this.password
-      ).then(userData => {
-        var user = firebase.auth().currentUser;
-        console.log(userData);
-        console.log(user.uid);
-        this.router.navigate(['/perfil']);
+      this.auth.createUserWithEmailAndPassword(this.email, this.password).then(userData=>{
+        this.userId = userData.user.uid;
+        this.datosfinales = {
+          userId: this.userId,
+          name: this.name,
+          lastname: this.lastName,
+          avatar: this.avatar,
+          intenciones: this.intenciones,
+          exvotos: this.exvotoNames
+        };
+        this.firestoreService.createUser(this.datosfinales);
+        this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva);
+        this.auth.signInWithEmailAndPassword(
+          this.email, this.password
+        ).then(userData => {
+          var user = firebase.auth().currentUser;
+          console.log(userData);
+          console.log(user.uid);
+          this.presentLoading();
+          this.router.navigate(['/perfil']);
+        });
       });
     }
   }
@@ -439,6 +513,30 @@ export class RegistroExvotosPage implements OnInit {
       });
   }
 
+  //Se cancelan los Términos y condiciones y se redirige al home
+  cancelar(){
+    this.presentLoading();
+    document.getElementById("TerminosCondiciones").style.bottom = "-1000px";
+    document.getElementById("contentEx").style.filter = "none";
+    document.getElementById("footEx").style.filter = "none";
+    this.buttonCuerpo = true;
+    this.buttonPierna = true;
+    this.buttonCorazon = true;
+    this.buttonEsqueleto = true;
+    this.buttonSistdigestivo = true;
+    this.buttonPulmones = true;
+    this.buttonOjo = true;
+    this.buttonBebe = true;
+    this.buttonPechos = true;
+    this.buttonOreja = true;
+    this.buttonCabeza = true;
+    this.buttonBrazo = true;
+    this.buttonCostaRica = true;
+    this.buttonMatrimonio = true;
+    this.buttonCasa = true;
+    this.buttonEstudios = true;
+    this.router.navigate(['/home']);
+  }
 
   addIntentionInJsonFile() {
     JSON.stringify(this.exvotoNames);

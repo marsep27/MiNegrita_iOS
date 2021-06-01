@@ -1,4 +1,6 @@
 ion-content {
+  #contentEx{
+    margin-top: 20px;
   //Imagen pequeña del logo de la aplicación
   ion-img {
     display: block;
@@ -76,6 +78,91 @@ ion-content {
           p {
             font-family: "VisbyCF-Light";
             font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+  #TerminosCondiciones {
+    transition: 0.5s;
+    position: fixed;
+    width: 312px;
+    height: 612px;
+    display: block;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background: #fafdfe;
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.10);
+    border-radius: 12px;
+    z-index: 20;
+    bottom: -1000px;
+    ion-grid {
+        margin: 10px;
+        margin-bottom: px;
+        height: 560px;
+        ion-row {
+            ion-col {
+                h2 {
+                    font-family: "VisbyCF-Bold";
+                    font-size: 20px;
+                    color: #1390a1;
+                    text-align: center;
+                    margin-top: 0px;
+                }
+              }
+              .scroll{
+                overflow-y: scroll;
+                height: 510px;
+                ion-text {
+                    font-family: "VisbyCF-Medium";
+                    font-size: 14px;
+                    color: #1390a1;
+                }
+                p {
+                  margin-top: 0px;
+                  margin-bottom: 10px;
+                  font-family: "VisbyCF-Light";
+                  font-size: 16px;
+                  line-height: 22px;
+                  color: #1390a1;
+                  white-space: pre-wrap;
+                }
+                
+            }
+            
+        }
+    }
+    .BotonesTC{
+      margin: 0px;
+      padding: 0px;
+      ion-row{
+        ion-col{
+          padding: 0px;
+          #cancelar{
+            margin: 0px;
+            //padding: 0px 0px 5px 5px;
+            padding: 0px;
+            text-transform: none;
+            width: 100%;
+            height: 36px;
+            top: 0px;
+            font-family: "VisbyCF-Bold";
+            font-size: 12px;
+            --border-radius: 0px 22px 0px 12px;
+          }
+          #fin{
+            margin: 0px;
+            //padding: 0px 5px 5px 0px;
+            padding: 0px;
+            text-transform: none;
+            width: 100%;
+            height: 36px;
+            top: 0px;
+            font-family: "VisbyCF-Bold";
+            font-size: 12px;
+            --border-radius: 22px 0px 12px 0px;
           }
         }
       }

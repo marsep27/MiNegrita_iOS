@@ -1,4 +1,5 @@
 <ion-content color="celeste">
+  <div id="contentEx">
   <ion-img src="assets/imágenes/Logo2.svg"></ion-img>
 
   <ion-grid id="Encabezado" class="ion-text-center">
@@ -7,7 +8,7 @@
       <!--Encabezado-->
       <ion-col size="12" size-sm>
         <ion-text color="azul">
-          <h5>La Virgen quiere escucharte,
+          <h5>Bajo su amparo y protección,
             seleccioná tus exvotos</h5>
           <p>Podés selecionar hasta 5 exvotos</p>
         </ion-text>
@@ -190,7 +191,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
+</div>
 
   <!--<div *ngIf="!isComplete">
 <ion-img id="footer" src="assets/imágenes/FinalizarClaro.svg"></ion-img>
@@ -215,9 +216,45 @@
         </ion-tab-bar>
     </ion-footer>
   </div>-->
+
+  <!--Full pop Eventos-->
+  <div id="TerminosCondiciones">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <h2>
+            Términos y condiciones
+          </h2>
+        </ion-col>
+        <ion-col class="scroll" size="12" scrollY=true>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="BotonesTC">
+      <ion-row>
+        <ion-col size="6">
+          <ion-button id="cancelar" color="azul-claro" (click)="cancelar()">
+            Cancelar
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button id="fin" color="anaranjado" (click)="finalizar()">
+            Aceptar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
 </ion-content>
 
-<ion-footer color="celeste" class="ion-no-border">
+<ion-footer color="celeste" class="ion-no-border" id="footEx">
 
   <!--Cambio de pasos con el himno-->
   <ion-grid id="fin" class="ion-text-center">
@@ -242,7 +279,7 @@
         </ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button id="finalizar" color="anaranjado" [disabled]="disableButtonFinalizar" (click)="finalizar()">
+        <ion-button id="finalizar" color="anaranjado" [disabled]="disableButtonFinalizar" (click)="terminosCondiciones()">
           Finalizar
         </ion-button>
       </ion-col>
