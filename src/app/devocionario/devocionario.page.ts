@@ -7,6 +7,7 @@ import { take } from 'rxjs/operators';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { Platform } from '@ionic/angular';
 import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
@@ -26,6 +27,7 @@ export class DevocionarioPage {
 
   shareText:     string = "";
   linkPlayStore: any;
+  linkAppStore:  any;
 
   subjet:  string;
   mensaje: string;
@@ -73,7 +75,7 @@ export class DevocionarioPage {
   //Current song
   currSong: HTMLAudioElement;
 
-  constructor(private router: Router, private firestoreService: FirestoreService, public nativeAudio: NativeAudio, private socialSharing: SocialSharing, private file: File) {
+  constructor(private router: Router, public platform: Platform, private firestoreService: FirestoreService, public nativeAudio: NativeAudio, private socialSharing: SocialSharing, private file: File) {
     //Simulate data loading in
     setTimeout(() => {
       this.contentLoaded = true
@@ -98,6 +100,13 @@ export class DevocionarioPage {
       const link = linkSnapshot;
       this.linkPlayStore = link.data().link;
       console.log(this.linkPlayStore);
+    });
+
+    //Se obtiene el link de la aplicación en la AppStore
+    firebase.firestore().collection('linkApp').doc('AppStore').onSnapshot((linkSnapshot) => {
+      const link = linkSnapshot;
+      this.linkAppStore = link.data().link;
+      console.log(this.linkAppStore);
     });
 
     //Se obtienen las oraciones de la base de datos
@@ -741,70 +750,134 @@ export class DevocionarioPage {
 
     switch (this.currOption) {
       case 'prayer':
-        this.subjet = this.currSubtitle;
-        this.mensaje = "Rezá " + this.currSubtitle + " en la app de Mi Negrita: ";
-        this.imagen = `${this.file.applicationDirectory}assets/imágenes/oraciones.svg`;
-        this.url = this.linkPlayStore;
-        console.log(this.url);
-        var options = {
-          message: this.mensaje,
-          subjet: this.subjet,
-          files: this.imagen,
-          url: this.url,
-          chooserTitle: this.subjet
+        if (this.platform.is("android")) {
+          this.subjet = this.currSubtitle;
+          this.mensaje = "Rezá " + this.currSubtitle + " en la app de Mi Negrita: ";
+          this.imagen = `${this.file.applicationDirectory}assets/imágenes/oraciones.svg`;
+          this.url = this.linkPlayStore;
+          console.log(this.url);
+          var options = {
+            message: this.mensaje,
+            subjet: this.subjet,
+            files: this.imagen,
+            url: this.url,
+            chooserTitle: this.subjet
+          }
+          this.socialSharing.shareWithOptions(options);
+        } else if (this.platform.is("ios")) {
+          this.subjet = this.currSubtitle;
+          this.mensaje = "Rezá " + this.currSubtitle + " en la app de Mi Negrita: ";
+          this.imagen = `${this.file.applicationDirectory}assets/imágenes/oraciones.svg`;
+          this.url = this.linkAppStore;
+          console.log(this.url);
+          var options = {
+            message: this.mensaje,
+            subjet: this.subjet,
+            files: this.imagen,
+            url: this.url,
+            chooserTitle: this.subjet
+          }
+          this.socialSharing.shareWithOptions(options);
         }
-        this.socialSharing.shareWithOptions(options);
         //this.socialSharing.shareViaFacebook(this.mensaje, this.imagen, this.url);
         //this.socialSharing.share(this.mensaje, this.subjet, this.imagen, this.url);
         break;
       case 'reading':
-        this.subjet = this.currTitle;
-        this.mensaje = "Leé " + this.currTitle + " en la app de Mi Negrita: ";
-        this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
-        this.url = this.linkPlayStore;
-        console.log(this.url);
-        var options = {
-          message: this.mensaje,
-          subjet: this.subjet,
-          files: this.imagen,
-          url: this.url,
-          chooserTitle: this.subjet
+        if (this.platform.is("android")) {
+          this.subjet = this.currTitle;
+          this.mensaje = "Leé " + this.currTitle + " en la app de Mi Negrita: ";
+          this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
+          this.url = this.linkPlayStore;
+          console.log(this.url);
+          var options = {
+            message: this.mensaje,
+            subjet: this.subjet,
+            files: this.imagen,
+            url: this.url,
+            chooserTitle: this.subjet
+          }
+          this.socialSharing.shareWithOptions(options);
+        } else if (this.platform.is("ios")) {
+          this.subjet = this.currTitle;
+          this.mensaje = "Leé " + this.currTitle + " en la app de Mi Negrita: ";
+          this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
+          this.url = this.linkAppStore;
+          console.log(this.url);
+          var options = {
+            message: this.mensaje,
+            subjet: this.subjet,
+            files: this.imagen,
+            url: this.url,
+            chooserTitle: this.subjet
+          }
+          this.socialSharing.shareWithOptions(options);
         }
-        this.socialSharing.shareWithOptions(options);
         //this.socialSharing.shareViaFacebook(this.mensaje, this.imagen, this.url);
         //this.socialSharing.share(this.mensaje, this.subjet, this.imagen, this.url);
         break;
       case 'song':
-        this.subjet = this.currTitle;
-        this.mensaje = "Escuchá " + this.currTitle + " en la app de Mi Negrita: ";
-        this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
-        this.url = this.linkPlayStore;
-        console.log(this.url);
-        var options = {
-          message: this.mensaje,
-          subjet: this.subjet,
-          files: this.imagen,
-          url: this.url,
-          chooserTitle: this.subjet
+        if (this.platform.is("android")) {
+          this.subjet = this.currTitle;
+          this.mensaje = "Escuchá " + this.currTitle + " en la app de Mi Negrita: ";
+          this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
+          this.url = this.linkPlayStore;
+          console.log(this.url);
+          var options = {
+            message: this.mensaje,
+            subjet: this.subjet,
+            files: this.imagen,
+            url: this.url,
+            chooserTitle: this.subjet
+          }
+          this.socialSharing.shareWithOptions(options);
+        } else if (this.platform.is("ios")) {
+          this.subjet = this.currTitle;
+          this.mensaje = "Escuchá " + this.currTitle + " en la app de Mi Negrita: ";
+          this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
+          this.url = this.linkAppStore;
+          console.log(this.url);
+          var options = {
+            message: this.mensaje,
+            subjet: this.subjet,
+            files: this.imagen,
+            url: this.url,
+            chooserTitle: this.subjet
+          }
+          this.socialSharing.shareWithOptions(options);
         }
-        this.socialSharing.shareWithOptions(options);
         //this.socialSharing.shareViaFacebook(this.mensaje, this.imagen, this.url);
         //this.socialSharing.share(this.mensaje, this.subjet, this.imagen, this.url);
         break;
       case 'meditation':
-        this.subjet = this.currTitle;
-        this.mensaje = "Meditá " + this.currTitle + " en la app de Mi Negrita: ";
-        this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
-        this.url = this.linkPlayStore;
-        console.log(this.url);
-        var options = {
-          message: this.mensaje,
-          subjet: this.subjet,
-          files: this.imagen,
-          url: this.url,
-          chooserTitle: this.subjet
+        if (this.platform.is("android")) {
+          this.subjet = this.currTitle;
+          this.mensaje = "Meditá " + this.currTitle + " en la app de Mi Negrita: ";
+          this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
+          this.url = this.linkPlayStore;
+          console.log(this.url);
+          var options = {
+            message: this.mensaje,
+            subjet: this.subjet,
+            files: this.imagen,
+            url: this.url,
+            chooserTitle: this.subjet
+          }
+          this.socialSharing.shareWithOptions(options);
+        } else if (this.platform.is("ios")) {
+          this.subjet = this.currTitle;
+          this.mensaje = "Meditá " + this.currTitle + " en la app de Mi Negrita: ";
+          this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
+          this.url = this.linkAppStore;
+          console.log(this.url);
+          var options = {
+            message: this.mensaje,
+            subjet: this.subjet,
+            files: this.imagen,
+            url: this.url,
+            chooserTitle: this.subjet
+          }
+          this.socialSharing.shareWithOptions(options);
         }
-        this.socialSharing.shareWithOptions(options);
         //this.socialSharing.shareViaFacebook(this.mensaje, this.imagen, this.url);
         //this.socialSharing.share(this.mensaje, this.subjet, this.imagen, this.url);
         break;
