@@ -115,6 +115,7 @@ ion-content {
     .text-area {
         overflow-y: scroll;
         height: 52vh;
+        padding-bottom: 30px;
 
         &-container {
             position: fixed;
@@ -135,36 +136,37 @@ ion-content {
         &-player {
             overflow-y: scroll;
             height: 75vh;
+            padding-bottom: 30px;
         }
     }
 
     .subtitle {
         font-family: "VisbyCF-Bold";
-        margin: 35px 30px 20px 30px;
-        font-size: 16px;
+        margin: 30px 18px 10px 18px;
+        font-size: 18px;
         color: #0f7386;
         line-height: 22px;
 
         &-misterios {
-            margin: 15px 30px 25px 30px;
+            margin: 15px 18px 25px 18px;
         }
 
         &-misterio {
-            margin: 0 30px 0 30px;
+            margin: 0 18px 0 18px;
             line-height: auto;
-            font-size: 14px;
+            font-size: 16px;
         }
     }
 
     .text {
         font-family: "VisbyCF-Light";
-        margin: 0 30px 0 30px;
+        margin: 0 18px 0 18px;
         font-size: 16px;
         color: #1390a1;
         line-height: 22px;
 
         &-misterio {
-            margin: 0 30px 20px 30px;
+            margin: 0 18px 20px 18px;
             font-family: "VisbyCF-Light";
             font-style: italic;
             font-size: 12px;
@@ -175,7 +177,7 @@ ion-content {
     .amen {
         font-family: "VisbyCF-Light";
         display: inline-block;
-        margin: 0px 30px 5px 30px;
+        margin: 0px 18px 5px 18px;
         font-size: 16px;
         font-style: italic;
         color: #f8a957;
@@ -183,14 +185,14 @@ ion-content {
     }
 
     .letanias {
-        margin: 0px 30px 20px 30px;
+        margin: 0px 18px 20px 18px;
     }
 
     .letania {
         &-text {
             margin: 0;
             font-family: "VisbyCF-Light";
-            font-size: 14px;
+            font-size: 16px;
             color: #1390a1;
             line-height: 22px;
         }
@@ -199,7 +201,7 @@ ion-content {
             margin: 0;
             font-family: "VisbyCF-Light";
             font-style: italic;
-            font-size: 11px;
+            font-size: 12px;
             color: #0f7386;
             margin-top: auto;
             margin-bottom: auto;
