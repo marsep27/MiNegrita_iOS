@@ -199,7 +199,7 @@ export class HomePage {
   //Toast que muestra un error al logearse con Facebook o Google
   async toast() {
     const toast = await this.Toast.create({
-      header: 'Ya existe una cuenta con la misma dirección de correo electrónico, pero diferentes credenciales de inicio de sesión. Inicie sesión con un proveedor asociado a esta dirección de correo electrónico',
+      header: '¡Error de conexión! Intentá de nuevo.',
       position: "middle",
       color: "azul",
       duration: 5000,
