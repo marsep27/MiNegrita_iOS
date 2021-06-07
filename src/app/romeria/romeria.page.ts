@@ -125,11 +125,13 @@ export class RomeriaPage {
       console.log(this.linkAppStore);
     });
 
+    this.favourites = [];
     //Se cargan las canciones favoritas del usuario
     this.firestoreService.getFavouriteSongs(firebase.auth().currentUser.uid).pipe(take(1)).subscribe((songsSnapshot) => {
       songsSnapshot.forEach(async (songData: any) => {
         const songId = await songData.payload.doc.data().cancion.id;
         this.favourites.push(songId);
+        console.log(this.favourites);
       });
     });
 
@@ -328,17 +330,20 @@ export class RomeriaPage {
   }
 
   //Función para agregar o remover las devociones favoritas del usuario.
-  addOrRemoveFavourite(songId: string) {
-    this.currOptionId = songId;
+  addOrRemoveFavourite() {
     var userId = firebase.auth().currentUser.uid;
     console.log("inside song");
+    console.log(this.currOptionId);
+    console.log(this.favourites);
     if (this.favourites.includes(this.currOptionId)) {
       this.firestoreService.removeFavouriteSong(userId, this.currOptionId);
       this.favourites = this.favourites.filter(favId => favId !== this.currOptionId);
+    console.log(this.favourites);
     }
     else {
       this.firestoreService.addFavouriteSong(userId, this.currOptionId);
       this.favourites.push(this.currOptionId);
+      console.log(this.favourites);
     }
 
   }
@@ -347,6 +352,8 @@ export class RomeriaPage {
   openPlayer(title: string, subTitle: string, song: string, songId: string) {
     this.hideOptionsModal();
     this.currOptionId = songId;
+    console.log(this.currOptionId);
+    console.log(this.favourites);
     this.currOption = 'song';
     //If a song plays,stop that
     if (this.currSong != null) {
@@ -500,6 +507,8 @@ export class RomeriaPage {
     this.currAudio = audio;
     this.currOption = "song";
     this.currOptionId = optId;
+    console.log(this.currOptionId);
+    console.log(this.favourites);
     document.getElementById("dots-modal-ro").style.display = "block";
     document.getElementById("headRo").style.filter = "blur(2px)";
     document.getElementById("fin").style.filter = "blur(2px)";
@@ -556,6 +565,8 @@ export class RomeriaPage {
 
   see(){
     this.openPlayer(this.currTitle, this.currSubtitle, this.currAudio, this.currOptionId);
+    console.log(this.currOptionId);
+    console.log(this.favourites);
   }
 
 }

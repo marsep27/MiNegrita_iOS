@@ -165,7 +165,7 @@
           <p>Te recomendamos reproducir alguna canción para tener un momento más ameno.</p>
         </ion-col>
         <ion-col size="12" *ngFor="let cancion of canciones">
-          <ion-card>
+          <ion-card (click)="openPlayer(cancion.title, cancion.subtitle, cancion.audio, cancion.cancionId)">
             <ion-grid>
               <ion-row>
                 <ion-col size="3">
@@ -210,14 +210,14 @@
         </ion-col>
       </ion-row>
       <ion-row class="ion-no-padding dots-modal-grid-row">
-        <ion-col size="0.5" class="ion-no-padding dots-modal-grid-icon-container" (click)="addOrRemoveFavourite(currOptionId)">
+        <ion-col size="0.5" class="ion-no-padding dots-modal-grid-icon-container" (click)="addOrRemoveFavourite()">
           <ion-icon *ngIf="!favourites.includes(currOptionId)" class="dots-modal-grid-icon"
             src="assets/imágenes/star.svg"></ion-icon>
           <ion-icon *ngIf="favourites.includes(currOptionId)" class="dots-modal-grid-icon"
             src="assets/imágenes/starfull.svg"></ion-icon>
         </ion-col>
         <ion-col size="0.5" class="ion-no-padding"></ion-col>
-        <ion-col class="ion-no-padding" (click)="addOrRemoveFavourite(currOptionId)">
+        <ion-col class="ion-no-padding" (click)="addOrRemoveFavourite()">
           <span *ngIf="!favourites.includes(currOptionId)" class="dots-modal-grid-span">Añadir a favoritos</span>
           <span *ngIf="favourites.includes(currOptionId)" class="dots-modal-grid-span">Eliminar de favoritos</span>
         </ion-col>
@@ -238,7 +238,7 @@
   </div>
 
   <!--Full song player view-->
-  <div class="player" id="playerRo">
+  <div class="player" id="playeRo">
     <ion-toolbar class="ion-text-center ion-no-padding player-toolbar">
       <ion-buttons class="player-back-btn" slot="start">
         <ion-button (click)="hidePlayer()">
@@ -284,7 +284,7 @@
       </ion-buttons>
 
       <ion-buttons class="opts-btns-container" slot="primary">
-        <ion-button class="opts-btns-btn btn-favourite" slot="start" (click)="addOrRemoveFavourite(currOptionId)">
+        <ion-button class="opts-btns-btn btn-favourite" slot="start" (click)="addOrRemoveFavourite()">
           <ion-icon class="opts-btns-icon" *ngIf="!favourites.includes(currOptionId)" src="assets/imágenes/star.svg">
           </ion-icon>
           <ion-icon class="opts-btns-icon" *ngIf="favourites.includes(currOptionId)" src="assets/imágenes/starfull.svg">
