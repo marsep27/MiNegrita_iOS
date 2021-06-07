@@ -29,12 +29,24 @@ export class RomeriaPage {
   currOption:   string;
   currOptionId: string;
 
-  private currentUserId: String;
-  private romeriaActiva: String;
-
+  private currentUserId:String;
+  private romeriaActiva:String;
+  kmInicial:            String;
+  kmCurr:               String;
+  kmTotal:              String;
+  currtime:             String;
+  horas:                String;
+  minutos:              String;
+  segundos:             String;
+  timeout:              String;
+  PasosIncial:          String;
+  PasosCurr:            String;
+  PasosTotal:           String;
   private proposito:    String;
   private puntoPartida: String;
   private tipoRomeria:  String;
+  private Play:         boolean;
+  private Pause:        boolean;
   private fin:          String;
 
   subjet:  string;
@@ -121,6 +133,48 @@ export class RomeriaPage {
       });
     });
 
+    //Se carga la información de la romeria activa del usuario.
+    firebase.firestore().collection('romerias').doc(firebase.auth().currentUser.uid).onSnapshot((romeriasSnapshot) => {
+      const info = romeriasSnapshot.data();
+      this.currentRomeria =
+    {
+      romeriaActiva: info.romeriaActiva,
+      play: info.play,
+      pause: info.pause,
+      finalizada: info.finalizada,
+      tipoRomeria: info.tipoRomeria,
+      proposito: info.proposito,
+      puntoPartida: info.puntoPartida,
+      progreso: info.progreso,
+      kmConteo: info.kmConteo,
+      kmRestantes: info.kmRestantes,
+      kmTotal: info.kmTotal,
+      timeConteo: info.timeConteo,
+      horas: info.horas,
+      minutos: info.minutos,
+      segundos: info.segundos,
+      timeTotalMs: info.timeTotalMs,
+      pasosConteo: info.pasosConteo,
+      pasosRestantes: info.pasosRestantes,
+      pasosTotal: info.pasosTotal
+    }
+    this.puntoPartida = this.currentRomeria.puntoPartida;
+    this.progress = this.currentRomeria.progreso;
+    this.proposito = this.currentRomeria.proposito;
+    this.romeriaActiva = this.currentRomeria.romeriaActiva;
+    this.kmInicial = this.currentRomeria.kmConteo;
+    this.kmCurr = this.currentRomeria.kmRestantes;
+    this.kmTotal = this.currentRomeria.kmTotal;
+    this.currtime = this.currentRomeria.timeConteo;
+    this.horas = this.currentRomeria.horas;
+    this.minutos = this.currentRomeria.minutos;
+    this.segundos = this.currentRomeria.segundos;
+    this.timeout = this.currentRomeria.timeTotalMs;
+    this.PasosIncial = this.currentRomeria.pasosConteo;
+    this.PasosCurr = this.currentRomeria.pasosRestantes;
+    this.PasosTotal = this.currentRomeria.pasosTotal;
+    });
+
     //Carga los datos de la romería actual de usuario
     var docRef = firebase.firestore().collection('romerias').doc(firebase.auth().currentUser.uid);
     docRef.onSnapshot((async (doc) => {
@@ -131,6 +185,9 @@ export class RomeriaPage {
           //Se obtienen los datos de la romería actual de usuario
           this.romeria = info.romeriaActiva;
           this.finished = info.finalizada;
+          this.Play = info.play;
+          this.Pause = info.pause;
+          this.tipoRomeria = info.tipoRomeria;
   
           console.log("romeria:" + this.romeria);
           console.log("finalizada:" + this.finished);
@@ -184,7 +241,73 @@ export class RomeriaPage {
 
   //Lleva al usuario a la ventana continuar-romería
   continuarRomeria() {
-    this.router.navigate(['/continuar-romeria']);
+    if (this.tipoRomeria == "pasos") {
+      if (this.Play == true){
+        this.Play = false;
+        //update romerías
+        const userId = firebase.auth().currentUser.uid;
+        const refUser = this.firestore.collection('usuarios').doc(userId);
+        const updatedData = {
+          usuario: refUser.ref,
+          play: this.Play,
+          pause: this.Pause,
+          romeriaActiva: this.romeriaActiva,
+          finalizada: this.finished,
+          tipoRomeria: this.tipoRomeria,
+          proposito: this.proposito,
+          puntoPartida: this.puntoPartida,
+          progreso: this.progress,
+          kmConteo: this.kmInicial,
+          kmRestantes: this.kmCurr,
+          kmTotal: this.kmTotal,
+          timeConteo: this.currtime,
+          horas: this.horas,
+          minutos: this.minutos,
+          segundos: this.segundos,
+          timeTotalMs: this.timeout,
+          pasosConteo: this.PasosIncial,
+          pasosRestantes: this.PasosCurr,
+          pasosTotal: this.PasosTotal
+        };
+        this.firestoreService.updateRomeria(userId, updatedData);
+        this.router.navigate(['/continuar-romeria']);
+      } else {
+        this.router.navigate(['/continuar-romeria']);
+      }
+    } else {
+      if (this.Play == true && this.Pause == false){
+        this.Pause = true;
+        //update romerias
+        const userId = firebase.auth().currentUser.uid;
+        const refUser = this.firestore.collection('usuarios').doc(userId);
+        const updatedData = {
+          usuario: refUser.ref,
+          play: this.Play,
+          pause: this.Pause,
+          romeriaActiva: this.romeriaActiva,
+          finalizada: this.finished,
+          tipoRomeria: this.tipoRomeria,
+          proposito: this.proposito,
+          puntoPartida: this.puntoPartida,
+          progreso: this.progress,
+          kmConteo: this.kmInicial,
+          kmRestantes: this.kmCurr,
+          kmTotal: this.kmTotal,
+          timeConteo: this.currtime,
+          horas: this.horas,
+          minutos: this.minutos,
+          segundos: this.segundos,
+          timeTotalMs: this.timeout,
+          pasosConteo: this.PasosIncial,
+          pasosRestantes: this.PasosCurr,
+          pasosTotal: this.PasosTotal
+        };
+        this.firestoreService.updateRomeria(userId, updatedData);
+        this.router.navigate(['/continuar-romeria']);
+      } else {
+        this.router.navigate(['/continuar-romeria']);
+      }
+    }
   }
 
   //Lleva al usuario a la ventana romeria-perfil
