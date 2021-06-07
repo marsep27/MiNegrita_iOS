@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 import { IonRange } from "@ionic/angular";
 import { take } from 'rxjs/operators';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Platform } from '@ionic/angular';
@@ -98,7 +99,7 @@ export class RomeriaPage {
     }
   ]
 
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,private vibra: Vibration,
     private db: AngularFireDatabase,
     private router: Router,
     private firestoreService: FirestoreService,
@@ -238,11 +239,13 @@ export class RomeriaPage {
     //var updates = {};
     //updates['/romeria/' + newPostKey] = this.data;
 
+    this.vibracion();
     this.router.navigate(['/nueva-romeria']);
   }
 
   //Lleva al usuario a la ventana continuar-romería
   continuarRomeria() {
+    this.vibracion();
     if (this.tipoRomeria == "pasos") {
       if (this.Play == true){
         this.Play = false;
@@ -314,6 +317,7 @@ export class RomeriaPage {
 
   //Lleva al usuario a la ventana romeria-perfil
   miRomeria() {
+    this.vibracion();
     this.router.navigate(['/romeria-perfil'],
     {
       queryParams:{
@@ -324,6 +328,7 @@ export class RomeriaPage {
 
   //Elimina la romería actual de
   deleteRomeria() {
+    this.vibracion();
     this.finished = false;
     this.firestoreService.deleteRomeria(firebase.auth().currentUser.uid);
     this.router.navigate(['/romeria']);
@@ -341,6 +346,7 @@ export class RomeriaPage {
     console.log(this.favourites);
     }
     else {
+      this.vibracion();
       this.firestoreService.addFavouriteSong(userId, this.currOptionId);
       this.favourites.push(this.currOptionId);
       console.log(this.favourites);
@@ -424,6 +430,7 @@ export class RomeriaPage {
   }
 
   playNext() {
+    this.vibracion();
     var index = this.canciones.findIndex(x => x.title == this.currTitle);
 
     if ((index + 1) == this.canciones.length) {
@@ -438,6 +445,7 @@ export class RomeriaPage {
 
   //play previous song
   playPrev() {
+    this.vibracion();
     //get current song index
     var index = this.canciones.findIndex(x => x.title == this.currTitle);
 
@@ -457,18 +465,21 @@ export class RomeriaPage {
 
   //pause current song
   pause() {
+    this.vibracion();
     this.currSong.pause();
     this.isPlaying = false;
   }
 
   //play currently paused song
   play() {
+    this.vibracion();
     this.currSong.play();
     this.isPlaying = true;
   }
 
   //Close current playing song and reset current song info
   back() {
+    this.vibracion();
     this.currTitle = "";
     this.currSubtitle = "";
     this.progress = 0;
@@ -564,9 +575,15 @@ export class RomeriaPage {
   }
 
   see(){
+    this.vibracion();
     this.openPlayer(this.currTitle, this.currSubtitle, this.currAudio, this.currOptionId);
     console.log(this.currOptionId);
     console.log(this.favourites);
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

@@ -24,7 +24,7 @@
           <ion-label color="azul">Punto de partida</ion-label>
           <ion-select formControlName="puntoPartida" interface="popover" value="Seleccioná una ubicación"
             placeholder="Seleccioná una ubicación" class="shadow-red ion-no-border" (click)="Clean()"
-            (ionChange)="Select($event)">
+            (ionChange)="Select()">
             <ion-select-option *ngFor="let diocesis of diocesis" value="{{diocesis.nombre}}">{{diocesis.nombre}}
             </ion-select-option>
           </ion-select>
@@ -37,7 +37,6 @@
       </form>
     </ion-row>
   </ion-grid>
-
   <ion-grid class="ion-text-center">
     <ion-row>
       <ion-col size="12">

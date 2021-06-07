@@ -1,10 +1,11 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FirestoreService } from './../services/firestore/firestore.service';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ToastController, Platform } from '@ionic/angular';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
 import { Pedometer } from '@ionic-native/pedometer/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { take } from 'rxjs/operators';
 import * as firebase from 'firebase';
 
@@ -79,9 +80,11 @@ export class ContinuarRomeriaPage {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private deviceMotion: DeviceMotion,
+    private vibra: Vibration,
     private pedometer: Pedometer,
     private firestoreService: FirestoreService,
     public alertController: AlertController,
+    public platform: Platform,
     private firestore: AngularFirestore,
     private Toast: ToastController
   ) {
@@ -226,6 +229,7 @@ export class ContinuarRomeriaPage {
 
   //Botón de retroceso
   back() {
+    this.vibracion();
     this.continuarOSalir();
   }
 
@@ -237,6 +241,7 @@ export class ContinuarRomeriaPage {
         {
           text: 'Pausar',
           handler: () => {
+            this.vibracion();
             this.confirmarBack();
           }
         },
@@ -283,6 +288,7 @@ export class ContinuarRomeriaPage {
 
   //Se presenta un toast para indicar que la romería esta en pausa.
   async presentToastPause() {
+    this.vibracion();
     const toast = await this.Toast.create({
       header: '¡Acabás de pausar la romería!',
       position: "middle",
@@ -331,6 +337,7 @@ export class ContinuarRomeriaPage {
           romeriaActiva: false
         };
         this.firestoreService.updateRomeriaXUser(userId, updateData);
+        this.vibracionFinal();
         this.router.navigate(['/romeria']);
       } else {
         this.PasosCurr = this.PasosTotal - this.PasosIncial;
@@ -345,6 +352,7 @@ export class ContinuarRomeriaPage {
 
   //Función para iniciar el conteo de pasos
   playPasos() {
+    this.vibracion();
     this.Play = true;
     this.Accelerometer();
     //this.pedometer.startPedometerUpdates()
@@ -420,6 +428,7 @@ export class ContinuarRomeriaPage {
         romeriaActiva: false
       };
       this.firestoreService.updateRomeriaXUser(userId, updateData);
+      this.vibracionFinal();
       this.router.navigate(['/romeria']);
     } else if (this.Play && !this.Pause) {
       this.progress = (this.currSeg * 1000) / this.timeout;
@@ -436,6 +445,7 @@ export class ContinuarRomeriaPage {
 
   //Función para iniciar el conteo del tiempo
   playTime() {
+    this.vibracion();
     this.startTime = new Date()
     console.log(this.startTime)
     this.TimePause = this.TimePause
@@ -462,6 +472,7 @@ export class ContinuarRomeriaPage {
 
   //Función para continuar con el conteo del tiempo
   continueTime() {
+    this.vibracion();
     this.startTime = new Date(+new Date() - this.currTime)
     console.log(this.startTime)
     this.Pause = false
@@ -593,5 +604,15 @@ export class ContinuarRomeriaPage {
     };
     console.log(updatedData);
     this.firestoreService.updateRomeria(userId, updatedData);
+  }
+
+  vibracionFinal(){
+    this.vibra.vibrate([200 , 300 , 300, 300, 500]);
+  }
+
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
   }
 }

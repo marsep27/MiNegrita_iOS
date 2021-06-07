@@ -3,7 +3,9 @@ import { FormBuilder, Validators, FormsModule, FormGroup } from '@angular/forms'
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Component, OnInit } from '@angular/core';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -36,7 +38,7 @@ export class IniciarSesionPage implements OnInit {
   public cor: String;
   public pas: String;
 
-  constructor(private auth: AngularFireAuth, private fb: FormBuilder, private router: Router) { }
+  constructor(private auth: AngularFireAuth, private fb: FormBuilder,public platform: Platform, private router: Router,private vibra: Vibration) { }
 
   ngOnInit() {
     //Validar los campos
@@ -48,6 +50,7 @@ export class IniciarSesionPage implements OnInit {
 
   //Iniciar el proceso de loging
   login() {
+    this.vibracion();
     this.cor = this.loginForm.controls['email'].value;
     this.pas = this.loginForm.controls['password'].value;
     if (this.cor == '') {
@@ -96,4 +99,9 @@ export class IniciarSesionPage implements OnInit {
     this.pass = [{ tex: '' }];
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

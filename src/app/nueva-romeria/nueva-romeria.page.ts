@@ -2,12 +2,13 @@ import { async } from '@angular/core/testing';
 import { DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FirestoreService } from './../services/firestore/firestore.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
 import { take } from 'rxjs/operators';
 
@@ -75,11 +76,13 @@ export class NuevaRomeriaPage implements OnInit{
   constructor(public alertController: AlertController,
     private auth: AngularFireAuth,
     private formBuilder: FormBuilder,
+    public platform: Platform,
     private db: AngularFireDatabase,
     private router: Router,
     private route: ActivatedRoute,
     private firestoreService: FirestoreService,
-    private firestore: AngularFirestore) { 
+    private firestore: AngularFirestore,
+    private vibra: Vibration) { 
       this.romeriaData = { empty: true }
     }
 
@@ -138,6 +141,7 @@ export class NuevaRomeriaPage implements OnInit{
 
   //Se selecciona el punto de partida para la nueva romería
   Select() {
+    this.vibracion();
     console.log(this.romeriaForm.controls['puntoPartida'].value);
     if (this.romeriaForm.controls['puntoPartida'].value == '') {
       this.text = [{ tex: 'Seleccioná un punto de partida válido.' }];
@@ -187,6 +191,7 @@ export class NuevaRomeriaPage implements OnInit{
 
   //Cambia el progreso a pasos
   progressPasos() {
+    this.vibracion();
     this.pasos = true;
     this.tipoRomeria = 'pasos';
     console.log(this.tipoRomeria);
@@ -194,6 +199,7 @@ export class NuevaRomeriaPage implements OnInit{
 
   //Cambia el progreso a horas
   progressTiempo() {
+    this.vibracion();
     this.pasos = false;
     this.tipoRomeria = 'horas';
     console.log(this.tipoRomeria);
@@ -205,6 +211,7 @@ export class NuevaRomeriaPage implements OnInit{
 
   //Confirma la nueva romería
   confirm() {
+    this.vibracion();
     if (this.romeriaForm.controls['puntoPartida'].value == this.diocesis['nombre']) {
       this.text = [{ tex: 'Seleccioná un punto de partida válido.' }];
     } else {
@@ -246,12 +253,14 @@ export class NuevaRomeriaPage implements OnInit{
 
   //Cancela la romería y los datos no se guardan
   async cancel() {
+    this.vibracion();
     const alert = await this.alertController.create({
       message: '¿Estás seguro de que querés regresar? Se borrarán los datos.',
       buttons: [
         {
           text: 'Sí',
           handler: () => {
+            this.vibracion();
             this.router.navigate(['/romeria']);
           }
         },
@@ -265,4 +274,9 @@ export class NuevaRomeriaPage implements OnInit{
     await alert.present();
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

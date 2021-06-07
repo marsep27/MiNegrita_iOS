@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
 
 @Component({
@@ -20,8 +21,10 @@ export class DonacionPage implements OnInit {
   SM:  any;
   SMS: any;
 
-  constructor(private route: ActivatedRoute,
-    public Toast: ToastController) {
+  constructor(public platform: Platform,
+    private route: ActivatedRoute,
+    public Toast: ToastController,
+    private vibra: Vibration) {
     //Simulate data loading in
     setTimeout(() => {
       this.contentLoaded = true
@@ -103,6 +106,7 @@ export class DonacionPage implements OnInit {
 
   //Toast para indicar que el número de cuenta ha sido copiado
   async presentToast() {
+    this.vibracion();
     const toast = await this.Toast.create({
       header: '¡Copiado en el portapapeles!',
       cssClass: 'copiar',
@@ -112,4 +116,15 @@ export class DonacionPage implements OnInit {
     toast.present();
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([200]);
+    }
+  }
+
+  vibracionBack(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

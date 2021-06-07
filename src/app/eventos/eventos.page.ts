@@ -7,6 +7,7 @@ import { Platform, ToastController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { IonRange } from "@ionic/angular";
+import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
 import { Reference } from '@angular/compiler/src/render3/r3_ast';
 
@@ -68,6 +69,7 @@ export class EventosPage {
   constructor(public platform: Platform,
     private route: ActivatedRoute,
     private firestoreService: FirestoreService,
+    private vibra: Vibration,
     private firestore: AngularFirestore,
     public Toast: ToastController) {
 
@@ -404,6 +406,7 @@ export class EventosPage {
 
   //Link para ver más información de un evento
   masInformacion(link) {
+    this.vibracion();
     window.open(link);
   }
 
@@ -417,6 +420,7 @@ export class EventosPage {
       //this.presentToastNo();
     }
     else {
+      this.vibracion();
       this.firestoreService.addFavouriteEvent(userId, this.currOptionId);
       this.favourites.push(this.currOptionId);
       //this.presentToastYes();
@@ -443,4 +447,9 @@ export class EventosPage {
     toast.present();
   }*/
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

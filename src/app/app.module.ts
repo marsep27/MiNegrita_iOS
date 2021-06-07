@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 import { AppComponent } from './app.component';
@@ -50,6 +51,7 @@ firebase.initializeApp(environment.firebaseConfig);
     StatusBar,
     SplashScreen,
     NativeAudio,
+    Vibration,
     Keyboard,
     Facebook, 
     GooglePlus,

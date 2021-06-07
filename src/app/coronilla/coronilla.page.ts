@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonRange } from "@ionic/angular";
+import { Vibration } from '@ionic-native/vibration/ngx';
+import { IonRange, Platform } from "@ionic/angular";
 
 @Component({
   selector: 'app-coronilla',
@@ -222,7 +223,7 @@ export class CoronillaPage implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(public platform: Platform, private vibra: Vibration) { }
 
   ngOnInit() {
   }
@@ -274,17 +275,20 @@ export class CoronillaPage implements OnInit {
   }
 
   play() {
+    this.vibracion();
     this.currSong.play();
     this.isPlaying = true;
     this.isInicio = true;
   }
 
   pause() {
+    this.vibracion();
     this.currSong.pause();
     this.isPlaying = false;
   }
 
   parar() {
+    this.vibracion();
     if (this.currSong != null) {
       this.currSong.pause();
     }
@@ -325,4 +329,9 @@ export class CoronillaPage implements OnInit {
     return (v < 10) ? "0" + v : v;
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

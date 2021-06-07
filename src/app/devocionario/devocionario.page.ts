@@ -8,6 +8,7 @@ import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Platform } from '@ionic/angular';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
@@ -75,7 +76,8 @@ export class DevocionarioPage {
   //Current song
   currSong: HTMLAudioElement;
 
-  constructor(private router: Router, public platform: Platform, private firestoreService: FirestoreService, public nativeAudio: NativeAudio, private socialSharing: SocialSharing, private file: File) {
+  constructor(private router: Router, 
+    private vibra: Vibration, public platform: Platform, private firestoreService: FirestoreService, public nativeAudio: NativeAudio, private socialSharing: SocialSharing, private file: File) {
     //Simulate data loading in
     setTimeout(() => {
       this.contentLoaded = true
@@ -250,6 +252,7 @@ export class DevocionarioPage {
 
   //Función para movilizar las pestañas de los segmentos
   segmentChanged(segment) {
+    this.vibracion();
     if (segment == "oraciones") {
       console.log(segment);
       document.getElementById("1").scrollIntoView({
@@ -357,11 +360,13 @@ export class DevocionarioPage {
 
   //Se oculta la lectura
   hideLectura() {
+    this.vibracion();
     document.getElementById("lectura").style.display = "none";
   }
 
   //Muestra la siguiente lectura
   showNextReading() {
+    this.vibracion();
     var index = this.lecturas.findIndex(x => x.title == this.currTitle);
 
     if ((index + 1) == this.lecturas.length) {
@@ -398,11 +403,13 @@ export class DevocionarioPage {
  
   //Se oculta la meditación
   hideMeditation() {
+    this.vibracion();
     document.getElementById("meditacion").style.display = "none";
   }
 
   //Se muestra la siguiente meditación
   showNextMeditation() {
+    this.vibracion();
     var index = this.meditaciones.findIndex(x => x.title == this.currTitle);
 
     if ((index + 1) == this.meditaciones.length) {
@@ -416,6 +423,7 @@ export class DevocionarioPage {
 
   //Se oculta la oración
   hidePlayer() {
+    this.vibracion();
     document.getElementById("player").style.display = "none";
     this.back();
   }
@@ -494,6 +502,7 @@ export class DevocionarioPage {
   }
 
   playNext() {
+    this.vibracion();
     var index = this.canciones.findIndex(x => x.title == this.currTitle);
 
     if ((index + 1) == this.canciones.length) {
@@ -508,6 +517,7 @@ export class DevocionarioPage {
 
   //play previous song
   playPrev() {
+    this.vibracion();
     //get current song index
     var index = this.canciones.findIndex(x => x.title == this.currTitle);
 
@@ -527,18 +537,21 @@ export class DevocionarioPage {
 
   //pause current song
   pause() {
+    this.vibracion();
     this.currSong.pause();
     this.isPlaying = false;
   }
 
   //play currently paused song
   play() {
+    this.vibracion();
     this.currSong.play();
     this.isPlaying = true;
   }
 
   //Close current playing song and reset current song info
   back() {
+    this.vibracion();
     this.currTitle = "";
     this.currSubtitle = "";
     this.progress = 0;
@@ -572,6 +585,7 @@ export class DevocionarioPage {
 
   //Se muestra un popUp con la información 
   showOptionsModal() {
+    this.vibracion();
     document.getElementById("dots-modal").style.display = "block";
     document.getElementById("header").style.filter = "blur(2px)";
     document.getElementById("segment").style.filter = "blur(2px)";
@@ -628,6 +642,7 @@ export class DevocionarioPage {
 
   //Según el popUp, se puede ver la meditación seleccionada
   see() {
+    this.vibracion();
     switch (this.currOption) {
       case 'prayer':
         this.navigate(this.currRoute);
@@ -661,6 +676,7 @@ export class DevocionarioPage {
             this.favourites = this.favourites.filter(favId => favId !== this.currOptionId);
           }
           else {
+            this.vibracion();
             this.firestoreService.addFavouritePrayer(userId, this.currOptionId);
             this.favourites.push(this.currOptionId);
           }
@@ -674,6 +690,7 @@ export class DevocionarioPage {
             this.favourites = this.favourites.filter(favId => favId !== this.currOptionId);
           }
           else {
+            this.vibracion();
             this.firestoreService.addFavouriteReading(userId, this.currOptionId);
             this.favourites.push(this.currOptionId);
           }
@@ -688,6 +705,7 @@ export class DevocionarioPage {
             this.favourites = this.favourites.filter(favId => favId !== this.currOptionId);
           }
           else {
+            this.vibracion();
             this.firestoreService.addFavouriteSong(userId, this.currOptionId);
             this.favourites.push(this.currOptionId);
           }
@@ -702,6 +720,7 @@ export class DevocionarioPage {
             this.favourites = this.favourites.filter(favId => favId !== this.currOptionId);
           }
           else {
+            this.vibracion();
             this.firestoreService.addFavouriteMeditation(userId, this.currOptionId);
             this.favourites.push(this.currOptionId);
           }
@@ -892,5 +911,11 @@ export class DevocionarioPage {
     };
 
     this.socialSharing.shareWithOptions(options);
+  }
+
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
   }
 }

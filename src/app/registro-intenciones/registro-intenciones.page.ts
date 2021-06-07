@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Vibration } from '@ionic-native/vibration/ngx';
+import { Platform } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -49,7 +51,7 @@ export class RegistroIntencionesPage implements OnInit {
   disableButtonPaz:             boolean = false;
   disableButtonPerdon:          boolean = false;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,private vibra: Vibration,public platform: Platform,
     private router: Router) { }
 
   userId:   any;
@@ -279,6 +281,7 @@ export class RegistroIntencionesPage implements OnInit {
 
   //Se agrega la intención
   addIntention(intention: string) {
+    this.vibracion();
     this.intentionName = intention;
     this.intentionNames.push(this.intentionName);
     console.log(this.intentionNames);
@@ -289,6 +292,7 @@ export class RegistroIntencionesPage implements OnInit {
 
   //Se elimina la intención
   removeIntention(intention: string) {
+    this.vibracion();
     for (var index = 0; index < this.intentionNames.length; index++) {
       if (this.intentionNames[index] === intention) {
         this.intentionNames.splice(index, 1);
@@ -302,6 +306,7 @@ export class RegistroIntencionesPage implements OnInit {
 
   //Se continua con el registro, registro-exvotos
   exvotos() {
+    this.vibracion();
     //this.datos = this.datos.push({intenciones: this.intentionNames});
     this.router.navigate(['/registro-exvotos'],
       {
@@ -321,6 +326,7 @@ export class RegistroIntencionesPage implements OnInit {
   //Se regresa al registro anterior, registro-cuenta
   back() {
     //this.db.database.ref('user/').set(this.selectedSlide.values)
+    this.vibracion();
     this.router.navigate(['/registro-cuenta'],
       {
         queryParams: {
@@ -389,4 +395,9 @@ export class RegistroIntencionesPage implements OnInit {
     return false;
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

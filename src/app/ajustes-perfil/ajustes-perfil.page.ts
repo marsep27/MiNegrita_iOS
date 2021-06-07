@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Platform, ToastController } from '@ionic/angular';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
@@ -18,6 +19,7 @@ export class AjustesPerfilPage implements OnInit {
     private fb: Facebook,
     private gp: GooglePlus,
     public platform: Platform,
+    private vibra: Vibration,
     private router: Router,
     private route: ActivatedRoute) { }
 
@@ -25,11 +27,13 @@ export class AjustesPerfilPage implements OnInit {
 
   //Botón de retroceso
   goBackDefault() {
+    this.vibracion();
     this.router.navigate(['/perfil']);
   }
 
   //Mostrar PopUp de patrocinadores
   patrocinadores(){
+    this.vibracion();
     document.getElementById("patrocinadores").style.bottom = "12vh";
     document.getElementById("headAju").style.filter = "blur(2px)";
     document.getElementById("contentAju").style.filter = "blur(2px)";
@@ -44,12 +48,14 @@ export class AjustesPerfilPage implements OnInit {
 
   //Alerta para cerrar sesión
   async presentLogOutAlert() {
+    this.vibracion();
     const alert = await this.alertController.create({
       message: '¿Estás seguro de que querés cerrar sesión?',
       buttons: [
         {
           text: 'Sí',
           handler: () => {
+            this.vibracion();
             //firebase logout
             console.log(firebase.auth().currentUser);
             if (this.platform.is("cordova")) {
@@ -83,4 +89,9 @@ export class AjustesPerfilPage implements OnInit {
     await alert.present();
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

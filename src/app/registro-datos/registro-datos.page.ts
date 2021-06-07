@@ -3,7 +3,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro-datos',
@@ -66,8 +68,9 @@ export class RegistroDatosPage implements OnInit {
   constructor(
     private auth: AngularFireAuth,
     private formBuilder: FormBuilder,
+    public platform: Platform,
     private db: AngularFireDatabase,
-    private router: Router) { }
+    private router: Router,private vibra: Vibration) { }
 
   public submit() {
     console.log(this.registrationForm.value);
@@ -84,6 +87,7 @@ export class RegistroDatosPage implements OnInit {
 
   //Verifica que los campos sean llenados y requeridos
   register() {
+    this.vibracion();
     this.nam = this.registrationForm.controls['name'].value;
     this.last = this.registrationForm.controls['lastname'].value;
     this.texx = this.registrationForm.controls['email'].value;
@@ -187,4 +191,9 @@ export class RegistroDatosPage implements OnInit {
     this.disableButton();
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

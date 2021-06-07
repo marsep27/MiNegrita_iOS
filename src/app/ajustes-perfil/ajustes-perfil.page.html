@@ -14,13 +14,13 @@
 <ion-content>
   <ion-list class="settings-options" id="contentAju">
     <ion-item class="item">
-      <ion-label class="settings-opts-label" [routerLink]="['/editar-perfil']">Perfil</ion-label>
+      <ion-label class="settings-opts-label" (click)='vibracion()' [routerLink]="['/editar-perfil']">Perfil</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label class="settings-opts-label">Contacto y soporte</ion-label>
+      <ion-label class="settings-opts-label" (click)='vibracion()'>Contacto y soporte</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label class="settings-opts-label">Legal</ion-label>
+      <ion-label class="settings-opts-label" (click)='vibracion()'>Legal</ion-label>
     </ion-item>
     <ion-item>
       <ion-label class="settings-opts-label" (click)='patrocinadores()'>Patrocinadores</ion-label>
@@ -90,5 +90,4 @@
       </ion-row>
     </ion-grid>
   </div>
-
 </ion-content>

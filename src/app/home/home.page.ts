@@ -7,6 +7,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Platform, ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { auth } from 'firebase';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { LoadingController } from '@ionic/angular';
 
 @Component({
@@ -23,7 +24,7 @@ export class HomePage {
     public router: Router,
     public platform: Platform,
     public Toast: ToastController,
-    public loadingController: LoadingController) {
+    public loadingController: LoadingController,private vibra: Vibration) {
 
   }
 
@@ -48,6 +49,7 @@ export class HomePage {
 
   //Iniciar sesion con Facebook
   loginFacebook() {
+    this.vibracion();
     if (this.platform.is("cordova")) { //Si la plaforma es coordova muestra la siguiente información
       this.auth.loginFacebook().then((res) => {
         this.presentLoading();
@@ -122,6 +124,7 @@ export class HomePage {
 
   //Iniciar sesion con Google
   loginGoogle() {
+    this.vibracion();
     if (this.platform.is("cordova")) {//Si la plaforma es coordova muestra la siguiente información
       this.auth.loginGoogle().then((res) => {
         this.presentLoading();
@@ -198,6 +201,7 @@ export class HomePage {
 
   //Toast que muestra un error al logearse con Facebook o Google
   async toast() {
+    this.vibracion();
     const toast = await this.Toast.create({
       header: '¡Error de conexión! Intentá de nuevo.',
       position: "middle",
@@ -207,4 +211,9 @@ export class HomePage {
     toast.present();
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

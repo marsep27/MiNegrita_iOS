@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Vibration } from '@ionic-native/vibration/ngx';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-olvido-contrasena',
@@ -26,7 +28,9 @@ export class OlvidoContrasenaPage implements OnInit {
     ]
   };
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private auth: AuthService,
+    public platform: Platform, private formBuilder: FormBuilder, private router: Router,
+    private vibra: Vibration) { }
 
   ngOnInit() {
     //Validar los campos
@@ -38,6 +42,7 @@ export class OlvidoContrasenaPage implements OnInit {
   //Se envía al correo suministrado el correo para restablecer la contraseña siempre y cuando el correo exista, 
   //sino saldrán alertas indicando el error.
   enviarCorreo() {
+    this.vibracion();
     this.emai = this.correo.controls['email'].value;
     if (this.emai != "") {
       this.auth.resetPassword(this.emai).then(() => {
@@ -60,4 +65,9 @@ export class OlvidoContrasenaPage implements OnInit {
     this.text = [{ tex: '' }];
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

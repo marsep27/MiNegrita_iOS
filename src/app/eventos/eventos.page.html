@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border" id="headerEve">
   <span class="header-title">Eventos</span>
-  <ion-segment [(ngModel)]="segment">
+  <ion-segment [(ngModel)]="segment" (click)='vibracion()'>
     <ion-segment-button checked value="Actividades">Actividades</ion-segment-button>
     <ion-segment-button value="Horarios">Horarios</ion-segment-button>
     <ion-segment-button value="Santoral">Santoral</ion-segment-button>
@@ -264,26 +264,25 @@
     </ion-grid>
   </div>
 
-
   <ion-footer class="ion-no-border" id="footEve">
-    <ion-img id="footer" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']"></ion-img>
+    <ion-img id="footer" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)='vibracion()'></ion-img>
     <ion-tab-bar>
-      <ion-tab-button [routerLink]="['/eventos']">
+      <ion-tab-button [routerLink]="['/eventos']" (click)='vibracion()'>
         <ion-img id="eventos" src="assets/imágenes/eventos_select.svg"></ion-img>
         <ion-label id="select" color="azul">Eventos</ion-label>
       </ion-tab-button>
-      <ion-tab-button [routerLink]="['/devocionario']">
+      <ion-tab-button [routerLink]="['/devocionario']" (click)='vibracion()'>
         <ion-img id="devocionario" src="assets/imágenes/devocionario.svg"></ion-img>
         <ion-label color="azul">Devocionario</ion-label>
       </ion-tab-button>
-      <ion-tab-button [routerLink]="['/donacion']">
+      <ion-tab-button [routerLink]="['/donacion']" (click)='vibracion()'>
         <ion-label color="celeste"></ion-label>
       </ion-tab-button>
-      <ion-tab-button [routerLink]="['/romeria']">
+      <ion-tab-button [routerLink]="['/romeria']" (click)='vibracion()'>
         <ion-img id="romeria" src="assets/imágenes/romeria.svg"></ion-img>
         <ion-label color="azul">Basílica</ion-label>
       </ion-tab-button>
-      <ion-tab-button [routerLink]="['/perfil']">
+      <ion-tab-button [routerLink]="['/perfil']" (click)='vibracion()'>
         <ion-img id="perfil" src="assets/imágenes/tapPerfil.svg"></ion-img>
         <ion-label color="azul">Perfil</ion-label>
       </ion-tab-button>

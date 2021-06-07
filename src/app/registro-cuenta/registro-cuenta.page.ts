@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Platform, ToastController } from '@ionic/angular';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
@@ -116,7 +117,7 @@ export class RegistroCuentaPage implements OnInit {
     private gp: GooglePlus,
     public platform: Platform,
     private db: AngularFireDatabase,
-    private router: Router) {
+    private router: Router,private vibra: Vibration) {
     this.route.queryParams.subscribe(params => {
       if (params && params.datos) {
         this.datos = JSON.parse(params.datos)
@@ -177,6 +178,7 @@ export class RegistroCuentaPage implements OnInit {
   registrar() {
     //this.db.database.ref('user/').set(this.selectedSlide.values)
     console.log(this.slide[this.index].img);
+    this.vibracion();
     this.router.navigate(['/registro-intenciones'],
       {
         queryParams: {
@@ -193,6 +195,7 @@ export class RegistroCuentaPage implements OnInit {
 
   //Ir al avatar anterior
   Prev() {
+    this.vibracion();
     this.slidefromHtml.getActiveIndex().then(slidesIndex => {
       if (slidesIndex == 0) {
         this.slidefromHtml.slideTo(5);
@@ -204,6 +207,7 @@ export class RegistroCuentaPage implements OnInit {
 
   //Ir al avatar siguiente
   Next() {
+    this.vibracion();
     this.slidefromHtml.getActiveIndex().then((slidesIndex) => {
       if (slidesIndex == 5) {
         this.slidefromHtml.slideTo(0)
@@ -215,6 +219,7 @@ export class RegistroCuentaPage implements OnInit {
 
   //Regregar al home si el usuaio se registró con Facebook o con Google, sino se regresa al registro-datos
   back() {
+    this.vibracion();
     if (this.provedor == "email") {
       this.router.navigate(['/registro-datos']);
     } else {
@@ -240,4 +245,9 @@ export class RegistroCuentaPage implements OnInit {
     }
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

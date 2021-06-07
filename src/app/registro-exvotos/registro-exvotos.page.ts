@@ -7,6 +7,7 @@ import { FirestoreService } from '../services/firestore/firestore.service';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Platform, ToastController } from '@ionic/angular';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
 import { auth } from 'firebase';
 import { LoadingController } from '@ionic/angular';
@@ -68,7 +69,7 @@ export class RegistroExvotosPage implements OnInit {
     private router: Router,
     private firestoreService: FirestoreService,
     public platform: Platform,
-    public loadingController: LoadingController) { }
+    public loadingController: LoadingController,private vibra: Vibration) { }
 
   //Muestra en pantalla por unos segundos un spinner para indicar que la página se está cargando 
   async presentLoading() {
@@ -361,6 +362,7 @@ export class RegistroExvotosPage implements OnInit {
 
   //Se agrega el exvoto
   addExvoto(exvoto) {
+    this.vibracion();
     this.exvotoName = exvoto;
     this.exvotoNames.push(this.exvotoName);
     console.log(this.exvotoNames);
@@ -370,6 +372,7 @@ export class RegistroExvotosPage implements OnInit {
 
   //Se remueve el exvoto
   removeExvoto(exvoto) {
+    this.vibracion();
     for (var index = 0; index < this.exvotoNames.length; index++) {
       if (this.exvotoNames[index] == exvoto) {
         this.exvotoNames.splice(index, 1);
@@ -390,6 +393,7 @@ export class RegistroExvotosPage implements OnInit {
 
   //Tras haber aceptado términos y condiciones, se finaliza con el registro
   finalizar() {
+    this.vibracion();
     this.romeriasCompletadas = 0;
     this.totalHoras = 0;
     this.pasosTotales = 0;
@@ -499,6 +503,7 @@ export class RegistroExvotosPage implements OnInit {
 
   //Se regresa a registro-intenciones
   back() {
+    this.vibracion();
     this.router.navigate(['/registro-intenciones'],
       {
         queryParams: {
@@ -515,6 +520,7 @@ export class RegistroExvotosPage implements OnInit {
 
   //Se cancelan los Términos y condiciones y se redirige al home
   cancelar(){
+    this.vibracion();
     this.presentLoading();
     document.getElementById("TerminosCondiciones").style.bottom = "-1000px";
     document.getElementById("contentEx").style.filter = "none";
@@ -545,6 +551,11 @@ export class RegistroExvotosPage implements OnInit {
       console.log(exvoto);
     }
     console.log("--------------");
+  }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
   }
 }

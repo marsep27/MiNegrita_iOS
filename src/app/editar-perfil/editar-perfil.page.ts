@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { FirestoreService } from '../services/firestore/firestore.service';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { take } from 'rxjs/operators';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -54,7 +56,8 @@ export class EditarPerfilPage implements OnInit {
   perdonSelected:             boolean = false;
   intentionsSelected:         boolean = false;
 
-  constructor(private firestoreService: FirestoreService, private router: Router) {
+  constructor(public platform: Platform, private firestoreService: FirestoreService,
+    private vibra: Vibration, private router: Router) {
     setTimeout(() => {
       this.contentLoaded = true
     }, 2000);
@@ -91,6 +94,7 @@ export class EditarPerfilPage implements OnInit {
 
   //update info in firebase db
   saveChanges() {
+    this.vibracion();
     const updatedData = {
       name: this.name,
       lastname: this.lastName,
@@ -110,6 +114,7 @@ export class EditarPerfilPage implements OnInit {
 
   //Ir al avatar anterior
   previousAvatar() {
+    this.vibracion();
     this.currentAvatarIndex = this.avatarList.indexOf(this.prevAvatar);
     this.avatar = this.avatarList[this.currentAvatarIndex];
     if (this.currentAvatarIndex == 0) this.prevAvatar = this.avatarList[this.avatarList.length - 1];
@@ -120,6 +125,7 @@ export class EditarPerfilPage implements OnInit {
 
   //Ir al avatar siguiente
   nextAvatar() {
+    this.vibracion();
     this.currentAvatarIndex = this.avatarList.indexOf(this.sigAvatar);
     this.avatar = this.avatarList[this.currentAvatarIndex];
     if (this.currentAvatarIndex == 0) this.prevAvatar = this.avatarList[this.avatarList.length - 1];
@@ -392,6 +398,7 @@ export class EditarPerfilPage implements OnInit {
   }
 
   addExvoto(exvoto) {
+    this.vibracion();
     this.exvotoName = exvoto;
     this.exvotos.push(this.exvotoName);
     console.log(this.exvotos);
@@ -400,6 +407,7 @@ export class EditarPerfilPage implements OnInit {
   }
 
   removeExvoto(exvoto) {
+    this.vibracion();
     for (var index = 0; index < this.exvotos.length; index++) {
       if (this.exvotos[index] == exvoto) {
         this.exvotos.splice(index, 1);
@@ -548,6 +556,7 @@ export class EditarPerfilPage implements OnInit {
   }
 
   addIntention(intention: string) {
+    this.vibracion();
     this.intentionName = intention;
     this.intenciones.push(this.intentionName);
     console.log(this.intenciones);
@@ -556,6 +565,7 @@ export class EditarPerfilPage implements OnInit {
   }
 
   removeIntention(intention: string) {
+    this.vibracion();
     for (var index = 0; index < this.intenciones.length; index++) {
       if (this.intenciones[index] === intention) {
         this.intenciones.splice(index, 1);
@@ -578,6 +588,7 @@ export class EditarPerfilPage implements OnInit {
   }
 
   updateBaseIntention(intention: string) {
+    this.vibracion();
     switch (intention) {
       case 'Familia':
         this.familiaSelected = !this.familiaSelected;
@@ -621,4 +632,9 @@ export class EditarPerfilPage implements OnInit {
 
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

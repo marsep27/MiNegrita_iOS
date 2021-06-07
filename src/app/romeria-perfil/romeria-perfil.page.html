@@ -72,7 +72,7 @@
             <h2 class="romeria-info-subtitle">Romería actual</h2>
           </ion-col>
           <ion-col class="ion-no-padding romeria-info-btn-container" size="4">
-            <ion-button class="romeria-info-btn" expand="block" [routerLink]="['/continuar-romeria']">Continuar
+            <ion-button class="romeria-info-btn" expand="block" [routerLink]="['/continuar-romeria']" (click)='vibracion()'>Continuar
             </ion-button>
           </ion-col>
           <ion-col class="ion-no-padding romeria-info-btn-container" size="2">
@@ -145,7 +145,6 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-
       <ion-grid class="ion-no-padding">
         <ion-row>
           <ion-col class="ion-no-padding" size="7.5">
@@ -160,24 +159,24 @@
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-img id="donate-img" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" [queryParams]="{}"></ion-img>
+  <ion-img id="donate-img" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)='vibracion()' [queryParams]="{}"></ion-img>
   <ion-tab-bar>
-    <ion-tab-button [routerLink]="['/eventos']" [queryParams]="">
+    <ion-tab-button [routerLink]="['/eventos']" (click)='vibracion()' [queryParams]="">
       <ion-img id="eventos" src="assets/imágenes/eventos.svg"></ion-img>
       <ion-label color="azul">Eventos</ion-label>
     </ion-tab-button>
-    <ion-tab-button [routerLink]="['/devocionario']" [queryParams]="{}">
+    <ion-tab-button [routerLink]="['/devocionario']" (click)='vibracion()' [queryParams]="{}">
       <ion-img id="devocionario" src="assets/imágenes/devocionario.svg"></ion-img>
       <ion-label color="azul">Devocionario</ion-label>
     </ion-tab-button>
-    <ion-tab-button [routerLink]="['/donacion']" [queryParams]="{}">
+    <ion-tab-button [routerLink]="['/donacion']" (click)='vibracion()' [queryParams]="{}">
       <ion-label color="celeste"></ion-label>
     </ion-tab-button>
-    <ion-tab-button [routerLink]="['/romeria']" [queryParams]="{}">
+    <ion-tab-button [routerLink]="['/romeria']" (click)='vibracion()' [queryParams]="{}">
       <ion-img id="romeria" src="assets/imágenes/romeria.svg"></ion-img>
       <ion-label color="azul">Basílica</ion-label>
     </ion-tab-button>
-    <ion-tab-button [routerLink]="['/perfil']" [queryParams]="{}">
+    <ion-tab-button [routerLink]="['/perfil']" (click)='vibracion()' [queryParams]="{}">
       <ion-img id="perfil" src="assets/imágenes/tapPerfil_select.svg"></ion-img>
       <ion-label id="select" color="azul">Perfil</ion-label>
     </ion-tab-button>

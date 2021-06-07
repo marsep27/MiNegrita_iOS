@@ -1,9 +1,10 @@
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AlertController } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../services/firestore/firestore.service';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
 
 @Component({
@@ -33,8 +34,8 @@ export class RomeriaPerfilPage {
   porcentaje:       number;
   page:             string;
 
-  constructor(private firestoreService: FirestoreService, 
-    private route: ActivatedRoute,private router: Router, private firestore: AngularFirestore, public alertController: AlertController,) {
+  constructor(private firestoreService: FirestoreService, private vibra: Vibration,
+    private route: ActivatedRoute,private router: Router, private firestore: AngularFirestore,public platform: Platform, public alertController: AlertController,) {
     this.currentRomeria = { empty: true };
     this.cantidadRomerias = 0;
     this.totalHoras = 0;
@@ -211,6 +212,7 @@ export class RomeriaPerfilPage {
 
   //Eliminar la romería actual
   deleteRomeria() {
+    this.vibracion();
     this.confirmarDelete();
     console.log("Borrar?")
   }
@@ -223,6 +225,7 @@ export class RomeriaPerfilPage {
         {
           text: 'SÍ',
           handler: () => {
+            this.vibracion();
             this.confirmarBorradoDefnitivo()
           }
         },
@@ -242,6 +245,7 @@ export class RomeriaPerfilPage {
         {
           text: 'SÍ',
           handler: () => {
+            this.vibracion();
             this.firestoreService.deleteRomeria(firebase.auth().currentUser.uid);
             this.romeria = false;
             const userId = firebase.auth().currentUser.uid;
@@ -282,10 +286,17 @@ export class RomeriaPerfilPage {
   }
 
   back(){
+    this.vibracion();
     if (this.page == 'romería'){
       this.router.navigate(['/romeria'])
     } else {
       this.router.navigate(['/perfil'])
+    }
+  }
+
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
     }
   }
 }

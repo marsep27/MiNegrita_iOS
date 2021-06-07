@@ -8,6 +8,7 @@ import { FirestoreService } from '../services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { take } from 'rxjs/operators';
 import { Platform } from '@ionic/angular';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-perfil',
@@ -97,7 +98,8 @@ export class PerfilPage {
   timeout:        any;
   progress:       Number;
 
-  constructor(private firestoreService: FirestoreService, public platform: Platform, private firestore: AngularFirestore, public nativeAudio: NativeAudio, private socialSharing: SocialSharing, public Toast: ToastController) {
+  constructor(private firestoreService: FirestoreService, public platform: Platform,
+    private vibra: Vibration, private firestore: AngularFirestore, public nativeAudio: NativeAudio, private socialSharing: SocialSharing, public Toast: ToastController) {
     this.name           = "";
     this.lastName       = "";
     this.avatar         = "";
@@ -392,11 +394,13 @@ export class PerfilPage {
   
   //Se oculta la lectura
   hideLectura() {
+    this.vibracion();
     document.getElementById("lecturaPer").style.display = "none";
   }
 
   //Muestra la siguiente lectura
   showNextReading() {
+    this.vibracion();
     var index = this.lecturas.findIndex(x => x.title == this.currTitle);
 
     if ((index + 1) == this.lecturas.length) {
@@ -433,11 +437,13 @@ export class PerfilPage {
 
   //Se oculta la meditación
   hideMeditation() {
+    this.vibracion();
     document.getElementById("meditacionPer").style.display = "none";
   }
 
   //Se muestra la siguiente meditación
   showNextMeditation() {
+    this.vibracion();
     var index = this.meditaciones.findIndex(x => x.title == this.currTitle);
 
     if ((index + 1) == this.meditaciones.length) {
@@ -451,6 +457,7 @@ export class PerfilPage {
 
   //Se oculta la oración
   hidePlayer() {
+    this.vibracion();
     document.getElementById("playerPer").style.display = "none";
     this.back();
   }
@@ -529,6 +536,7 @@ export class PerfilPage {
   }
 
   playNext() {
+    this.vibracion();
     var index = this.canciones.findIndex(x => x.title == this.currTitle);
 
     if ((index + 1) == this.canciones.length) {
@@ -543,6 +551,7 @@ export class PerfilPage {
 
   //play previous song
   playPrev() {
+    this.vibracion();
     //get current song index
     var index = this.canciones.findIndex(x => x.title == this.currTitle);
 
@@ -562,18 +571,21 @@ export class PerfilPage {
 
   //pause current song
   pause() {
+    this.vibracion();
     this.currSong.pause();
     this.isPlaying = false;
   }
 
   //play currently paused song
   play() {
+    this.vibracion();
     this.currSong.play();
     this.isPlaying = true;
   }
 
   //Close current playing song and reset current song info
   back() {
+    this.vibracion();
     this.currTitle = "";
     this.currSubtitle = "";
     this.progressSong = 0;
@@ -619,6 +631,7 @@ export class PerfilPage {
             this.favourites = this.favourites.filter(favId => favId !== this.currOptionId);
           }
           else {
+            this.vibracion();
             this.firestoreService.addFavouritePrayer(userId, this.currOptionId);
             this.favourites.push(this.currOptionId);
           }
@@ -632,6 +645,7 @@ export class PerfilPage {
             this.favourites = this.favourites.filter(favId => favId !== this.currOptionId);
           }
           else {
+            this.vibracion();
             this.firestoreService.addFavouriteReading(userId, this.currOptionId);
             this.favourites.push(this.currOptionId);
           }
@@ -646,6 +660,7 @@ export class PerfilPage {
             this.favourites = this.favourites.filter(favId => favId !== this.currOptionId);
           }
           else {
+            this.vibracion();
             this.firestoreService.addFavouriteSong(userId, this.currOptionId);
             this.favourites.push(this.currOptionId);
           }
@@ -660,6 +675,7 @@ export class PerfilPage {
             this.favourites = this.favourites.filter(favId => favId !== this.currOptionId);
           }
           else {
+            this.vibracion();
             this.firestoreService.addFavouriteMeditation(userId, this.currOptionId);
             this.favourites.push(this.currOptionId);
           }
@@ -757,6 +773,7 @@ export class PerfilPage {
 
   //Link para ver más información de un evento
   reservar2(link) {
+    this.vibracion();
     window.open(link);
   }
 
@@ -770,6 +787,7 @@ export class PerfilPage {
       //this.presentToastNo();
     }
     else {
+      this.vibracion();
       this.firestoreService.addFavouriteEvent(userId, this.currOptionId);
       this.favourites.push(this.currOptionId);
       //this.presentToastYes();
@@ -861,4 +879,9 @@ export class PerfilPage {
     console.log(this.progress);
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }

@@ -4,15 +4,14 @@
     <ion-row>
       <!--Botones-->
       <ion-col class="ion-align-center" size="12">
-        <ion-button color="azul-claro" routerLink="/iniciar-sesion">Iniciar sesión</ion-button>
+        <ion-button color="azul-claro" routerLink="/iniciar-sesion" (click)='vibracion()'>Iniciar sesión</ion-button>
       </ion-col>
       <ion-col class="ion-align-center" size="12">
-        <ion-button color="anaranjado" routerLink="/registro-datos">Registrarse</ion-button>
+        <ion-button color="anaranjado" routerLink="/registro-datos" (click)='vibracion()'>Registrarse</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-
 
 <!--Para implementar el inicio de Facebook y Google-->
 <ion-footer class="ion-no-border">

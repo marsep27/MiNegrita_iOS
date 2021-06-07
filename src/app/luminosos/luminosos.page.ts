@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonRange } from "@ionic/angular";
+import { IonRange, Platform } from "@ionic/angular";
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-luminosos',
@@ -329,13 +330,14 @@ export class LuminososPage implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(public platform: Platform, private vibra: Vibration) { }
 
   ngOnInit() {
   }
 
   //play song
   audio() {
+    this.vibracion();
     //If a song plays,stop that
     if (this.currSong != null) {
       this.currSong.pause();
@@ -381,17 +383,20 @@ export class LuminososPage implements OnInit {
   }
 
   play() {
+    this.vibracion();
     this.currSong.play();
     this.isPlaying = true;
     this.isInicio = true;
   }
 
   pause() {
+    this.vibracion();
     this.currSong.pause();
     this.isPlaying = false;
   }
 
   parar() {
+    this.vibracion();
     if (this.currSong != null) {
       this.currSong.pause();
     }
@@ -432,4 +437,9 @@ export class LuminososPage implements OnInit {
     return (v < 10) ? "0" + v : v;
   }
 
+  vibracion(){
+    if (this.platform.is("android")) {
+      this.vibra.vibrate([50]);
+    }
+  }
 }
