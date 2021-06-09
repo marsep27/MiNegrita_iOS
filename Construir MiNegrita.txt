@@ -1,6 +1,7 @@
 visual studio code:
 Repositorio:
 https://github.com/marsep27/MiNegrita.git
+npm install --save
 
 APK:
 	ionic cordova build --release android
@@ -17,7 +18,14 @@ SHA1:
  ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="321302089447965" --variable APP_NAME="Mi Negrita"
 
 **IOS**
-ionic cordova build --release android
+ionic cordova build --release ios
 ionic emulate ios (Ver app en emulador)
 ios-sim showdevicetypes (Ver la lista de iphones)
 ionic emulate ios --target="iPhone-5s"
+
+cambiar analytics
+ng analytics off
+
+Problema con cordova
+sudo chown -R $USER /Users/cic/Library/Preferences/insight-nodejs/
+sudo gem install cocoapods
