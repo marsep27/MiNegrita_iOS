@@ -11,8 +11,9 @@ SHA1	keytool -list -printcert -jarfile app-release-unsigned.apk
 Change	zipalign -v 4 app-release-unsigned.apk MiNegrita.apk
 
 SHA1:
-	7F:4A:E5:C6:D9:3D:01:D8:01:1C:9B:7A:08:82:5A:BE:3B:43:00:C1
-	f0rlxtk9AdgBHJt6CIJavjtDAME=
+	http://tomeko.net/online_tools/hex_to_base64.php
+	82:C8:7B:25:F3:E9:B4:89:F5:05:27:A8:5F:76:88:43:CF:A3:51:6E
+	gsh7JfPptIn1BSeoX3aIQ8+jUW4=
 
 4542404919134939
  ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="321302089447965" --variable APP_NAME="Mi Negrita"
