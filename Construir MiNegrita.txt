@@ -20,6 +20,7 @@ SHA1:
 
 **IOS**
 ionic cordova build --release ios
+ionic cordova build ios --prod --optimizejs --minifycss --minifyjs
 ionic emulate ios (Ver app en emulador)
 ios-sim showdevicetypes (Ver la lista de iphones)
 ionic emulate ios --target="iPhone-5s"
