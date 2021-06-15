@@ -26,7 +26,13 @@ export class AppComponent {
       this.splashScreen.hide();
     });
 
-    this.platform.backButton.isStopped = true;
+    if (this.platform.is("cordova")) {
+      this.platform.backButton.isStopped = true;
+    } else {
+      this.platform.backButton.isStopped = true;
+    }
+
+    
 
     //this.firestore.firestore.enablePersistence()
 
