@@ -18,7 +18,7 @@
         style="width: 100%; margin-right: 0px; margin-left: 0px; padding-left: 0px; padding-right: 0px;">
         <ion-col size="12" size-sm>
           <ion-label color="azul">Nombre</ion-label>
-          <ion-input autocomplete="off" formControlName="name" type="text" placeholder="Juana" color="azul"
+          <ion-input autocomplete="off" formControlName="name" type="text" inputmode="text" pattern="text" tabindex="1" enterkeyhint="next" placeholder="Juana" color="azul"
             class="shadow-red" (click)="Clean()" (click)="change()"></ion-input>
           <div>
             <ng-container *ngFor="let tex of nom">
@@ -34,7 +34,7 @@
         <br>
         <ion-col size="12" size-sm>
           <ion-label color="azul">Apellidos</ion-label>
-          <ion-input autocomplete="off" formControlName="lastname" type="text" placeholder="Pereira" color="azul"
+          <ion-input autocomplete="off" formControlName="lastname" type="text" inputmode="text" pattern="text" tabindex="2" enterkeyhint="next" placeholder="Pereira" color="azul"
             class="shadow-red" (click)="Clean2()"></ion-input>
           <div>
             <ng-container *ngFor="let tex of ape">
@@ -50,7 +50,7 @@
         <br>
         <ion-col size="12" size-sm>
           <ion-label color="azul">Correo</ion-label>
-          <ion-input autocomplete="off" formControlName="email" type="email" inputmode="email"
+          <ion-input autocomplete="off" formControlName="email" type="email" inputmode="email" tabindex="3" enterkeyhint="next"
             placeholder="minegrita@santuarionacional.org" color="azul" class="shadow-red" (click)="Clean3()"></ion-input>
           <div>
             <ng-container *ngFor="let tex of text">
@@ -66,7 +66,7 @@
         <br>
         <ion-col size="12" size-sm>
           <ion-label color="azul">Contraseña (Mínimo 6 caracteres)</ion-label>
-          <ion-input autocomplete="off" formControlName="password" type="password" placeholder="" enterkeyhint="done"
+          <ion-input autocomplete="off" formControlName="password" type="password" placeholder="" tabindex="4" enterkeyhint="done-all"
             color="azul" class="shadow-red" (click)="Clean4()"></ion-input>
           <div>
             <ng-container *ngFor="let tex of pass">
