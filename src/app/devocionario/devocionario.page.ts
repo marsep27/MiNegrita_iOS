@@ -355,12 +355,18 @@ export class DevocionarioPage {
     }
 
     document.getElementById("lectura").style.display = "block";
+    document.getElementById("header").style.visibility="hidden";
+    document.getElementById("segment").style.visibility="hidden";
+    document.getElementById("foot").style.visibility="hidden";
   }
 
   //Se oculta la lectura
   hideLectura() {
     this.vibracion();
     document.getElementById("lectura").style.display = "none";
+    document.getElementById("header").style.visibility="visible";
+    document.getElementById("segment").style.visibility="visible";
+    document.getElementById("foot").style.visibility="visible";
   }
 
   //Muestra la siguiente lectura
@@ -398,12 +404,18 @@ export class DevocionarioPage {
     }
 
     document.getElementById("meditacion").style.display = "block";
+    document.getElementById("header").style.visibility="hidden";
+    document.getElementById("segment").style.visibility="hidden";
+    document.getElementById("foot").style.visibility="hidden";
   }
  
   //Se oculta la meditación
   hideMeditation() {
     this.vibracion();
     document.getElementById("meditacion").style.display = "none";
+    document.getElementById("header").style.visibility="visible";
+    document.getElementById("segment").style.visibility="visible";
+    document.getElementById("foot").style.visibility="visible";
   }
 
   //Se muestra la siguiente meditación
@@ -424,6 +436,9 @@ export class DevocionarioPage {
   hidePlayer() {
     this.vibracion();
     document.getElementById("player").style.display = "none";
+    document.getElementById("header").style.visibility="visible";
+    document.getElementById("segment").style.visibility="visible";
+    document.getElementById("foot").style.visibility="visible";
     this.back();
   }
 
@@ -440,6 +455,9 @@ export class DevocionarioPage {
 
     //open full player view
     document.getElementById("player").style.display = "block";
+    document.getElementById("header").style.visibility="hidden";
+    document.getElementById("segment").style.visibility="hidden";
+    document.getElementById("foot").style.visibility="hidden";
     //set current song details
     this.currTitle = title;
     this.currSubtitle = subTitle;

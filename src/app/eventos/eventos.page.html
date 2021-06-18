@@ -8,9 +8,9 @@
 </ion-header>
 
 <ion-content mode="md">
-  <div [ngSwitch]="segment" id="segmentEve">
+  <div [ngSwitch]="segment" id="segmentEve" mode="md">
     <!--Sección para mostrar las actividades y eventos-->
-    <div *ngSwitchCase="'Actividades'">
+    <div *ngSwitchCase="'Actividades'" mode="md">
       <!--<ion-card id="Actividades" (click)="popmisa()">
         <ion-grid>
           <ion-row>
@@ -111,7 +111,7 @@
       <br>
     </div>
 
-    <div *ngSwitchCase="'Horarios'">
+    <div *ngSwitchCase="'Horarios'" mode="md">
       <!--Se muestran los horarios de las misas, confesiones y demás-->
       <ion-grid id="Horarios">
         <ion-row>
@@ -142,7 +142,7 @@
       </ion-grid>
     </div>
 
-    <div *ngSwitchCase="'Santoral'">
+    <div *ngSwitchCase="'Santoral'" mode="md">
     <!--Santoral de los días del años-->
     <ion-grid id="Santoral">
       <ion-row>
@@ -213,7 +213,7 @@
   </div>-->
 
   <!--Full pop Eventos-->
-  <div id="PopEvento">
+  <div id="PopEvento" mode="md">
 
     <!-- Minimize Icon -->
     <ion-buttons slot="end">

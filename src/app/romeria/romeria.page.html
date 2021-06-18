@@ -1,7 +1,7 @@
 <ion-header *ngIf="!finished" class="ion-no-border" mode="md">
   <br>
   <br>
-  <span>Basílica</span>
+  <span mode="md">Basílica</span>
 </ion-header>
 
 <ion-header *ngIf="finished" class="final-header ion-no-border" id="headRo" mode="md">
@@ -122,7 +122,7 @@
       </div>
     </div>
 
-    <div class="romeria" *ngIf="romeria">
+    <div class="romeria" *ngIf="romeria" mode="md">
       <ion-list-header>
         <ion-title color="azul">Romería</ion-title>
       </ion-list-header>
@@ -157,7 +157,7 @@
     </div>
   </div>
 
-  <div id="fin" class="finished" *ngIf="finished" scrollY=true>
+  <div id="fin" class="finished" *ngIf="finished" scrollY=true mode="md">
     <br>
     <ion-grid>
       <ion-row>
@@ -190,7 +190,7 @@
     </ion-grid>
   </div>
 
-  <div class="dots-modal" id="dots-modal-ro">
+  <div class="dots-modal" id="dots-modal-ro" mode="md">
     <h2 class="dots-modal-title ion-text-center">{{currTitle}}</h2>
     <h3 class="dots-modal-subtitle ion-text-center">{{currSubtitle}}</h3>
     <ion-grid class="dots-modal-grid" class="ion-no-padding">
@@ -232,7 +232,7 @@
   </div>
 
   <!--Full song player view-->
-  <div class="player" id="playeRo">
+  <div class="player" id="playeRo" mode="md">
     <ion-toolbar class="ion-text-center ion-no-padding player-toolbar">
       <ion-buttons class="player-back-btn" slot="start">
         <ion-button (click)="hidePlayer()">

@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border" id="header" mode="md"> 
   <span class="header-title">Devocionario</span>
-  <ion-segment scrollable [(ngModel)]="segment" (ionChange)="segmentChanged(segment)" (click)='vibracion()'>
+  <ion-segment scrollable [(ngModel)]="segment" (ionChange)="segmentChanged(segment)" (click)='vibracion()' mode="md">
     <ion-segment-button checked id="1" value="oraciones">Oraciones</ion-segment-button>
     <ion-segment-button id="2" value="lecturas">Lecturas</ion-segment-button>
     <ion-segment-button id="3" value="canciones">Canciones</ion-segment-button>
@@ -11,8 +11,8 @@
 <ion-content class="outer-content has-header" scroll="true" mode="md"> 
 
   <!--Prayers list-->
-  <div [ngSwitch]="segment" id="segment">
-    <ion-list class="ion-no-padding" *ngSwitchCase="'oraciones'">
+  <div [ngSwitch]="segment" id="segment" mode="md">
+    <ion-list class="ion-no-padding" *ngSwitchCase="'oraciones'" mode="md"> 
       <img class="segment-img" src="assets/imágenes/oraciones.svg" />
       <div class="oraciones-container">
         <span class="rosario-title">El Santo Rosario</span>
@@ -51,7 +51,7 @@
     </ion-list>
 
     <!--Readings list-->
-    <ion-list class="ion-no-padding" *ngSwitchCase="'lecturas'">
+    <ion-list class="ion-no-padding" *ngSwitchCase="'lecturas'" mode="md">
       <img class="segment-img" src="assets/imágenes/lecturas.svg" />
       <div class="lecturas-container">
         <ion-list lines="none" *ngIf="contentLoaded2">
@@ -85,7 +85,7 @@
     </ion-list>
 
     <!--Songs list-->
-    <ion-list class="ion-no-padding" *ngSwitchCase="'canciones'">
+    <ion-list class="ion-no-padding" *ngSwitchCase="'canciones'" mode="md">
       <img class="segment-img" src="assets/imágenes/canciones.svg" />
       <div class="canciones-container">
         <ion-list lines="none" *ngIf="contentLoaded3">
@@ -127,7 +127,7 @@
     </ion-list>
 
     <!--Meditations list-->
-    <ion-list class="ion-no-padding" *ngSwitchCase="'meditaciones'">
+    <ion-list class="ion-no-padding" *ngSwitchCase="'meditaciones'" mode="md">
       <img class="segment-img" src="assets/imágenes/meditaciones.svg" />
       <div class="meditaciones-container">
         <ion-list lines="none" *ngIf="contentLoaded4">
@@ -158,7 +158,7 @@
   </div>
 
   <!--Full reading view-->
-  <div class="lectura" id="lectura">
+  <div class="lectura" id="lectura" mode="md">
     <ion-toolbar class="ion-text-center ion-no-padding lectura-toolbar">
       <ion-buttons class="lectura-back-btn" slot="start">
         <ion-button (click)="hideLectura()">
@@ -187,7 +187,7 @@
   </div>
 
   <!--Full meditation view-->
-  <div class="meditacion" id="meditacion">
+  <div class="meditacion" id="meditacion" mode="md">
     <ion-toolbar class="ion-text-center ion-no-padding meditacion-toolbar">
       <ion-buttons class="meditacion-back-btn" slot="start">
         <ion-button (click)="hideMeditation()">
@@ -215,7 +215,7 @@
   </div>
 
   <!--Full song player view-->
-  <div class="player" id="player">
+  <div class="player" id="player" mode="md">
     <ion-toolbar class="ion-text-center ion-no-padding player-toolbar">
       <ion-buttons class="player-back-btn" slot="start">
         <ion-button (click)="hidePlayer()">
@@ -274,7 +274,7 @@
     </div>
   </div>
 
-  <div class="dots-modal" id="dots-modal">
+  <div class="dots-modal" id="dots-modal" mode="md">
     <h2 class="dots-modal-title ion-text-center">{{currTitle}}</h2>
     <h3 class="dots-modal-subtitle ion-text-center">{{currSubtitle}}</h3>
     <ion-grid class="dots-modal-grid" class="ion-no-padding">
