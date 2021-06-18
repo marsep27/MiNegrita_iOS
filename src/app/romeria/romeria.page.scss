@@ -52,6 +52,8 @@ ion-header {
 ion-content {
     --background: #ffffff;
     .not_finished {
+        overflow-y: scroll;
+        height: 680px;
         ion-grid {
             ion-row {
                 ion-col {
@@ -204,6 +206,8 @@ ion-content {
     }
 
     .finished {
+        overflow-y: scroll;
+        height: 380px;
         ion-grid {
             ion-row {
                 ion-col {

@@ -16,6 +16,7 @@ ion-header {
 }
 
 ion-content {
+    overflow-y: scroll;
     --background: #ffffff;
     ion-grid {
         vertical-align: middle;

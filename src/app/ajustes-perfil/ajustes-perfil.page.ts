@@ -34,7 +34,7 @@ export class AjustesPerfilPage implements OnInit {
   //Mostrar PopUp de patrocinadores
   patrocinadores(){
     this.vibracion();
-    document.getElementById("patrocinadores").style.bottom = "12vh";
+    document.getElementById("patrocinadores").style.bottom = "10vh";
     document.getElementById("headAju").style.filter = "blur(2px)";
     document.getElementById("contentAju").style.filter = "blur(2px)";
   }

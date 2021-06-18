@@ -386,7 +386,7 @@ export class RegistroExvotosPage implements OnInit {
 
   //Tras haber seleccionado los exvotos, se aceptan términos y condiciones
   terminosCondiciones(){
-    document.getElementById("TerminosCondiciones").style.bottom = "12vh";
+    document.getElementById("TerminosCondiciones").style.bottom = "10vh";
     document.getElementById("contentEx").style.filter = "blur(2px)";
     document.getElementById("footEx").style.filter = "blur(2px)";
   }
