@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<ion-header class="ion-no-border" mode="md">
   <ion-button fill="clear" (click)="back()">
     <ion-icon slot="icon-only" color="azul" name="arrow-back-outline"></ion-icon>
   </ion-button>
@@ -81,7 +81,7 @@
   </div>
 </ion-header>
 
-<ion-content>
+<ion-content mode="md">
   <!--Muestra la información de la romeria en pasos en la parte inferior-->
   <div *ngIf="pasos && contentLoaded">
     <ion-grid class="content">

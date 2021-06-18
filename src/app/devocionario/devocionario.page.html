@@ -1,6 +1,6 @@
-<ion-header class="ion-no-border" id="header">
+<ion-header class="ion-no-border" id="header" mode="md"> 
   <span class="header-title">Devocionario</span>
-  <ion-segment scrollable [(ngModel)]="segment" (ionChange)="segmentChanged(segment)">
+  <ion-segment scrollable [(ngModel)]="segment" (ionChange)="segmentChanged(segment)" (click)='vibracion()'>
     <ion-segment-button checked id="1" value="oraciones">Oraciones</ion-segment-button>
     <ion-segment-button id="2" value="lecturas">Lecturas</ion-segment-button>
     <ion-segment-button id="3" value="canciones">Canciones</ion-segment-button>
@@ -8,7 +8,7 @@
   </ion-segment>
 </ion-header>
 
-<ion-content class="outer-content has-header" scroll="true">
+<ion-content class="outer-content has-header" scroll="true" mode="md"> 
 
   <!--Prayers list-->
   <div [ngSwitch]="segment" id="segment">
@@ -315,7 +315,7 @@
     </ion-button>
   </div>
 </ion-content>
-<ion-footer class="ion-no-border" id="foot">
+<ion-footer class="ion-no-border" id="foot" mode="md">
   <ion-img id="footer" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)='vibracion()'></ion-img>
   <ion-tab-bar>
     <ion-tab-button [routerLink]="['/eventos']" (click)='vibracion()'>

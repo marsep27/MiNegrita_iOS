@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border ion-no-padding">
+<ion-header class="ion-no-border ion-no-padding" mode="md">
   <ion-toolbar class="ion-no-padding toolbar-start" *ngIf="!isInicio">
     <ion-buttons class="header-back-btn" slot="start">
       <ion-button (click)="parar()" routerLink="/devocionario">
@@ -42,7 +42,7 @@
     </ion-button>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content mode="md"> 
   <div class="text-area-container" id="text-area-container">
     <div class="text-area scroll-content" id="text-area" scrollY=true>
       <h5 class="subtitle">La Señal de la Cruz</h5>

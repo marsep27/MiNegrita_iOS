@@ -1,8 +1,8 @@
-<ion-header class="ion-no-border" id="headerPer">
+<ion-header class="ion-no-border" id="headerPer" mode="md">
   <ion-toolbar></ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="false" slot="fixed">
+<ion-content fullscreen="false" slot="fixed" mode="md">
   <div class="scroll-content" id="segmentPer">
     <div class="profile">
       <ion-buttons slot="primary">
@@ -477,7 +477,7 @@
     </ion-grid>
   </div>
 </ion-content>
-<ion-footer class="ion-no-border" id="footPer">
+<ion-footer class="ion-no-border" id="footPer" mode="md">
   <ion-img id="donate-img" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)='vibracion()'></ion-img>
   <ion-tab-bar>
     <ion-tab-button [routerLink]="['/eventos']" (click)='vibracion()'>

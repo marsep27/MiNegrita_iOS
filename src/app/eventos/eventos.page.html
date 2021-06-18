@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border" id="headerEve">
+<ion-header class="ion-no-border" id="headerEve" mode="md">
   <span class="header-title">Eventos</span>
   <ion-segment [(ngModel)]="segment" (click)='vibracion()'>
     <ion-segment-button checked value="Actividades">Actividades</ion-segment-button>
@@ -7,7 +7,7 @@
   </ion-segment>
 </ion-header>
 
-<ion-content>
+<ion-content mode="md">
   <div [ngSwitch]="segment" id="segmentEve">
     <!--Sección para mostrar las actividades y eventos-->
     <div *ngSwitchCase="'Actividades'">
@@ -264,7 +264,7 @@
     </ion-grid>
   </div>
 
-  <ion-footer class="ion-no-border" id="footEve">
+  <ion-footer class="ion-no-border" id="footEve" mode="md">
     <ion-img id="footer" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)='vibracion()'></ion-img>
     <ion-tab-bar>
       <ion-tab-button [routerLink]="['/eventos']" (click)='vibracion()'>

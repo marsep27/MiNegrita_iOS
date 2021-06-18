@@ -1,4 +1,4 @@
-<ion-content color="celeste">
+<ion-content color="celeste" mode="md">
   <ion-toolbar color="celeste">
     <ion-buttons slot="start">
       <ion-button routerLink="/home" (click)='vibracion()'>
@@ -7,7 +7,7 @@
     </ion-buttons>
   </ion-toolbar>
   <!--Encabezado-->
-  <ion-title color="azul">Iniciar Sesión</ion-title>
+  <ion-title class="md title-default ion-color ion-color-azul md hydrated" color="azul">Iniciar Sesión</ion-title>
   <br>
   <br>
   <ion-grid>
@@ -17,7 +17,7 @@
         style="width: 100%; margin-right: 0px; margin-left: 0px; padding-left: 0px; padding-right: 0px;">
         <ion-col size="12">
           <ion-label color="azul">Correo</ion-label>
-          <ion-input formControlName="email" type="email" color="azul" class="shadow-red" (click)="Clean()"></ion-input>
+          <ion-input formControlName="email" placeholder="minegrita@santuarionacional.org" type="email" color="azul" class="shadow-red" (click)="Clean()"></ion-input>
           <div>
             <ng-container *ngFor="let tex of text">
               <small class="error-message">{{tex.tex}}</small>

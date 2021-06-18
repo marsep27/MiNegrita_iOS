@@ -252,7 +252,6 @@ export class DevocionarioPage {
 
   //Función para movilizar las pestañas de los segmentos
   segmentChanged(segment) {
-    this.vibracion();
     if (segment == "oraciones") {
       console.log(segment);
       document.getElementById("1").scrollIntoView({

@@ -108,7 +108,10 @@
       "cordova-plugin-gyroscope": {},
       "cordova-plugin-device-motion": {},
       "cordova-plugin-pedometer": {},
-      "cordova-plugin-x-socialsharing": {},
+      "cordova-plugin-x-socialsharing": {
+        "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly."
+      },
       "cordova-plugin-file": {},
       "cordova-plugin-androidx": {},
       "cordova-plugin-androidx-adapter": {},
@@ -121,7 +124,8 @@
       "cordova-plugin-vibration": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
