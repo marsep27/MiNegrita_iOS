@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border" id="headerEve">
+<ion-header class="ion-no-border" id="headerEve" mode="md">
   <span class="header-title">Eventos</span>
   <ion-segment [(ngModel)]="segment" (click)='vibracion()'>
     <ion-segment-button checked value="Actividades">Actividades</ion-segment-button>
@@ -7,10 +7,10 @@
   </ion-segment>
 </ion-header>
 
-<ion-content>
-  <div [ngSwitch]="segment" id="segmentEve">
+<ion-content mode="md">
+  <div [ngSwitch]="segment" id="segmentEve" mode="md">
     <!--Sección para mostrar las actividades y eventos-->
-    <div *ngSwitchCase="'Actividades'">
+    <div *ngSwitchCase="'Actividades'" mode="md">
       <!--<ion-card id="Actividades" (click)="popmisa()">
         <ion-grid>
           <ion-row>
@@ -111,7 +111,7 @@
       <br>
     </div>
 
-    <div *ngSwitchCase="'Horarios'">
+    <div *ngSwitchCase="'Horarios'" mode="md">
       <!--Se muestran los horarios de las misas, confesiones y demás-->
       <ion-grid id="Horarios">
         <ion-row>
@@ -142,7 +142,7 @@
       </ion-grid>
     </div>
 
-    <div *ngSwitchCase="'Santoral'">
+    <div *ngSwitchCase="'Santoral'" mode="md">
     <!--Santoral de los días del años-->
     <ion-grid id="Santoral">
       <ion-row>
@@ -213,7 +213,7 @@
   </div>-->
 
   <!--Full pop Eventos-->
-  <div id="PopEvento">
+  <div id="PopEvento" mode="md">
 
     <!-- Minimize Icon -->
     <ion-buttons slot="end">
@@ -264,7 +264,7 @@
     </ion-grid>
   </div>
 
-  <ion-footer class="ion-no-border" id="footEve">
+  <ion-footer class="ion-no-border" id="footEve" mode="md">
     <ion-img id="footer" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)='vibracion()'></ion-img>
     <ion-tab-bar>
       <ion-tab-button [routerLink]="['/eventos']" (click)='vibracion()'>

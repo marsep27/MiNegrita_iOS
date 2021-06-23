@@ -116,7 +116,7 @@ export class PerfilPage {
     //Simulate data loading in
     setTimeout(() => {
       this.contentLoaded = true
-    }, 2000);
+    }, 3000);
   }
 
   ionViewWillEnter() {

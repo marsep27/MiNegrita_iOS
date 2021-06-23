@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border" id="headAju">
+<ion-header class="ion-no-border" id="headAju" mode="md">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button class="header-back-btn" defaultHref="/perfil" text="" icon="arrow-back-outline"
@@ -11,7 +11,7 @@
 </ion-header>
 
 <!--Menú en ajustes-->
-<ion-content>
+<ion-content mode="md">
   <ion-list class="settings-options" id="contentAju">
     <ion-item class="item">
       <ion-label class="settings-opts-label" (click)='vibracion()' [routerLink]="['/editar-perfil']">Perfil</ion-label>

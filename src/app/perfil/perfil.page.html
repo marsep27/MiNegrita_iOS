@@ -1,13 +1,13 @@
-<ion-header class="ion-no-border" id="headerPer">
+<ion-header class="ion-no-border" id="headerPer" mode="md">
   <ion-toolbar></ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="false" slot="fixed">
-  <div class="scroll-content" id="segmentPer">
+<ion-content fullscreen="false" slot="fixed" mode="md">
+  <div class="scroll-content" id="segmentPer" mode="md">
     <div class="profile">
       <ion-buttons slot="primary">
         <span class="profile-title">Perfil</span>
-        <ion-button class="profile-settings" [routerLink]="['/ajustes-perfil']" (click)='vibracion()'>
+        <ion-button class="profile-settings" [routerLink]="['/ajustes-perfil']" (click)='vibracion()' mode="md">
           <ion-icon class="profile-settings-icon" slot="icon-only" src="assets/imágenes/settings-icon.svg"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -308,7 +308,7 @@
   </div>
 
   <!--Full reading view-->
-  <div class="lectura" id="lecturaPer">
+  <div class="lectura" id="lecturaPer" mode="md">
     <ion-toolbar class="ion-text-center ion-no-padding lectura-toolbar">
       <ion-buttons class="lectura-back-btn" slot="start">
         <ion-button (click)="hideLectura()">
@@ -337,7 +337,7 @@
   </div>
 
   <!--Full meditation view-->
-  <div class="meditacion" id="meditacionPer">
+  <div class="meditacion" id="meditacionPer" mode="md">
     <ion-toolbar class="ion-text-center ion-no-padding meditacion-toolbar">
       <ion-buttons class="meditacion-back-btn" slot="start">
         <ion-button (click)="hideMeditation()">
@@ -365,7 +365,7 @@
   </div>
 
   <!--Full song player view-->
-  <div class="player" id="playerPer">
+  <div class="player" id="playerPer" mode="md">
     <ion-toolbar class="ion-text-center ion-no-padding player-toolbar">
       <ion-buttons class="player-back-btn" slot="start">
         <ion-button (click)="hidePlayer()">
@@ -425,7 +425,7 @@
   </div>
 
   <!--Full popUp Evento-->
-  <div id="PopUpEvento">
+  <div id="PopUpEvento" mode="md">
 
     <!-- Minimize Icon -->
     <ion-buttons slot="end">
@@ -477,7 +477,7 @@
     </ion-grid>
   </div>
 </ion-content>
-<ion-footer class="ion-no-border" id="footPer">
+<ion-footer class="ion-no-border" id="footPer" mode="md">
   <ion-img id="donate-img" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)='vibracion()'></ion-img>
   <ion-tab-bar>
     <ion-tab-button [routerLink]="['/eventos']" (click)='vibracion()'>
