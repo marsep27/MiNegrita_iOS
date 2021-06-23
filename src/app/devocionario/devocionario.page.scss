@@ -136,7 +136,7 @@ ion-content {
     }
 
     .lectura {
-        display: none;
+        display: none; 
         transition: 0.5s;
         width: 100%;
         height: 100%;
@@ -144,7 +144,7 @@ ion-content {
         top: 0;
         left: 0;
         position: fixed;
-
+        bottom: -1000px;
         &-toolbar {
             background-color: #0f7386 !important;
             --background: url("../../assets/imágenes/blur-bg-lectura.svg") no-repeat left top;
@@ -243,6 +243,7 @@ ion-content {
         top: 0;
         left: 0;
         position: fixed;
+        bottom: -1000px;
 
         &-toolbar {
             background-color: #aae5eb !important;
@@ -331,6 +332,7 @@ ion-content {
         top: 0;
         left: 0;
         position: fixed;
+        bottom: -1000px;
 
         &-toolbar {
             background-color: #0f7386 !important;
