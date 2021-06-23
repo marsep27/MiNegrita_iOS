@@ -34,10 +34,10 @@ export class AjustesPerfilPage implements OnInit {
   //Mostrar PopUp de patrocinadores
   patrocinadores(){
     this.vibracion();
-    document.getElementById("patrocinadores").style.bottom = "10vh";
-    document.getElementById("headAju").style.filter = "blur(2px)";
-    document.getElementById("contentAju").style.filter = "blur(2px)";
-    document.getElementById("fooAdj").style.filter = "blur(2px)";
+    document.getElementById("patrocinadores").style.bottom = "5vh";
+    document.getElementById("headAju").style.filter = "blur(5px)";
+    document.getElementById("contentAju").style.filter = "blur(5px)";
+    document.getElementById("fooAdj").style.filter = "blur(5px)";
   }
 
   //Se miniza el popUp de los patrocinadores

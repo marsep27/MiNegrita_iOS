@@ -360,7 +360,7 @@ export class EventosPage {
 
   //Se muestra el popUp de la misa
   popmisa() {
-    document.getElementById("PopMisa").style.bottom = "10vh";
+    document.getElementById("PopMisa").style.bottom = "5vh";
     document.getElementById("headerEve").style.filter = "blur(2px)";
     document.getElementById("segmentEve").style.filter = "blur(2px)";
     document.getElementById("footeEve").style.filter = "blur(2px)";
@@ -376,7 +376,7 @@ export class EventosPage {
 
   //Se muestra el popUp del evento
   PopEvento(nombre, direccion, fecha, informacion, reserva, link, optId: string) {
-    document.getElementById("PopEvento").style.bottom = "10vh";
+    document.getElementById("PopEvento").style.bottom = "5vh";
     document.getElementById("headerEve").style.filter = "blur(2px)";
     document.getElementById("segmentEve").style.filter = "blur(2px)";
     document.getElementById("footEve").style.filter = "blur(2px)";
