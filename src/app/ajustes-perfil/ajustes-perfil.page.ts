@@ -37,6 +37,7 @@ export class AjustesPerfilPage implements OnInit {
     document.getElementById("patrocinadores").style.bottom = "10vh";
     document.getElementById("headAju").style.filter = "blur(2px)";
     document.getElementById("contentAju").style.filter = "blur(2px)";
+    document.getElementById("fooAdj").style.filter = "blur(2px)";
   }
 
   //Se miniza el popUp de los patrocinadores
@@ -44,6 +45,7 @@ export class AjustesPerfilPage implements OnInit {
     document.getElementById("patrocinadores").style.bottom = "-1000px";
     document.getElementById("headAju").style.filter = "none";
     document.getElementById("contentAju").style.filter = "none";
+    document.getElementById("fooAdj").style.filter = "none";
   }
 
   //Alerta para cerrar sesión
@@ -87,6 +89,11 @@ export class AjustesPerfilPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  go(){
+    this.vibracion();
+    window.open("https://www.santuarionacional.org/");
   }
 
   vibracion(){
