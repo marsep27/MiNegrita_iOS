@@ -10,7 +10,6 @@ import { IonRange } from "@ionic/angular";
 import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
 import { Reference } from '@angular/compiler/src/render3/r3_ast';
-import { link } from 'fs';
 
 @Component({
   selector: 'app-eventos',
