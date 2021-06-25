@@ -11,7 +11,7 @@
   <div [ngSwitch]="segment" id="segmentEve" mode="md">
     <!--Sección para mostrar las actividades y eventos-->
     <div *ngSwitchCase="'Actividades'" mode="md">
-      <!--<ion-card id="Actividades" (click)="popmisa()">
+      <ion-card id="Actividades" *ngIf="reservaMisa" (click)="goMisa()">
         <ion-grid>
           <ion-row>
             <ion-col size="5">
@@ -22,14 +22,14 @@
                 <h1>¡Reservá tú cupo en la Santa Eucaristía!
                   <br>
                   <p>
-                    Aplica solamente para fines de semana.
+                    Aplica durante las celebraciones religiosas.
                   </p>
                 </h1>
               </ion-text>
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ion-card>-->
+      </ion-card>
       <ion-grid class="Eventos">
         <ion-row>
           <ion-col size="12">

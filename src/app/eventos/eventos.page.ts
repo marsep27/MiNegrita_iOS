@@ -10,6 +10,7 @@ import { IonRange } from "@ionic/angular";
 import { Vibration } from '@ionic-native/vibration/ngx';
 import * as firebase from 'firebase';
 import { Reference } from '@angular/compiler/src/render3/r3_ast';
+import { link } from 'fs';
 
 @Component({
   selector: 'app-eventos',
@@ -44,6 +45,7 @@ export class EventosPage {
 
   bookable:     boolean = true;
   linkMisa:     any;
+  reservaMisa:  boolean;
 
   currNombre:    string;
   currDireccion: string;
@@ -88,8 +90,9 @@ export class EventosPage {
   ngOnInit(){
     //Se obtiene el link para realizar la reserva de la misa
     firebase.firestore().collection('linkApp').doc('EntradasMisa').onSnapshot((linkSnapshot) => {
-      const link = linkSnapshot;
-      this.linkMisa = link.data().link;
+      const info = linkSnapshot;
+      this.linkMisa = info.data().link;
+      this.reservaMisa = info.data().reserva;
       console.log(this.linkMisa);
     });
   }
@@ -100,8 +103,9 @@ export class EventosPage {
 
     //Se obtiene el link para realizar la reserva de la misa
     firebase.firestore().collection('linkApp').doc('EntradasMisa').onSnapshot((linkSnapshot) => {
-      const link = linkSnapshot;
-      this.linkMisa = link.data().link;
+      const info = linkSnapshot;
+      this.linkMisa = info.data().link;
+      this.reservaMisa= info.data().reserva;
       console.log(this.linkMisa);
     });
 
@@ -399,10 +403,10 @@ export class EventosPage {
     }
   }
 
-  /*//Link para reservar el espacio en la misa
-  reservar() {
+  //Link para reservar el espacio en la misa
+  goMisa() {
     window.open(this.linkMisa);
-  }*/
+  }
 
   //Link para ver más información de un evento
   masInformacion(link) {
