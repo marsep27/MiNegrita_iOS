@@ -54,6 +54,13 @@ export class EventosPage {
   currLink:      string;
   currUser:      string;
 
+  habilConsejo: boolean;
+  habilAnuncio: boolean;
+  titulo:       string;
+  anuncio1:     string;
+  anuncio2:     string;
+  anuncio3:     string;
+  anuncio4:     string;
   misa:         string;
   horMisa:      string;
   confesion:    string;
@@ -92,6 +99,12 @@ export class EventosPage {
       const info = linkSnapshot;
       this.linkMisa = info.data().link;
       this.reservaMisa = info.data().reserva;
+      this.habilAnuncio = info.data().anuncios;
+      this.titulo = info.data().titulo;
+      this.anuncio1 = info.data().anuncio1;
+      this.anuncio2 = info.data().anuncio2;
+      this.anuncio3 = info.data().anuncio3;
+      this.anuncio4 = info.data().anuncio4;
       console.log(this.linkMisa);
     });
   }
@@ -105,6 +118,12 @@ export class EventosPage {
       const info = linkSnapshot;
       this.linkMisa = info.data().link;
       this.reservaMisa= info.data().reserva;
+      this.habilAnuncio = info.data().anuncios;
+      this.titulo = info.data().titulo;
+      this.anuncio1 = info.data().anuncio1;
+      this.anuncio2 = info.data().anuncio2;
+      this.anuncio3 = info.data().anuncio3;
+      this.anuncio4 = info.data().anuncio4;
       console.log(this.linkMisa);
     });
 
@@ -172,6 +191,7 @@ export class EventosPage {
         this.horPyP = horario.data().pilaypiedrahorario;
         this.oficina = horario.data().oficina;
         this.horOficina = horario.data().oficinahorario;
+        this.habilConsejo = horario.data().habilitarConsejo;
       });
     });
 
@@ -287,6 +307,7 @@ export class EventosPage {
         this.horPyP = horario.data().pilaypiedrahorario;
         this.oficina = horario.data().oficina;
         this.horOficina = horario.data().oficinahorario;
+        this.habilConsejo = horario.data().habilitarConsejo;
       });
     });
 

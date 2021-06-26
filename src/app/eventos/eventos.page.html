@@ -11,6 +11,19 @@
   <div [ngSwitch]="segment" id="segmentEve" mode="md">
     <!--Sección para mostrar las actividades y eventos-->
     <div *ngSwitchCase="'Actividades'" mode="md">
+      <ion-grid id="Anuncios" *ngIf="habilAnuncio">
+        <ion-row>
+          <ion-col>
+            <ion-text>
+              <h5 [innerHTML]="titulo"></h5>
+              <p [innerHTML]="anuncio1"></p>
+              <p [innerHTML]="anuncio2"></p>
+              <p [innerHTML]="anuncio3"></p>              
+              <p [innerHTML]="anuncio4"></p>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
       <ion-card id="Actividades" *ngIf="reservaMisa" (click)="goMisa()">
         <ion-grid>
           <ion-row>
@@ -127,7 +140,7 @@
               <p [innerHTML]="horHoraSanta">
               </p>
               <ion-text [innerHTML]="consejo"></ion-text>
-              <ion-text style="font-size: 19px; color:#87B9C3;">(Llamar a la oficina)</ion-text>
+              <ion-text *ngIf="habilConsejo" style="font-size: 19px; color:#87B9C3;">(Llamar a la oficina)</ion-text>
               <p [innerHTML]="horaConsejo">
               </p>
               <h5 [innerHTML]="pilaYpiedra"></h5>

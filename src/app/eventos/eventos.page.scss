@@ -38,7 +38,10 @@ ion-content {
         background: #f3fafb;
         box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
         border-radius: 11px;
-        margin: 20px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
         ion-grid {
             ion-row {
                 ion-col {
@@ -137,8 +140,36 @@ ion-content {
         }
     }
 
+    #Anuncios {
+        margin-left: 5px;
+        ion-row {
+            ion-col {
+                ion-text {
+                    margin-bottom: 0px;
+                    font-family: "VisbyCF-Light";
+                    font-size: 22px;
+                    color: #1390a1;
+                    h5 {
+                        margin-top: 5px;
+                        margin-bottom: 0px;
+                        font-family: "VisbyCF-Light";
+                        font-size: 22px;
+                        color: #1390a1;
+                    }
+                    p {
+                        margin-top: 0px;
+                        margin-bottom: 0px;
+                        font-family: "VisbyCF-Light";
+                        font-size: 16px;
+                        color: #1390a1;
+                    }
+                }
+            }
+        }
+    }
+
     #Horarios {
-        margin-left: 15px;
+        margin-left: 5px;
         margin-bottom: 110px;
         ion-row {
             ion-col {
@@ -149,6 +180,7 @@ ion-content {
                     color: #1390a1;
                     h5 {
                         margin-bottom: 0px;
+                        margin-top: 5px;
                         font-family: "VisbyCF-Light";
                         font-size: 22px;
                         color: #1390a1;
@@ -165,7 +197,7 @@ ion-content {
     }
 
     #Santoral {
-        margin-left: 15px;
+        margin-left: 5px;
         margin-bottom: 110px;
         ion-row {
             ion-col {
@@ -175,6 +207,7 @@ ion-content {
                     font-size: 22px;
                     color: #1390a1;
                     h5 {
+                        margin-top: 5px;
                         margin-bottom: 0px;
                         font-family: "VisbyCF-Light";
                         font-size: 22px;
