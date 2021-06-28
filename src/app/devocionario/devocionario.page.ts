@@ -270,14 +270,14 @@ export class DevocionarioPage {
       console.log(segment);
       document.getElementById("3").scrollIntoView({
         behavior: 'smooth',
-        block: 'start',
+        block: 'center',
         inline: 'start'
       });
     } else if (segment == "meditaciones") {
       console.log(segment);
       document.getElementById("4").scrollIntoView({
         behavior: 'smooth',
-        block: 'nearest',
+        block: 'center',
         inline: 'nearest'
       });
     } else {
@@ -354,7 +354,7 @@ export class DevocionarioPage {
       this.upNextText = this.lecturas[index + 1].text;
     }
 
-    document.getElementById("lectura").style.display = "block";
+    document.getElementById("lectura").style.bottom = "0vh";
     document.getElementById("header").style.filter = "blur(2px)";
     document.getElementById("segment").style.filter = "blur(2px)";
     document.getElementById("foot").style.filter = "blur(2px)";
@@ -363,7 +363,7 @@ export class DevocionarioPage {
   //Se oculta la lectura
   hideLectura() {
     this.vibracion();
-    document.getElementById("lectura").style.display = "none";
+    document.getElementById("lectura").style.bottom = "-1000px";
     document.getElementById("header").style.filter = "none";
     document.getElementById("segment").style.filter = "none";
     document.getElementById("foot").style.filter = "none";
@@ -403,7 +403,7 @@ export class DevocionarioPage {
       this.upNextText = this.meditaciones[index + 1].text;
     }
 
-    document.getElementById("meditacion").style.display = "block";
+    document.getElementById("meditacion").style.bottom = "0vh";
     document.getElementById("header").style.filter = "blur(2px)";
     document.getElementById("segment").style.filter = "blur(2px)";
     document.getElementById("foot").style.filter = "blur(2px)";
@@ -412,7 +412,7 @@ export class DevocionarioPage {
   //Se oculta la meditación
   hideMeditation() {
     this.vibracion();
-    document.getElementById("meditacion").style.display = "none";
+    document.getElementById("meditacion").style.bottom = "-1000px";
     document.getElementById("header").style.filter = "none";
     document.getElementById("segment").style.filter = "none";
     document.getElementById("foot").style.filter = "none";
@@ -432,17 +432,17 @@ export class DevocionarioPage {
     }
   }
 
-  //Se oculta la oración
+  //Se oculta el reproductor
   hidePlayer() {
     this.vibracion();
-    document.getElementById("player").style.display = "none";
+    document.getElementById("player").style.bottom = "-1000px";
     document.getElementById("header").style.filter = "none";
     document.getElementById("segment").style.filter = "none";
     document.getElementById("foot").style.filter = "none";
     this.back();
   }
 
-  //Se muestra la canción
+  //Se muestra la reproductor
   openPlayer(title: string, subTitle: string, song: string, songId: string) {
     this.hideOptionsModal();
     this.currOptionId = songId;
@@ -454,7 +454,7 @@ export class DevocionarioPage {
     }
 
     //open full player view
-    document.getElementById("player").style.display = "block";
+    document.getElementById("player").style.bottom = "0vh";
     document.getElementById("header").style.filter = "blur(2px)";
     document.getElementById("segment").style.filter = "blur(2px)";
     document.getElementById("foot").style.filter = "blur(2px)";
@@ -609,7 +609,7 @@ export class DevocionarioPage {
     document.getElementById("foot").style.filter = "blur(2px)";
   }
 
-  //Se muestra un popUp de la oración seleccionada 
+  //Se muestra un popUp de la canción seleccionada 
   showPrayersOptionsModal(title: string, subtitle: string, route: string, optId: string) {
     this.currTitle = title;
     this.currSubtitle = subtitle;
@@ -676,7 +676,7 @@ export class DevocionarioPage {
     }
   }
 
-  //Función para ir a ver la oración 
+  //Función para ir a ver el reproductor 
   seePrayer() {
     this.navigate(this.currRoute);
   }

@@ -31,6 +31,40 @@ export class AjustesPerfilPage implements OnInit {
     this.router.navigate(['/perfil']);
   }
 
+  //Mostrar PopUp de Contacto y soporte
+  contactsoport(){
+    this.vibracion();
+    document.getElementById("contactsoport").style.bottom = "5vh";
+    document.getElementById("headAju").style.filter = "blur(5px)";
+    document.getElementById("contentAju").style.filter = "blur(5px)";
+    document.getElementById("fooAdj").style.filter = "blur(5px)";
+  }
+
+  //Se miniza el popUp de los Contacto y soporte
+  minimizeContactsoport() {
+    document.getElementById("contactsoport").style.bottom = "-1000px";
+    document.getElementById("headAju").style.filter = "none";
+    document.getElementById("contentAju").style.filter = "none";
+    document.getElementById("fooAdj").style.filter = "none";
+  }
+
+  //Mostrar PopUp de Legal
+  legal(){
+    this.vibracion();
+    document.getElementById("legal").style.bottom = "5vh";
+    document.getElementById("headAju").style.filter = "blur(5px)";
+    document.getElementById("contentAju").style.filter = "blur(5px)";
+    document.getElementById("fooAdj").style.filter = "blur(5px)";
+  }
+
+  //Se miniza el popUp de los Contacto y soporte
+  minimizeLegal() {
+    document.getElementById("legal").style.bottom = "-1000px";
+    document.getElementById("headAju").style.filter = "none";
+    document.getElementById("contentAju").style.filter = "none";
+    document.getElementById("fooAdj").style.filter = "none";
+  }
+
   //Mostrar PopUp de patrocinadores
   patrocinadores(){
     this.vibracion();
