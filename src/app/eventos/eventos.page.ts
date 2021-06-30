@@ -61,6 +61,7 @@ export class EventosPage {
   anuncio2:     string;
   anuncio3:     string;
   anuncio4:     string;
+  descripcion:  string;
   misa:         string;
   horMisa:      string;
   confesion:    string;
@@ -105,6 +106,7 @@ export class EventosPage {
       this.anuncio2 = info.data().anuncio2;
       this.anuncio3 = info.data().anuncio3;
       this.anuncio4 = info.data().anuncio4;
+      this.descripcion = info.data().descripcion;
       console.log(this.linkMisa);
     });
   }
