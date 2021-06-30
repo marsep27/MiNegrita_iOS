@@ -21,7 +21,8 @@ export class AjustesPerfilPage implements OnInit {
     public platform: Platform,
     private vibra: Vibration,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    public Toast: ToastController){}
 
   ngOnInit() { }
 
@@ -34,7 +35,7 @@ export class AjustesPerfilPage implements OnInit {
   //Mostrar PopUp de Contacto y soporte
   contactsoport(){
     this.vibracion();
-    document.getElementById("contactsoport").style.bottom = "5vh";
+    document.getElementById("contactsoport").style.bottom = "45vh";
     document.getElementById("headAju").style.filter = "blur(5px)";
     document.getElementById("contentAju").style.filter = "blur(5px)";
     document.getElementById("fooAdj").style.filter = "blur(5px)";
@@ -80,6 +81,29 @@ export class AjustesPerfilPage implements OnInit {
     document.getElementById("headAju").style.filter = "none";
     document.getElementById("contentAju").style.filter = "none";
     document.getElementById("fooAdj").style.filter = "none";
+  }
+
+  //Función para copiar al portapapeles del dispositivo
+  copiarAlPortapapeles() {
+    var aux = document.createElement("input");
+      aux.setAttribute("value", 'minegrita@santuarionacional.org');
+      document.body.appendChild(aux);
+      aux.select();
+      document.execCommand("copy");
+      document.body.removeChild(aux);
+      this.presentToast();
+  }
+
+//Toast para indicar que el correo ha sido copiado
+  async presentToast() {
+    this.vibracion();
+    const toast = await this.Toast.create({
+      header: '¡Copiado en el portapapeles!',
+      color: "azul",
+      position: "middle",
+      duration: 2000,
+    });
+    toast.present();
   }
 
   //Alerta para cerrar sesión
