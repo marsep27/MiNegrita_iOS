@@ -13,6 +13,7 @@ Change	zipalign -v 4 app-release-unsigned.apk MiNegrita.apk
 SHA1:
 	http://tomeko.net/online_tools/hex_to_base64.php
 	16:F1:A7:A3:D9:73:D1:59:C3:81:C4:23:4C:C7:07:E9:EF:6B:FD:8B
+	F2:2C:2C:33:1C:74:BF:C6:BA:D1:C8:F2:26:40:AA:BA:12:6A:9A:CF
 	FvGno9lz0VnDgcQjTMcH6e9r/Ys=
 
 4542404919134939
