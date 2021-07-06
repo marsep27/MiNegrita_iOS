@@ -55,6 +55,19 @@ ion-header {
             }
         }
     }
+    .skeleton{
+        height: 10.5vh;
+        width: 10.5vh;
+        position: relative;
+        margin: 0 auto;
+        ion-avatar {
+            height: 10.5vh;
+            width: 10.5vh;
+            display: block;
+            position: absolute;
+            top: 1.3vh;
+        }
+    }
     .play_pause {
         height: 7.5vh;
         width: 10.5vh;

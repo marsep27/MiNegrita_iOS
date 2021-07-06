@@ -32,15 +32,13 @@ export class NuevaRomeriaPage implements OnInit{
   pasosTotales:  number;
   kmTotales:     number;
   tipoRomeria    = "";
-  horas          = 0;
-  minutos        = 0;
-  segundos       = 0;
   progreso       = 0;
   kmTotal        = 0; 
   pasosTotal     = 0; 
   kmConteo       = 0;
   kmRestante     = 0;
   timeConteo     = 0;
+  timeConteoAtras= 0;
   timeTotalMs    = 0;
   pasosConteo    = 0;
   pasosRestantes = 0;
@@ -153,12 +151,10 @@ export class NuevaRomeriaPage implements OnInit{
             diocesisSnapshot.forEach(async(diocesisData: any) => {
               const diocesis = await diocesisData;
               if (diocesis.data().nombre == this.romeriaForm.controls['puntoPartida'].value){
-                  this.horas = diocesis.data().horas;
-                  this.minutos = diocesis.data().minutos;
                   this.timeTotalMs= diocesis.data().tiempoMilisegundos;
                   this.kmTotal = diocesis.data().kmTotal;
                   this.pasosTotal = diocesis.data().pasosTotal;
-                  console.log(diocesis.data().nombre, this.horas , this.minutos , this.timeTotalMs , this.kmTotal , this.pasosTotal);
+                  console.log(diocesis.data().nombre, this.timeTotalMs , this.kmTotal , this.pasosTotal);
               }
             });
           });
@@ -219,8 +215,8 @@ export class NuevaRomeriaPage implements OnInit{
         const userId = firebase.auth().currentUser.uid;
         this.romeria = true;
         this.tipoRomeria = 'pasos';
-        console.log(userId, this.romeria, this.finalizada, this.tipoRomeria, this.romeriaForm.controls['proposito'].value, this.romeriaForm.controls['puntoPartida'].value, this.kmTotal, this.kmRestante, this.kmTotal, this.timeConteo, this.horas, this.minutos, this.timeTotalMs, this.pasosConteo, this.pasosTotal, this.pasosTotal);
-        this.firestoreService.createRomeria(userId, this.finalizada, this.finalizada, this.romeria, this.finalizada, this.tipoRomeria, this.romeriaForm.controls['proposito'].value, this.romeriaForm.controls['puntoPartida'].value, this.progreso, this.kmConteo, this.kmTotal, this.kmTotal, this.timeConteo, this.horas, this.minutos, this.segundos, this.timeTotalMs, this.pasosConteo, this.pasosTotal, this.pasosTotal);
+        console.log(userId, this.romeria, this.finalizada, this.tipoRomeria, this.romeriaForm.controls['proposito'].value, this.romeriaForm.controls['puntoPartida'].value, this.kmTotal, this.kmRestante, this.kmTotal, this.timeConteo, this.timeTotalMs, this.timeTotalMs, this.pasosConteo, this.pasosTotal, this.pasosTotal);
+        this.firestoreService.createRomeria(userId, this.finalizada, this.finalizada, this.romeria, this.finalizada, this.tipoRomeria, this.romeriaForm.controls['proposito'].value, this.romeriaForm.controls['puntoPartida'].value, this.progreso, this.kmConteo, this.kmTotal, this.kmTotal, this.timeConteo, this.timeTotalMs, this.timeTotalMs, this.pasosConteo, this.pasosTotal, this.pasosTotal);
         const refUser = this.firestore.collection('usuarios').doc(userId);
         const updateData = {
           usuario: refUser.ref,
@@ -235,7 +231,7 @@ export class NuevaRomeriaPage implements OnInit{
       } else {
         const userId = firebase.auth().currentUser.uid;
         this.romeria = true;
-        this.firestoreService.createRomeria(userId, this.finalizada, this.finalizada, this.romeria, this.finalizada, this.tipoRomeria, this.romeriaForm.controls['proposito'].value, this.romeriaForm.controls['puntoPartida'].value, this.progreso, this.kmConteo, this.kmTotal, this.kmTotal, this.timeConteo, this.horas, this.minutos, this.segundos, this.timeTotalMs, this.pasosConteo, this.pasosTotal, this.pasosTotal);
+        this.firestoreService.createRomeria(userId, this.finalizada, this.finalizada, this.romeria, this.finalizada, this.tipoRomeria, this.romeriaForm.controls['proposito'].value, this.romeriaForm.controls['puntoPartida'].value, this.progreso, this.kmConteo, this.kmTotal, this.kmTotal, this.timeConteo, this.timeTotalMs, this.timeTotalMs, this.pasosConteo, this.pasosTotal, this.pasosTotal);
         const refUser = this.firestore.collection('usuarios').doc(userId);
         const updateData = {
           usuario: refUser.ref,

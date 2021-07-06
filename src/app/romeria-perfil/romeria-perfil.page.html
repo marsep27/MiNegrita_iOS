@@ -91,8 +91,8 @@
           <ion-col class="ion-no-padding current-stats-number" size="6">
             {{currentRomeria.timeConteo | date :"HH:mm":'UTC'}}
           </ion-col>
-          <ion-col class="ion-no-padding current-stats-number" size="6" id="CuentaAtrasRP">
-            {{cerohor}}{{horas}}:{{ceromin}}{{minutos}}
+          <ion-col class="ion-no-padding current-stats-number" size="6">
+            {{currentRomeria.timeConteoAtras | date :"HH:mm":'UTC'}}
           </ion-col>
         </ion-row>
         <ion-row>

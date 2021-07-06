@@ -48,14 +48,8 @@ export class ContinuarRomeriaPage {
   medidaPaso     = 0.000600;
 
   timeout   = 0;
+  timeConteoAtras = 0;
   progress: number;
-
-  cerohor  = '';
-  ceromin  = '';
-  ceroseg  = '';
-  horas    = 0;
-  minutos  = 0;
-  segundos = 0;
   kmTotal: number; //Km final
 
   startTime: Date;
@@ -136,9 +130,7 @@ export class ContinuarRomeriaPage {
       kmRestantes: info.kmRestantes,
       kmTotal: info.kmTotal,
       timeConteo: info.timeConteo,
-      horas: info.horas,
-      minutos: info.minutos,
-      segundos: info.segundos,
+      timeConteoAtras: info.timeConteoAtras,
       timeTotalMs: info.timeTotalMs,
       pasosConteo: info.pasosConteo,
       pasosRestantes: info.pasosRestantes,
@@ -159,9 +151,7 @@ export class ContinuarRomeriaPage {
         kmRestantes: info.kmRestantes,
         kmTotal: info.kmTotal,
         timeConteo: info.timeConteo,
-        horas: info.horas,
-        minutos: info.minutos,
-        segundos: info.segundos,
+        timeConteoAtras: info.timeConteoAtras,
         timeTotalMs: info.timeTotalMs,
         pasosConteo: info.pasosConteo,
         pasosRestantes: info.pasosRestantes,
@@ -194,9 +184,7 @@ export class ContinuarRomeriaPage {
         this.PasosTotal = this.currentRomeria.pasosTotal;
         this.currTime = this.currentRomeria.timeConteo;
         this.timeout = this.currentRomeria.timeTotalMs;
-        this.horas = this.currentRomeria.horas;
-        this.minutos = this.currentRomeria.minutos;
-        this.segundos = this.currentRomeria.segundos;
+        this.timeConteoAtras = this.currentRomeria.timeConteoAtras;
         this.kmTotal = this.currentRomeria.kmTotal;
         this.kmInicial = Math.round(this.currentRomeria.kmConteo * 10) / 10;
         this.kmCurr = Math.round(this.currentRomeria.kmRestantes * 10) / 10;
@@ -204,7 +192,6 @@ export class ContinuarRomeriaPage {
         console.log("Segund" + this.currSeg);
         console.log(this.romeriaActiva);
         console.log(this.pasos);
-        this.devolvercero(this.horas, this.minutos, this.segundos);
         console.log("km Inicial :" + this.kmInicial);
         console.log("km Curr :" + this.kmCurr);
       }
@@ -269,8 +256,12 @@ export class ContinuarRomeriaPage {
               this.pausePasos();
               this.router.navigate(['/romeria']);
             } else {
+              if (this.Play == false && this.Pause == false) {
+                this.router.navigate(['/romeria']);
+              } else {
               this.pauseTime();
               this.router.navigate(['/romeria']);
+            }
             }
           }
         },
@@ -292,7 +283,7 @@ export class ContinuarRomeriaPage {
     const toast = await this.Toast.create({
       header: '¡Acabás de pausar la romería!',
       position: "middle",
-      color: "celeste",
+      color: "azul",
       duration: 2000,
     });
     toast.present();
@@ -433,7 +424,8 @@ export class ContinuarRomeriaPage {
     } else if (this.Play && !this.Pause) {
       this.progress = (this.currSeg * 1000) / this.timeout;
       console.log("Progreso :" + this.progress);
-      this.cuentaAtras();
+      //contar el tiempo hacia atrás
+      this.timeConteoAtras = this.timeout - this.currTime;
       this.getKm();
       this.TimePause = new Date()
       setTimeout(() => {
@@ -482,62 +474,6 @@ export class ContinuarRomeriaPage {
   //Función para obtener Tiempo exacto de conteo
   getCurrentTime(start, stop) {
     return (start && stop) ? +stop - +start : 0
-  }
-
-  //Función para contar el tiempo hacia atrás
-  cuentaAtras() {
-    this.devolvercero(this.horas, this.minutos, this.segundos);
-    //this.segundos = this.segundos % 60;
-    console.log('minutos' + this.minutos);
-    console.log('segundos' + this.segundos);
-    document.getElementById('CuentaAtras').innerHTML = this.cerohor + this.horas + ':' + this.ceromin + this.minutos;
-    if (this.horas === 0 && this.minutos === 0 && this.segundos === 0) {
-      this.horas = 0;
-      this.minutos = 0;
-      this.segundos = 0;
-    }
-    if (this.segundos == 0) {
-      if (this.minutos == 0 && this.segundos == 0 && this.horas > 0) {
-        this.horas--;
-        this.minutos += 60
-        this.segundos += 60
-      }
-      if (this.minutos == 0 && this.horas > 0) {
-        this.minutos += 59
-        this.segundos += 60
-      }
-      if (this.minutos == 0 && this.horas == 0) {
-        this.horas = 0;
-        this.minutos = 0;
-        this.segundos = 0;
-      } else {
-        this.minutos--;
-        this.segundos += 60;
-      }
-    }
-    this.segundos--;
-  }
-
-  //Función que devuelve un cero antes de las horas, minutos o segundos cuando algunos de estos 3 es menor a 10
-  devolvercero(horas, minutos, segundos) {
-    if (horas < 10) {
-      this.cerohor = '0';
-    } else {
-      this.cerohor = '';
-    }
-    if (minutos < 10) {
-      this.ceromin = '0';
-    } else {
-      this.ceromin = '';
-    }
-    if (segundos < 10) {
-      this.ceroseg = '0';
-    } else {
-      this.ceroseg = '';
-    }
-    return this.ceroseg;
-    return this.ceromin;
-    return this.cerohor;
   }
 
   //Función que obtiene los kilometros recorridos y restantes
@@ -594,9 +530,7 @@ export class ContinuarRomeriaPage {
       kmRestantes: this.kmCurr,
       kmTotal: this.kmTotal,
       timeConteo: this.currtime,
-      horas: this.horas,
-      minutos: this.minutos,
-      segundos: this.segundos,
+      timeConteoAtras: this.timeConteoAtras,
       timeTotalMs: this.timeout,
       pasosConteo: this.PasosIncial,
       pasosRestantes: this.PasosCurr,

@@ -49,8 +49,10 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <div class="play_pause">
-      <img src="assets/imágenes/play-romería.svg" alt="">
+    <div class="skeleton">
+      <ion-avatar>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
     </div>
   </div>
 
@@ -202,7 +204,7 @@
           </sub>
         </ion-col>
         <ion-col size="3">
-          <p id="CuentaAtras">{{cerohor}}{{horas}}:{{ceromin}}{{minutos}}</p>
+          <p>{{currentRomeria.timeConteoAtras | date :"HH:mm":'UTC'}}</p>
         </ion-col>
         <ion-col size="3">
           <sub class="p">Tiempo<br>restante</sub>

@@ -36,9 +36,7 @@ export class RomeriaPage {
   kmCurr:               String;
   kmTotal:              String;
   currtime:             String;
-  horas:                String;
-  minutos:              String;
-  segundos:             String;
+  timeConteoAtras:      String;
   timeout:              String;
   PasosIncial:          String;
   PasosCurr:            String;
@@ -153,9 +151,7 @@ export class RomeriaPage {
       kmRestantes: info.kmRestantes,
       kmTotal: info.kmTotal,
       timeConteo: info.timeConteo,
-      horas: info.horas,
-      minutos: info.minutos,
-      segundos: info.segundos,
+      timeConteoAtras: info.timeConteoAtras,
       timeTotalMs: info.timeTotalMs,
       pasosConteo: info.pasosConteo,
       pasosRestantes: info.pasosRestantes,
@@ -169,9 +165,7 @@ export class RomeriaPage {
     this.kmCurr = this.currentRomeria.kmRestantes;
     this.kmTotal = this.currentRomeria.kmTotal;
     this.currtime = this.currentRomeria.timeConteo;
-    this.horas = this.currentRomeria.horas;
-    this.minutos = this.currentRomeria.minutos;
-    this.segundos = this.currentRomeria.segundos;
+    this.timeConteoAtras = this.currentRomeria.timeConteoAtras;
     this.timeout = this.currentRomeria.timeTotalMs;
     this.PasosIncial = this.currentRomeria.pasosConteo;
     this.PasosCurr = this.currentRomeria.pasosRestantes;
@@ -266,9 +260,7 @@ export class RomeriaPage {
           kmRestantes: this.kmCurr,
           kmTotal: this.kmTotal,
           timeConteo: this.currtime,
-          horas: this.horas,
-          minutos: this.minutos,
-          segundos: this.segundos,
+          timeConteoAtras: this.timeConteoAtras,
           timeTotalMs: this.timeout,
           pasosConteo: this.PasosIncial,
           pasosRestantes: this.PasosCurr,
@@ -299,9 +291,7 @@ export class RomeriaPage {
           kmRestantes: this.kmCurr,
           kmTotal: this.kmTotal,
           timeConteo: this.currtime,
-          horas: this.horas,
-          minutos: this.minutos,
-          segundos: this.segundos,
+          timeConteoAtras: this.timeConteoAtras,
           timeTotalMs: this.timeout,
           pasosConteo: this.PasosIncial,
           pasosRestantes: this.PasosCurr,

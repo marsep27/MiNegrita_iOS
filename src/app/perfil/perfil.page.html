@@ -268,7 +268,7 @@
               </ion-col>
               <br>
               <ion-col class="romeria-info-number ion-no-padding" size="3" id="CuentaAtrasPer">
-                {{cerohor}}{{horas}}:{{ceromin}}{{minutos}}
+                {{currentRomeria.timeConteoAtras | date :"HH:mm":'UTC'}}
               </ion-col>
               <ion-col class="romeria-info-medida ion-no-padding" size="3">
                 {{currentRomeria.TipoRomeria}}

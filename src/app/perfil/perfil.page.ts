@@ -24,12 +24,6 @@ export class PerfilPage {
   romeria       = false;
   pasos         = true;
 
-  cerohor = '';
-  ceromin = '';
-  ceroseg = '';
-  horas   = 0;
-  minutos = 0;
-
   name:         string;
   lastName:     string;
   avatar:       string;
@@ -314,9 +308,8 @@ export class PerfilPage {
       pasosRestantes: info.pasosRestantes,
       pasosTotal: info.pasosTotal,
       timeConteo: info.timeConteo,
-      timeTotalMs: info.timeTotalMs,
-      horas: info.horas,
-      minutos: info.minutos
+      timeConteoAtras: info.timeConteoAtras,
+      timeTotalMs: info.timeTotalMs
     }
 
     if (!info.finalizada) {
@@ -333,9 +326,8 @@ export class PerfilPage {
         pasosRestantes: info.pasosRestantes,
         pasosTotal: info.pasosTotal,
         timeConteo: info.timeConteo,
-        timeTotalMs: info.timeTotalMs,
-        horas: info.horas,
-        minutos: info.minutos
+        timeConteoAtras: info.timeConteoAtras,
+        timeTotalMs: info.timeTotalMs
       }
       console.log(this.currentRomeria.timeTotalMs);
       if (this.currentRomeria.TipoRomeria == "horas") {
@@ -828,10 +820,6 @@ export class PerfilPage {
     //let missingMinutes = Number(missingHoursMinutes[1]);
     //let missingTimeInMinutes = missingHoursToMinutes + missingMinutes;
 
-    this.horas = this.currentRomeria.horas;
-    this.minutos = this.currentRomeria.minutos;
-    this.cuentaAtras();
-
     //let objetivo = currentTimeInMinutes + missingTimeInMinutes;
     this.currTime = this.currentRomeria.timeConteo;
     this.timeout = this.currentRomeria.timeTotalMs;
@@ -841,28 +829,6 @@ export class PerfilPage {
     console.log(this.timeout);
     console.log(this.currentRomeria.timeTotalMs);
     console.log(this.progress);
-  }
-
-  //Función para contar el tiempo hacia atrás
-  cuentaAtras() {
-    this.devolvercero(this.horas, this.minutos);
-    document.getElementById('CuentaAtrasPer').innerHTML = this.cerohor + this.horas + ':' + this.ceromin + this.minutos;
-  }
-
-  //Función que devuelve un cero antes de las horas, minutos o segundos cuando algunos de estos 3 es menor a 10
-  devolvercero(horas, minutos) {
-    if (horas < 10) {
-      this.cerohor = '0';
-    } else {
-      this.cerohor = '';
-    }
-    if (minutos < 10) {
-      this.ceromin = '0';
-    } else {
-      this.ceromin = '';
-    }
-    return this.ceromin;
-    return this.cerohor;
   }
 
   //Calcula el progreso por pasos

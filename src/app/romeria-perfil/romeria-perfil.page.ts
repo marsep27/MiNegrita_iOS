@@ -17,11 +17,6 @@ export class RomeriaPerfilPage {
   contentLoaded     = false;
 
   pasos             = true;
-  cerohor           = '';
-  ceromin           = '';
-  ceroseg           = '';
-  horas             = 0;
-  minutos           = 0;
   activa:   boolean = false;
   romeria:          any;
   currentRomeria:   any;
@@ -89,9 +84,8 @@ export class RomeriaPerfilPage {
       pasosRestantes: info.pasosRestantes,
       pasosTotal: info.pasosTotal,
       timeConteo: info.timeConteo,
-      timeTotalMs: info.timeTotalMs,
-      horas: info.horas,
-      minutos: info.minutos
+      timeConteoAtras: info.timeConteoAtras,
+      timeTotalMs: info.timeTotalMs
     }
 
     if (!info.finalizada) {
@@ -108,9 +102,8 @@ export class RomeriaPerfilPage {
         pasosRestantes: info.pasosRestantes,
         pasosTotal: info.pasosTotal,
         timeConteo: info.timeConteo,
-        timeTotalMs: info.timeTotalMs,
-        horas: info.horas,
-        minutos: info.minutos
+        timeConteoAtras: info.timeConteoAtras,
+        timeTotalMs: info.timeTotalMs
       }
       if (this.currentRomeria.TipoRomeria == "horas") {
         this.pasos = false;
@@ -159,9 +152,6 @@ export class RomeriaPerfilPage {
     //let missingMinutes = Number(missingHoursMinutes[1]);
     //let missingTimeInMinutes = missingHoursToMinutes + missingMinutes;
 
-    this.horas = this.currentRomeria.horas;
-    this.minutos = this.currentRomeria.minutos;
-
     //let objetivo = currentTimeInMinutes + missingTimeInMinutes;
     let currTime = this.currentRomeria.timeConteo;
     console.log("currTime: " + currTime);
@@ -172,29 +162,6 @@ export class RomeriaPerfilPage {
     console.log("progress: " + this.progress);
     this.porcentaje = Math.round(this.progress * 100);
     console.log("porcentaje: " + this.porcentaje);
-    this.cuentaAtras();
-  }
-
-  //Función para contar el tiempo hacia atrás
-  cuentaAtras() {
-    this.devolvercero(this.horas, this.minutos);
-    document.getElementById('CuentaAtrasRP').innerHTML = this.cerohor + this.horas + ':' + this.ceromin + this.minutos;
-  }
-
-  //Función que devuelve un cero antes de las horas, minutos o segundos cuando algunos de estos 3 es menor a 10
-  devolvercero(horas, minutos) {
-    if (horas < 10) {
-      this.cerohor = '0';
-    } else {
-      this.cerohor = '';
-    }
-    if (minutos < 10) {
-      this.ceromin = '0';
-    } else {
-      this.ceromin = '';
-    }
-    return this.ceromin;
-    return this.cerohor;
   }
 
   //Calcula el progreso por pasos

@@ -107,7 +107,7 @@ export class FirestoreService {
     return this.firestore.collection('romerias').doc(userId).snapshotChanges();
   }
 
-  public createRomeria(userId: string, play: boolean, pause: boolean, romeriaActiva: boolean, finalizada: boolean, tipoRomeria: string, proposito: string, partida: string, progreso: number, kmConteo: number, kmRestantes: number, kmTotal: number, timeConteo: number, horas: number, minutos: number, segundos: number, timeTotal: number, pasosConteo: number, pasosRestantes: number, pasosTotal: number){
+  public createRomeria(userId: string, play: boolean, pause: boolean, romeriaActiva: boolean, finalizada: boolean, tipoRomeria: string, proposito: string, partida: string, progreso: number, kmConteo: number, kmRestantes: number, kmTotal: number, timeConteo: number, timeConteoAtras: number, timeTotal: number, pasosConteo: number, pasosRestantes: number, pasosTotal: number){
     const refUser = this.firestore.collection('usuarios').doc(userId);
     return this.firestore.collection('romerias').doc(userId).set({
       usuario: refUser.ref,
@@ -123,9 +123,7 @@ export class FirestoreService {
       kmRestantes: kmRestantes, 
       kmTotal: kmTotal, 
       timeConteo: timeConteo, 
-      horas: horas, 
-      minutos: minutos,
-      segundos: segundos,
+      timeConteoAtras: timeConteoAtras,
       timeTotalMs: timeTotal, 
       pasosConteo: pasosConteo, 
       pasosRestantes: pasosRestantes, 

@@ -23,7 +23,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="fullscreen" value="false" />
-    <preference name="android-windowSoftInputMode" value="adjustPan" />
+    <preference name="android:windowSoftInputMode" value="adjustPan" />
     <preference name="android-manifest/application/activity/@android:windowSoftInputMode" value="adjustPan" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <platform name="android">
