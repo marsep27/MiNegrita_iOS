@@ -59,6 +59,45 @@ export class RegistroExvotosPage implements OnInit {
   Contador        = 0;
   plural: boolean = true;
 
+  //Términos y condiciones
+  terminoscondiciones:            string;
+  terminoscondicionestext1:       string;
+  terminoscondicionesGP:          string;
+  terminoscondicionesGA:          string;
+  terminoscondicionesFC:          string;
+  terminoscondicionesF:           string;
+  terminoscondicioneslinkGP:      string;
+  terminoscondicioneslinkGA:      string;
+  terminoscondicioneslinkFC:      string;
+  terminoscondicioneslinkF:       string;
+  terminoscondicionestext2:       string;
+  terminoscondicionescambios:     string;
+  terminoscondicionescambiostext: string;
+  politicasprivacidad:            string;
+  politicasprivacidadtext:        string;
+  usoinformacion:                 string;
+  usoinformaciontext:             string;
+  politicasprivacidadGP:          string;
+  politicasprivacidadGA:          string;
+  politicasprivacidadFC:          string;
+  politicasprivacidadF:           string;
+  datosregistro:                  string;
+  datosregistrotext:              string;
+  cookies:                        string;
+  cookiestext:                    string;
+  proveedores:                    string;
+  proveedorestext:                string;
+  seguridad:                      string;
+  seguridadtext:                  string;
+  enlaces:                        string;
+  enlacestext:                    string;
+  privacidadninos:                string;
+  privacidadninostext:            string;
+  politicasprivacidadcambios:     string;
+  politicasprivacidadcambiostext: string;
+  contacto:                       string;
+  contactotext:                   string;
+
   //Finalizar pantalla
   disableButtonFinalizar: boolean = true;
 
@@ -103,6 +142,46 @@ export class RegistroExvotosPage implements OnInit {
       console.log(this.intenciones);
       console.log(this.email);
       console.log(this.password);
+    });
+    firebase.firestore().collection('terminoscondiciones').doc('politicas').onSnapshot((infoSnapshot) => {
+      const info = infoSnapshot;
+      this.terminoscondiciones = info.data().terminoscondiciones;
+      this.terminoscondicionestext1 = info.data().terminoscondicionestext1;
+      this.terminoscondicionesGP = info.data().terminoscondicionesGP;
+      this.terminoscondicionesGA = info.data().terminoscondicionesGA;
+      this.terminoscondicionesFC = info.data().terminoscondicionesFC;
+      this.terminoscondicionesF = info.data().terminoscondicionesF;
+      this.terminoscondicioneslinkGP = info.data().terminoscondicioneslinkGP;
+      this.terminoscondicioneslinkGA = info.data().terminoscondicioneslinkGA;
+      this.terminoscondicioneslinkFC = info.data().terminoscondicioneslinkFC;
+      this.terminoscondicioneslinkF = info.data().terminoscondicioneslinkF;
+      this.terminoscondicionestext2 = info.data().terminoscondicionestext2;
+      this.terminoscondicionescambios = info.data().terminoscondicionescambios;
+      this.terminoscondicionescambiostext = info.data().terminoscondicionescambiostext;
+      this.politicasprivacidad = info.data().politicasprivacidad;
+      this.politicasprivacidadtext = info.data().politicasprivacidadtext;
+      this.usoinformacion = info.data().usoinformacion;
+      this.usoinformaciontext = info.data().usoinformaciontext;
+      this.politicasprivacidadGP = info.data().politicasprivacidadGP;
+      this.politicasprivacidadGA = info.data().politicasprivacidadGA;
+      this.politicasprivacidadFC = info.data().politicasprivacidadFC;
+      this.politicasprivacidadF = info.data().politicasprivacidadF;
+      this.datosregistro = info.data().datosregistro;
+      this.datosregistrotext = info.data().datosregistrotext;
+      this.cookies = info.data().cookies;
+      this.cookiestext = info.data().cookiestext;
+      this.proveedores = info.data().proveedores;
+      this.proveedorestext = info.data().proveedorestext;
+      this.seguridad = info.data().seguridad;
+      this.seguridadtext = info.data().seguridadtext;
+      this.enlaces = info.data().enlaces;
+      this.enlacestext = info.data().enlacestext;
+      this.privacidadninos = info.data().privacidadniños;
+      this.privacidadninostext = info.data().privacidadniñostext;
+      this.politicasprivacidadcambios = info.data().politicasprivacidadcambios;
+      this.politicasprivacidadcambiostext = info.data().politicasprivacidadcambiostext;
+      this.contacto = info.data().contacto;
+      this.contactotext = info.data().contactotext;
     });
     this.contador();
   }
@@ -551,6 +630,42 @@ export class RegistroExvotosPage implements OnInit {
       console.log(exvoto);
     }
     console.log("--------------");
+  }
+
+  terminos(option){
+    this.vibracion();
+    switch (option) {
+      case 'GP':
+        window.open(this.terminoscondicioneslinkGP);
+        break;
+      case 'GA':
+        window.open(this.terminoscondicioneslinkGA);
+        break;
+      case 'FC':
+        window.open(this.terminoscondicioneslinkFC);
+        break;
+      case 'F':
+        window.open(this.terminoscondicioneslinkF);
+        break;
+    }
+  }
+
+  privacidad(option){
+    this.vibracion();
+    switch (option) {
+      case 'GP':
+        window.open(this.politicasprivacidadGP);
+        break;
+      case 'GA':
+        window.open(this.politicasprivacidadGA);
+        break;
+      case 'FC':
+        window.open(this.politicasprivacidadFC);
+        break;
+      case 'F':
+        window.open(this.politicasprivacidadF);
+        break;
+    }
   }
 
   vibracion(){

@@ -227,12 +227,39 @@
           </h2>
         </ion-col>
         <ion-col class="scroll" size="12" scrollY=true>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dolor corporis sequi quasi modi quia aperiam at nihil consequatur eius ullam ad rerum laborum, vitae fugiat quas fugit vel voluptate.</p>
+          <h1 [innerHTML]="terminoscondiciones"></h1>
+            <p [innerHTML]="terminoscondicionestext1"></p>
+            <p [innerHTML]="terminoscondicionesGP" (click)="terminos('GP')"></p>
+            <p [innerHTML]="terminoscondicionesGA" (click)="terminos('GA')"></p>
+            <p [innerHTML]="terminoscondicionesFC" (click)="terminos('FC')"></p>
+            <p [innerHTML]="terminoscondicionesF" (click)="terminos('F')"></p>
+            <p [innerHTML]="terminoscondicionestext2"></p>
+          <h1 [innerHTML]="terminoscondicionescambios"></h1>
+           <p [innerHTML]="terminoscondicionescambiostext"></p>
+          <h1 [innerHTML]="politicasprivacidad"></h1>
+           <p [innerHTML]="politicasprivacidadtext"></p>
+          <h1 [innerHTML]="usoinformacion"></h1>
+           <p [innerHTML]="usoinformaciontext"></p>
+           <p [innerHTML]="terminoscondicionesGP" (click)="privacidad('GP')"></p>
+           <p [innerHTML]="terminoscondicionesGA" (click)="privacidad('GA')"></p>
+           <p [innerHTML]="terminoscondicionesFC" (click)="privacidad('FC')"></p>
+           <p [innerHTML]="terminoscondicionesF" (click)="privacidad('F')"></p>
+          <h1 [innerHTML]="datosregistro"></h1>
+           <p [innerHTML]="datosregistrotext"></p>
+          <h1 [innerHTML]="cookies"></h1>
+           <p [innerHTML]="cookiestext"></p>
+          <h1 [innerHTML]="proveedores"></h1>
+           <p [innerHTML]="proveedorestext"></p>
+          <h1 [innerHTML]="seguridad"></h1>
+           <p [innerHTML]="seguridadtext"></p>
+          <h1 [innerHTML]="enlaces"></h1>
+           <p [innerHTML]="enlacestext"></p>
+          <h1 [innerHTML]="privacidadninos"></h1>
+           <p [innerHTML]="privacidadninostext"></p>
+          <h1 [innerHTML]="politicasprivacidadcambios"></h1>
+           <p [innerHTML]="politicasprivacidadcambiostext"></p>
+          <h1 [innerHTML]="contacto"></h1>
+           <p [innerHTML]="contactotext"></p>
         </ion-col>
       </ion-row>
     </ion-grid>
