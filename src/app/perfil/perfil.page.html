@@ -8,7 +8,7 @@
       <ion-buttons slot="primary">
         <span class="profile-title">Perfil</span>
         <ion-button class="profile-settings" [routerLink]="['/ajustes-perfil']" (click)='vibracion()' mode="md">
-          <ion-icon class="profile-settings-icon" slot="icon-only" src="assets/imágenes/settings-icon.svg"></ion-icon>
+          <ion-icon style='z-index: 10;'class="profile-settings-icon" slot="icon-only" src="assets/imágenes/settings-icon.svg"></ion-icon>
         </ion-button>
       </ion-buttons>
       <div class="avatar" *ngIf="contentLoaded">
@@ -475,28 +475,29 @@
       </ion-row>
     </ion-grid>
   </div>
+  
+  <ion-footer class="ion-no-border" id="footPer" mode="md">
+    <ion-img id="donate-img" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)='vibracion()'></ion-img>
+    <ion-tab-bar>
+      <ion-tab-button [routerLink]="['/eventos']" (click)='vibracion()'>
+        <ion-img id="eventos" src="assets/imágenes/eventos.svg"></ion-img>
+        <ion-label color="azul">Eventos</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/devocionario']" (click)='vibracion()'>
+        <ion-img id="devocionario" src="assets/imágenes/devocionario.svg"></ion-img>
+        <ion-label color="azul">Devocionario</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/donacion']" (click)='vibracion()'>
+        <ion-label color="celeste"></ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/romeria']" (click)='vibracion()'>
+        <ion-img id="romeria" src="assets/imágenes/romeria.svg"></ion-img>
+        <ion-label color="azul">Basílica</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/perfil']" (click)='vibracion()'>
+        <ion-img id="perfil" src="assets/imágenes/tapPerfil_select.svg"></ion-img>
+        <ion-label id="select" color="azul">Perfil</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-footer>
 </ion-content>
-<ion-footer class="ion-no-border" id="footPer" mode="md">
-  <ion-img id="donate-img" src="assets/imágenes/tab.svg" [routerLink]="['/donacion']" (click)='vibracion()'></ion-img>
-  <ion-tab-bar>
-    <ion-tab-button [routerLink]="['/eventos']" (click)='vibracion()'>
-      <ion-img id="eventos" src="assets/imágenes/eventos.svg"></ion-img>
-      <ion-label color="azul">Eventos</ion-label>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/devocionario']" (click)='vibracion()'>
-      <ion-img id="devocionario" src="assets/imágenes/devocionario.svg"></ion-img>
-      <ion-label color="azul">Devocionario</ion-label>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/donacion']" (click)='vibracion()'>
-      <ion-label color="celeste"></ion-label>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/romeria']" (click)='vibracion()'>
-      <ion-img id="romeria" src="assets/imágenes/romeria.svg"></ion-img>
-      <ion-label color="azul">Basílica</ion-label>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/perfil']" (click)='vibracion()'>
-      <ion-img id="perfil" src="assets/imágenes/tapPerfil_select.svg"></ion-img>
-      <ion-label id="select" color="azul">Perfil</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-footer>

@@ -4,6 +4,7 @@
 
 ion-header {
     ion-toolbar {
+        z-index: 2;
         height: 4.5vh;
         --background: #f4fcfd;
     }
@@ -701,59 +702,58 @@ ion-content {
             color: #1390a1;
         }
     }
-}
-
-ion-footer {
-    --background: transparent;
-    background-image: none;
-    text-align: center;
-    width: 100%;
-    bottom: 0%;
-    position: fixed;
-
-    #donate-img {
+    ion-footer {
+        --background: transparent;
+        background-image: none;
         text-align: center;
         width: 100%;
         bottom: 0;
         position: fixed;
-    }
-
-    ion-tab-bar {
-        --background: transparent;
-        border-color: transparent;
-        height: 85px;
-        left: 0px;
-        top: 727px;
-
-        ion-tab-button {
-            #eventos {
-                width: 27px;
-                height: 32px;
-            }
-
-            #devocionario {
-                width: 27px;
-                height: 32px;
-            }
-
-            #romeria {
-                width: 29.24px;
-                height: 32px;
-            }
-
-            #perfil {
-                width: 27px;
-                height: 30px;
-            }
-
-            ion-label {
-                font-family: "VisbyCF-Light";
-                font-size: 10.7033px;
-            }
-
-            #select {
-                font-family: "VisbyCF-DemiBold";
-                font-size: 10.7033px;
+    
+        #donate-img {
+            text-align: center;
+            width: 100%;
+            bottom: 0;
+            position: fixed;
+        }
+    
+        ion-tab-bar {
+            --background: transparent;
+            border-color: transparent;
+            height: 85px;
+            left: 0px;
+            top: 727px;
+    
+            ion-tab-button {
+                #eventos {
+                    width: 27px;
+                    height: 32px;
+                }
+    
+                #devocionario {
+                    width: 27px;
+                    height: 32px;
+                }
+    
+                #romeria {
+                    width: 29.24px;
+                    height: 32px;
+                }
+    
+                #perfil {
+                    width: 27px;
+                    height: 30px;
+                }
+    
+                ion-label {
+                    font-family: "VisbyCF-Light";
+                    font-size: 10.7033px;
+                }
+    
+                #select {
+                    font-family: "VisbyCF-DemiBold";
+                    font-size: 10.7033px;
+                }
             }
         }
     }
