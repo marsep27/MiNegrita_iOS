@@ -35,7 +35,7 @@ export class AjustesPerfilPage implements OnInit {
   //Mostrar PopUp de Contacto y soporte
   contactsoport(){
     this.vibracion();
-    document.getElementById("contactsoport").style.bottom = "45vh";
+    document.getElementById("contactsoport").style.bottom = "43vh";
     document.getElementById("headAju").style.filter = "blur(5px)";
     document.getElementById("contentAju").style.filter = "blur(5px)";
     document.getElementById("fooAdj").style.filter = "blur(5px)";
@@ -52,7 +52,7 @@ export class AjustesPerfilPage implements OnInit {
   //Mostrar PopUp de Legal
   legal(){
     this.vibracion();
-    document.getElementById("legal").style.bottom = "5vh";
+    document.getElementById("legal").style.bottom = "21vh";
     document.getElementById("headAju").style.filter = "blur(5px)";
     document.getElementById("contentAju").style.filter = "blur(5px)";
     document.getElementById("fooAdj").style.filter = "blur(5px)";
