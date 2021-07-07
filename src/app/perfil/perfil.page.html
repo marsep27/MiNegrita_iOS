@@ -440,17 +440,16 @@
             {{currNombre}}
           </h2>
         </ion-col>
-        <ion-col size="12">
+        <ion-col size="12" id="direccion">
           <ion-text>
             <img src="assets/imágenes/ubicacion.svg"> {{currDireccion}}
             <br>
             <img src="assets/imágenes/calendario.svg"> {{currFecha}}
           </ion-text>
         </ion-col><br>
-        <ion-col size="12">
-          <p [innerHTML]="currInfo">
-          </p>
-        </ion-col>
+        <ion-col class="scroll" size="12" scrollY=true>
+          <p [innerHTML]="currInfo"></p>
+         </ion-col>
       </ion-row>
     </ion-grid>
     <br>
@@ -461,13 +460,13 @@
             Más información
           </ion-button>
         </ion-col>
-        <ion-col *ngIf="!favourites.includes(currOptionId)" size="12" (click)="addOrRemoveFavouriteEvent()">
+        <ion-col *ngIf="!favourites.includes(currOptionId)" size="12" (click)="addOrRemoveFavourite()">
           <img style="vertical-align: bottom; margin-bottom: 7px;" src="assets/imágenes/starpop.svg" />
           <sub class="favoritos">
             Añadir a mis eventos
           </sub>
         </ion-col>
-        <ion-col *ngIf="favourites.includes(currOptionId)" size="12" (click)="addOrRemoveFavouriteEvent()">
+        <ion-col *ngIf="favourites.includes(currOptionId)" size="12" (click)="addOrRemoveFavourite()">
           <img style="vertical-align: bottom; margin-bottom: 7px;" src="assets/imágenes/starpopfull.svg" />
           <sub class="favoritos">
             Eliminar de mis eventos

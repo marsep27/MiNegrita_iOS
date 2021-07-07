@@ -740,7 +740,7 @@ export class PerfilPage {
 
   //Se muestra el popUp del evento
   popupEvento(nombre, direccion, fecha, informacion, reserva, link, optId: string) {
-    document.getElementById("PopUpEvento").style.bottom = "100px";
+    document.getElementById("PopUpEvento").style.bottom = "5vh";
     document.getElementById("headerPer").style.filter = "blur(2px)";
     document.getElementById("segmentPer").style.filter = "blur(2px)";
     document.getElementById("footPer").style.filter = "blur(2px)";

@@ -794,16 +794,34 @@ ion-footer {
                     text-align: center;
                     margin-top: 0px;
                 }
+                
+            }
+            #direccion{
+                padding: 0px;
+                padding-bottom: 15px;
+                ion-text {
+                    font-family: "VisbyCF-Medium";
+                    font-size: 14px;
+                    color: #1390a1;
+                }
+            }
+            .scroll{
+                overflow-y: scroll;
+                height: 375px;
+                padding: 0px;
                 ion-text {
                     font-family: "VisbyCF-Medium";
                     font-size: 14px;
                     color: #1390a1;
                 }
                 p {
+                    margin-top: 0px;
+                    margin-bottom: 10px;
                     font-family: "VisbyCF-Light";
-                    font-size: 12px;
+                    font-size: 16px;
+                    line-height: 22px;
                     color: #1390a1;
-                    height: 270px;
+                    white-space: pre-wrap;
                 }
             }
         }
