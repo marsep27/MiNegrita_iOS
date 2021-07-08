@@ -1,4 +1,6 @@
-<ion-header class="ion-no-border" id="headAju" mode="md">
+<!--Menú en ajustes-->
+<ion-content mode="md">
+  <ion-header class="ion-no-border" id="headAju" mode="md">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button class="header-back-btn" defaultHref="/perfil" text="" icon="arrow-back-outline"
@@ -9,9 +11,6 @@
     </div>
   </ion-toolbar>
 </ion-header>
-
-<!--Menú en ajustes-->
-<ion-content mode="md">
   <ion-list class="settings-options" id="contentAju">
     <ion-item class="item">
       <ion-label class="settings-opts-label" (click)='vibracion()' [routerLink]="['/editar-perfil']">Perfil</ion-label>
@@ -160,8 +159,8 @@
       </ion-row>
     </ion-grid>
   </div>-->  
-</ion-content>
 
-<ion-footer class="ion-no-border" style="background: white;" id="fooAdj">
-  <ion-img  style="height: 150px;" src="assets/imágenes/logo-basilica.png" (click)='go()'></ion-img>
-</ion-footer>
+  <ion-footer class="ion-no-border" id="fooAdj">
+    <ion-img src="assets/imágenes/logo-basilica.png" (click)='go()'></ion-img>
+  </ion-footer> 
+</ion-content>

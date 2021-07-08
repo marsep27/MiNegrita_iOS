@@ -1,13 +1,12 @@
-<ion-header class="ion-no-border" id="headerEve" mode="md">
-  <span class="header-title">Eventos</span>
-  <ion-segment [(ngModel)]="segment" (click)='vibracion()'>
-    <ion-segment-button checked value="Actividades">Actividades</ion-segment-button>
-    <ion-segment-button value="Horarios">Horarios</ion-segment-button>
-    <ion-segment-button value="Santoral">Santoral</ion-segment-button>
-  </ion-segment>
-</ion-header>
-
 <ion-content mode="md">
+  <ion-header class="ion-no-border" id="headerEve" mode="md">
+    <span class="header-title">Eventos</span>
+    <ion-segment [(ngModel)]="segment" (click)='vibracion()'>
+      <ion-segment-button checked value="Actividades">Actividades</ion-segment-button>
+      <ion-segment-button value="Horarios">Horarios</ion-segment-button>
+      <ion-segment-button value="Santoral">Santoral</ion-segment-button>
+    </ion-segment>
+  </ion-header>
   <div [ngSwitch]="segment" id="segmentEve" mode="md">
     <!--Sección para mostrar las actividades y eventos-->
     <div *ngSwitchCase="'Actividades'" mode="md">

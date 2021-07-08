@@ -1,3 +1,4 @@
+<ion-content class="outer-content has-header" mode="md"> 
 <ion-header class="ion-no-border" id="header" mode="md"> 
   <span class="header-title">Devocionario</span>
   <ion-segment scrollable [(ngModel)]="segment" (ionChange)="segmentChanged(segment)" (click)='vibracion()' mode="md">
@@ -7,14 +8,11 @@
     <ion-segment-button id="4" value="meditaciones">Meditaciones</ion-segment-button>
   </ion-segment>
 </ion-header>
-
-<ion-content class="outer-content has-header" scroll="true" mode="md"> 
-
   <!--Prayers list-->
   <div [ngSwitch]="segment" id="segment" mode="md">
     <ion-list class="ion-no-padding" *ngSwitchCase="'oraciones'" mode="md"> 
       <img class="segment-img" src="assets/imágenes/oraciones.svg" />
-      <div class="oraciones-container">
+      <div class="oraciones-container" scrollY="true">
         <span class="rosario-title">El Santo Rosario</span>
         <ion-list class="devociones-list" lines="none" *ngIf="contentLoaded">
           <ion-item *ngFor="let oracion of oraciones" class="ion-no-padding item-border"
@@ -53,7 +51,7 @@
     <!--Readings list-->
     <ion-list class="ion-no-padding" *ngSwitchCase="'lecturas'" mode="md">
       <img class="segment-img" src="assets/imágenes/lecturas.svg" />
-      <div class="lecturas-container">
+      <div class="lecturas-container" scrollY="true" >
         <ion-list lines="none" *ngIf="contentLoaded2">
           <ion-item *ngFor="let lectura of lecturas" class="ion-no-padding item-border item-lectura"
             (click)="showLectura(lectura.title,lectura.subtitle,lectura.text)">
@@ -87,7 +85,7 @@
     <!--Songs list-->
     <ion-list class="ion-no-padding" *ngSwitchCase="'canciones'" mode="md">
       <img class="segment-img" src="assets/imágenes/canciones.svg" />
-      <div class="canciones-container">
+      <div class="canciones-container" scrollY="true" >
         <ion-list lines="none" *ngIf="contentLoaded3">
           <ion-item *ngFor="let cancion of canciones" class="ion-no-padding item-border item-cancion"
             (click)="openPlayer(cancion.title, cancion.subtitle, cancion.audio, cancion.cancionId)">
@@ -129,7 +127,7 @@
     <!--Meditations list-->
     <ion-list class="ion-no-padding" *ngSwitchCase="'meditaciones'" mode="md">
       <img class="segment-img" src="assets/imágenes/meditaciones.svg" />
-      <div class="meditaciones-container">
+      <div class="meditaciones-container" scrollY="true" >
         <ion-list lines="none" *ngIf="contentLoaded4">
           <ion-item *ngFor="let meditacion of meditaciones" class="ion-no-padding item-border item-meditacion"
             (click)="showMeditation(meditacion.title,meditacion.text)">

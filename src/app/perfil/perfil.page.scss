@@ -2,15 +2,14 @@
     font-family: "VisbyCF-Bold";
 }
 
-ion-header {
-    ion-toolbar {
-        z-index: 2;
-        height: 4.5vh;
-        --background: #f4fcfd;
-    }
-}
+
 
 ion-content {
+    ion-header {
+        height: 4.5vh;
+        --background: #f4fcfd;
+        background: #f4fcfd;
+    }
     background-color: #f4fcfd;
     --background: #f4fcfd;
     position: relative;
@@ -38,9 +37,11 @@ ion-content {
             &-settings {
                 position: absolute;
                 right: 1vw;
+                z-index: 15;
 
                 &-icon {
                     height: 2.5vh;
+                    z-index: 19;
                 }
             }
 
