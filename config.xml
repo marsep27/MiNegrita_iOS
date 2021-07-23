@@ -12,6 +12,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
+    <preference name="WKWebViewOnly" value="true" />
     <preference name="android-minSdkVersion" value="22" />
     <preference name="Orientation" value="portrait" />
     <preference name="orientation" value="portrait" />
@@ -57,6 +58,7 @@
         <allow-intent href="itms-apps:*" />
         <preference name="ios-manifest/application/activity/@ios:windowSoftInputMode" value="adjustPan" />
         <preference name="KeyboardResize" value="false" />
+        <preference name="WKWebViewOnly" value="true" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
         <icon height="29" src="resources/ios/icon/icon-small.png" width="29" />
@@ -154,7 +156,7 @@
     <plugin name="cordova-plugin-statusbar" spec="2.4.2" />
     <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
-    <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^4.2.1" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
     <allow-navigation href="http://localhost:8100" sessionid="cb7eabe6" />

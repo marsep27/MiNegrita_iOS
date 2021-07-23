@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>674389939864-koca5nks02l8kr15si9668s86muie2ot.apps.googleusercontent.com</string>
+	<string>674389939864-am7p1ft62pq54l8akrcnreijkkp1f00p.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.674389939864-koca5nks02l8kr15si9668s86muie2ot</string>
+	<string>com.googleusercontent.apps.674389939864-am7p1ft62pq54l8akrcnreijkkp1f00p</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>674389939864-kjo78733jrdn6mcd2f126jet7snhj34i.apps.googleusercontent.com</string>
+	<string>674389939864-0asm5dc62rlvc37bcte9173k845f3ort.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDPXorRpTsjZlJInFktntjlMXMwWhOHJhU</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,23 +15,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mi.negrita</string>
+	<string>com.minegrita.basilica</string>
 	<key>PROJECT_ID</key>
 	<string>db-m1n3gr1t4</string>
 	<key>STORAGE_BUCKET</key>
 	<string>db-m1n3gr1t4.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:674389939864:ios:5ac250279243ca259e22ed</string>
+	<string>1:674389939864:ios:9949bbd78b9e175d9e22ed</string>
 	<key>DATABASE_URL</key>
 	<string>https://db-m1n3gr1t4.firebaseio.com</string>
 </dict>
