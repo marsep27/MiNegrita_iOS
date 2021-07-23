@@ -11,6 +11,8 @@ import { switchMap } from 'rxjs/operators';
 
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import * as firebase from 'firebase';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -106,6 +108,9 @@ export class AuthService {
          const user_data_google = result;
          return this.afAuth.signInWithCredential(auth.GoogleAuthProvider.credential(null, user_data_google.accessToken));
        })
+     }
+
+     loginApple(){
      }
     
      resetPassword(email: string){

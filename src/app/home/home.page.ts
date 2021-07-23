@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse, ASAuthorizationAppleIDRequest } from '@ionic-native/sign-in-with-apple/ngx';
 import { Platform, ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { auth } from 'firebase';
@@ -18,13 +19,18 @@ import { LoadingController } from '@ionic/angular';
 
 export class HomePage {
 
+  app_uid: string;
+  app_user: string;
+
   constructor(public auth: AuthService,
     private fb: Facebook,
     private gp: GooglePlus,
     public router: Router,
     public platform: Platform,
     public Toast: ToastController,
-    public loadingController: LoadingController,private vibra: Vibration) {
+    public loadingController: LoadingController,
+    private vibra: Vibration,
+    private apple: SignInWithApple) {
 
   }
 
@@ -125,7 +131,7 @@ export class HomePage {
   //Iniciar sesion con Google
   loginGoogle() {
     this.vibracion();
-    if (this.platform.is("cordova")) {//Si la plaforma es coordova muestra la siguiente información
+    if (this.platform.is("cordova")) {//Si la plaforma es cordova muestra la siguiente información
       this.auth.loginGoogle().then((res) => {
         this.presentLoading();
         var docRef = firebase.firestore().collection('usuarios').doc(res.user.uid);
@@ -168,7 +174,7 @@ export class HomePage {
         console.log(err);
         //this.toast();
       })*/
-    } else { //Si la plaforma no es coordova muestra la siguiente información
+    } else { //Si la plaforma no es cordova muestra la siguiente información
       const provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider).then(result => {
         this.presentLoading();
@@ -196,6 +202,75 @@ export class HomePage {
         console.log(error);
         this.toast();
       });
+    }
+  }
+
+  //Iniciar sesion con Apple
+  loginApple() {
+    this.vibracion();
+    if (this.platform.is("cordova")) {//Si la plaforma es cordova muestra la siguiente información
+      this.apple.signin({requestedScopes: [ASAuthorizationAppleIDRequest.ASAuthorizationScopeFullName,ASAuthorizationAppleIDRequest.ASAuthorizationScopeEmail]
+      }).then(async (res: AppleSignInResponse) => {
+        const credential = new firebase.auth.OAuthProvider('apple.com').credential(res.identityToken);
+        const response = await firebase.auth().signInWithCredential(credential).then(async ()=>{
+          await firebase.auth().onAuthStateChanged(user=>{
+            if(user){
+              this.app_user= user.email;
+              this.app_uid= user.uid;
+            } 
+          })
+        })
+        console.log('Login successful', response);
+        console.log(JSON.stringify(res))
+        this.presentLoading();
+        var docRef = firebase.firestore().collection('usuarios').doc(this.app_uid);
+        docRef.onSnapshot((async (doc) => {
+          if (doc.exists) {//Si el usuario ya está registrado se dirige al perfil
+              this.router.navigate(['/perfil']);
+            } else {//Si el usuario no está registrado se dirige a terminar el registro
+              this.router.navigate(['/registro-cuenta'],
+                {
+                  queryParams: {
+                    userData: this.app_uid,
+                    name: this.app_user,
+                    provedor: 'Apple',
+                    page: 'datos'
+                  }
+                });
+            }
+        }));
+      });
+    } else { //Si la plaforma no es cordova muestra la siguiente información
+      this.apple.signin({ requestedScopes: [ ASAuthorizationAppleIDRequest.ASAuthorizationScopeFullName, ASAuthorizationAppleIDRequest.ASAuthorizationScopeEmail]})
+        .then((result: AppleSignInResponse) => {
+          // https://developer.apple.com/documentation/signinwithapplerestapi/verifying_a_user
+          const user_data_apple = result;
+          const credential = new firebase.auth.OAuthProvider('apple.com').credential(user_data_apple.identityToken);
+          const response = firebase.auth().signInWithPopup(credential).then(
+             firebase.auth().onAuthStateChanged(user => {
+               this.app_uid = user.uid;
+               this.app_user = user.displayName;
+               console.log(this.app_uid, this.app_user);
+             })
+          )
+        });
+        this.presentLoading();
+        var docRef = firebase.firestore().collection('usuarios').doc(this.app_uid);
+        docRef.onSnapshot((async (doc) => {
+          if (doc.exists) {//Si el usuario ya está registrado se dirige al perfil
+            this.router.navigate(['/perfil']);
+          } else {//Si el usuario no está registrado se dirige a terminar el registro
+            this.router.navigate(['/registro-cuenta'],
+              {
+                queryParams: {
+                  userData: this.app_uid,
+                  name: this.app_user,
+                  provedor: 'Apple',
+                  page: 'datos'
+                }
+              });
+          }
+      }))
     }
   }
 

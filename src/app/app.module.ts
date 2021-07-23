@@ -20,14 +20,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Facebook} from '@ionic-native/facebook/ngx';
+import { SignInWithApple } from '@ionic-native/sign-in-with-apple/ngx';
 
-import { Gyroscope } from '@ionic-native/gyroscope/ngx';
 import { DeviceMotion } from '@ionic-native/device-motion/ngx';
-import { Pedometer } from '@ionic-native/pedometer/ngx';
 
 import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import * as firebase from 'firebase';
 
@@ -38,7 +38,7 @@ firebase.initializeApp(environment.firebaseConfig);
   entryComponents: [],
   imports: [
     BrowserModule, 
-    IonicModule.forRoot(),
+    IonicModule.forRoot({ swipeBackEnabled: false }),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -55,10 +55,10 @@ firebase.initializeApp(environment.firebaseConfig);
     Keyboard,
     Facebook, 
     GooglePlus,
+    SignInWithApple,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Gyroscope,
     DeviceMotion,
-    Pedometer,
     File,
     SocialSharing
   ],
