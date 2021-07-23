@@ -2,54 +2,57 @@
     font-family: "VisbyCF-Light";
 }
 
-ion-header {
-    background: #f4fcfd;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
-    height: 115px;
-    vertical-align: middle;
-    span {
-        font-size: 27px;
-        font-family: "VisbyCF-Bold";
-        --background: #f4fcfd;
-        color: #0f7386;
-        margin-left: 4vw;
+ion-content {
+    ion-header {
+        background: #f4fcfd;
+        position: sticky;
+        top: 0;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
         height: 115px;
+        vertical-align: middle;
+        span {
+            font-size: 27px;
+            font-family: "VisbyCF-Bold";
+            --background: #f4fcfd;
+            color: #0f7386;
+            margin-left: 4vw;
+            height: 115px;
+        }
     }
-}
 
-.final-header {
-    background: radial-gradient(75.38% 75.38% at 50.15% 81.35%, #d3f6ff 22.58%, #c9edf6 74.01%);
-    height: 446px;
-    ion-card {
-        margin: 0;
-        height: 423px;
-
+    .final-header {
         background: radial-gradient(75.38% 75.38% at 50.15% 81.35%, #d3f6ff 22.58%, #c9edf6 74.01%);
-        box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.12);
-        border-radius: 0px 0px 22px 22px;
-        ion-grid {
-            ion-row {
-                ion-col {
-                    h1 {
-                        margin-top: 0px;                    
-                        font-family: "VisbyCF-Bold";
-                        font-size: 33.6px;
-                        text-align: center;
-                        color: #187385;
-                    }
-                    p {
-                        font-family: "VisbyCF-Bold";
-                        font-size: 16px;
-                        text-align: center;
-                        color: #187385;
+        position: sticky;
+        top: 0;
+        height: 446px;
+        ion-card {
+            margin: 0;
+            height: 423px;
+
+            background: radial-gradient(75.38% 75.38% at 50.15% 81.35%, #d3f6ff 22.58%, #c9edf6 74.01%);
+            box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.12);
+            border-radius: 0px 0px 22px 22px;
+            ion-grid {
+                ion-row {
+                    ion-col {
+                        h1 {
+                            margin-top: 0px;                    
+                            font-family: "VisbyCF-Bold";
+                            font-size: 33.6px;
+                            text-align: center;
+                            color: #187385;
+                        }
+                        p {
+                            font-family: "VisbyCF-Bold";
+                            font-size: 16px;
+                            text-align: center;
+                            color: #187385;
+                        }
                     }
                 }
             }
         }
     }
-}
-
-ion-content {
     --background: #ffffff;
     .not_finished {
         overflow-y: scroll;
@@ -480,7 +483,7 @@ ion-content {
         background-image: none;
         text-align: center;
         width: 100%;
-        bottom: 0;
+        bottom: -1%;
         position: fixed;
         ion-tab-bar {
             --background: transparent;

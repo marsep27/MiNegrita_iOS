@@ -541,18 +541,11 @@ export class RomeriaPage {
       this.socialSharing.shareWithOptions(options);
     } else if (this.platform.is("ios")) {
       this.subjet = this.currTitle;
-      this.mensaje = "Escuchá " + this.currTitle + " en la app de Mi Negrita: ";
-      this.imagen = `${this.file.applicationDirectory}assets/imágenes/Logo.png`;
-      this.url = this.linkAppStore;
-      console.log(this.url);
-      var options = {
-        message: this.mensaje,
-        subjet: this.subjet,
-        files: this.imagen,
-        url: this.url,
-        chooserTitle: this.subjet
-      }
-      this.socialSharing.shareWithOptions(options);
+          this.mensaje = "Escuchá " + this.currTitle + " en la app de Mi Negrita: ";
+          this.imagen = "assets/imágenes/Logo.png";
+          this.url = this.linkAppStore;
+          console.log(this.url);
+          this.socialSharing.share(this.mensaje, this.subjet, this.imagen, this.url);
     }
     //this.socialSharing.shareViaFacebook(this.mensaje, this.imagen, this.url);
     //this.socialSharing.share(this.mensaje, this.subjet, this.imagen, this.url);

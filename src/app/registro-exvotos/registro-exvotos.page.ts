@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from '../services/firestore/firestore.service';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse, ASAuthorizationAppleIDRequest } from '@ionic-native/sign-in-with-apple/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Platform, ToastController } from '@ionic/angular';
 import { Vibration } from '@ionic-native/vibration/ngx';
@@ -108,7 +109,9 @@ export class RegistroExvotosPage implements OnInit {
     private router: Router,
     private firestoreService: FirestoreService,
     public platform: Platform,
-    public loadingController: LoadingController,private vibra: Vibration) { }
+    public loadingController: LoadingController,
+    private vibra: Vibration,
+    private apple: SignInWithApple) { }
 
   //Muestra en pantalla por unos segundos un spinner para indicar que la página se está cargando 
   async presentLoading() {
@@ -554,6 +557,60 @@ export class RegistroExvotosPage implements OnInit {
           this.router.navigate(['/perfil']);
         })
       }
+    } else if (this.provedor == "Apple") {
+      if (this.platform.is("cordova")) {//Si la plaforma es cordova muestra la siguiente información
+        this.apple.signin({requestedScopes: [ASAuthorizationAppleIDRequest.ASAuthorizationScopeFullName,ASAuthorizationAppleIDRequest.ASAuthorizationScopeEmail]
+        }).then(async (res: AppleSignInResponse) => {
+          const credential = new firebase.auth.OAuthProvider('apple.com').credential(res.identityToken);
+          const response = await firebase.auth().signInWithCredential(credential).then(async ()=>{
+            await firebase.auth().onAuthStateChanged(user=>{
+              if(user){
+                this.name= user.email;
+                this.userId= user.uid;
+              } 
+            })
+          })
+          console.log('Login successful', response);
+          console.log(JSON.stringify(res))
+          this.presentLoading();
+          this.lastName = ""
+          this.datosfinales = {
+            userId: this.userId,
+            name: this.name,
+            lastname: this.lastName,
+            avatar: this.avatar,
+            intenciones: this.intenciones,
+            exvotos: this.exvotoNames
+          };
+          this.firestoreService.createUser(this.datosfinales);
+          this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva);
+          this.router.navigate(['/perfil']);
+        })
+      } else { //Si la plaforma no es cordova muestra la siguiente información
+        this.apple.signin({ requestedScopes: [ ASAuthorizationAppleIDRequest.ASAuthorizationScopeFullName, ASAuthorizationAppleIDRequest.ASAuthorizationScopeEmail]})
+        .then((result: AppleSignInResponse) => {
+          // https://developer.apple.com/documentation/signinwithapplerestapi/verifying_a_user
+          const user_data_apple = result;
+          const credential = new firebase.auth.OAuthProvider('apple.com').credential(user_data_apple.identityToken);
+          const response = firebase.auth().signInWithPopup(credential).then(
+             firebase.auth().onAuthStateChanged(user=> {
+          this.userId = user.uid;
+          this.presentLoading();
+          this.lastName = ""
+          this.datosfinales = {
+            userId: this.userId,
+            name: this.name,
+            lastname: this.lastName,
+            avatar: this.avatar,
+            intenciones: this.intenciones,
+            exvotos: this.exvotoNames
+          };
+          this.firestoreService.createUser(this.datosfinales);
+          this.firestoreService.createRomeriaXUser(this.userId, this.romeriasCompletadas, this.totalHoras, this.pasosTotales, this.kmTotales, this.romeriaActiva);
+          this.router.navigate(['/perfil']);
+        })
+      )})
+      }
     } else {
       this.auth.createUserWithEmailAndPassword(this.email, this.password).then(userData=>{
         this.userId = userData.user.uid;
@@ -601,6 +658,7 @@ export class RegistroExvotosPage implements OnInit {
   cancelar(){
     this.vibracion();
     this.presentLoading();
+    console.log('borrado');
     document.getElementById("TerminosCondiciones").style.bottom = "-1000px";
     document.getElementById("contentEx").style.filter = "none";
     document.getElementById("footEx").style.filter = "none";

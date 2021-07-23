@@ -1,5 +1,6 @@
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 import { IonRange } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { Component, ViewChild } from '@angular/core';
@@ -93,6 +94,7 @@ export class PerfilPage {
   progress:       Number;
 
   constructor(private firestoreService: FirestoreService, public platform: Platform,
+    private inAppBrowser: InAppBrowser,
     private vibra: Vibration, private firestore: AngularFirestore, public nativeAudio: NativeAudio, private socialSharing: SocialSharing, public Toast: ToastController) {
     this.name           = "";
     this.lastName       = "";
@@ -766,7 +768,11 @@ export class PerfilPage {
   //Link para ver más información de un evento
   reservar2(link) {
     this.vibracion();
-    window.open(link);
+    if (this.platform.is("ios")){
+      this.inAppBrowser.create(link);
+    }else{
+      window.open(link);
+    }
   }
 
   //Función para agregar o remover los eventos favoritos del usuario.

@@ -85,6 +85,18 @@ ion-footer {
       ion-col {
         margin: 0px;
         padding: 0px;
+        //Botón Anterior
+        #anterior {
+          margin: 0px;
+          padding: 0px;
+          text-transform: none;
+          width: 100%;
+          height: 56px;
+          top: 0px;
+          font-family: "VisbyCF-Bold";
+          font-size: 20.2697px;
+          --border-radius: 0px 22px 0px 0px;
+        }
         //Botón Continuar
         ion-button {
           margin: 0px;

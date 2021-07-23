@@ -123,6 +123,7 @@ export class AjustesPerfilPage implements OnInit {
                 .then(() => {
                   this.fb.logout();
                   this.gp.disconnect();
+                  firebase.auth().signOut();
                   this.router.navigate(['/home']);
                 })
                 .catch(function (error) {

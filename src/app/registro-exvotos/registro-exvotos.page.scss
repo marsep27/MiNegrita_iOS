@@ -88,7 +88,7 @@ ion-content {
     transition: 0.5s;
     position: fixed;
     width: 312px;
-    height: 612px;
+    height: 590px;
     display: block;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -145,7 +145,9 @@ ion-content {
     }
     .BotonesTC{
       margin: 0px;
+      padding-top: 10px;
       padding: 0px;
+      height: auto;
       ion-row{
         ion-col{
           padding: 0px;
@@ -156,7 +158,7 @@ ion-content {
             text-transform: none;
             width: 100%;
             height: 36px;
-            top: 0px;
+            bottom: 0px;
             font-family: "VisbyCF-Bold";
             font-size: 12px;
             --border-radius: 0px 22px 0px 12px;
@@ -168,7 +170,7 @@ ion-content {
             text-transform: none;
             width: 100%;
             height: 36px;
-            top: 0px;
+            bottom: 0px;
             font-family: "VisbyCF-Bold";
             font-size: 12px;
             --border-radius: 22px 0px 12px 0px;
@@ -177,64 +179,65 @@ ion-content {
       }
     }
   }
-}
-
-ion-footer {
-  margin: 0px;
-  padding: 0px;
-  height: 56px;
-  background: #e0f3f8;
-  --background: #e0f3f8;
-  border-color: #e0f3f8;
-  border-top-color: #e0f3f8 !important;
-  box-shadow: none !important;
-  // Cambio de pasos con el himno
-  #fin {
-    display: block;
-    margin: auto;
-    text-align: center;
-    position: absolute;
-    top: -50px;
-    left: 0;
-    right: 0;
-    ion-label {
-      font-family: "VisbyCF-MediumOblique";
-      font-style: italic;
-      font-size: 17px;
-    }
-  }
-  ion-grid {
+  ion-footer {
+    bottom: 0;
+    position: fixed;
     margin: 0px;
     padding: 0px;
-    ion-row {
+    height: 56px;
+    background: #e0f3f8;
+    --background: #e0f3f8;
+    border-color: #e0f3f8;
+    border-top-color: #e0f3f8 !important;
+    box-shadow: none !important;
+    // Cambio de pasos con el himno
+    #fin {
+      display: block;
+      margin: auto;
+      text-align: center;
+      position: absolute;
+      top: -50px;
+      left: 0;
+      right: 0;
+      ion-label {
+        font-family: "VisbyCF-MediumOblique";
+        font-style: italic;
+        font-size: 17px;
+      }
+    }
+    ion-grid {
       margin: 0px;
       padding: 0px;
-      ion-col {
+      ion-row {
         margin: 0px;
         padding: 0px;
-        //Botón Anterior
-        #anterior {
+        ion-col {
           margin: 0px;
           padding: 0px;
-          text-transform: none;
-          width: 100%;
-          height: 56px;
-          top: 0px;
-          font-family: "VisbyCF-Bold";
-          font-size: 20.2697px;
-          --border-radius: 0px 22px 0px 0px;
-        }
-        //Botón Finalizar
-        #finalizar {
-          margin: 0px;
-          padding: 0px;
-          text-transform: none;
-          width: 100%;
-          height: 56px;
-          top: 0px;
-          font-family: "VisbyCF-Bold";
-          font-size: 20.2697px;
-          --border-radius: 22px 0px 0px 0px;
+          //Botón Anterior
+          #anterior {
+            margin: 0px;
+            padding: 0px;
+            text-transform: none;
+            width: 100%;
+            height: 56px;
+            top: 0px;
+            font-family: "VisbyCF-Bold";
+            font-size: 20.2697px;
+            --border-radius: 0px 22px 0px 0px;
+          }
+          //Botón Finalizar
+          #finalizar {
+            margin: 0px;
+            padding: 0px;
+            text-transform: none;
+            width: 100%;
+            height: 56px;
+            top: 0px;
+            font-family: "VisbyCF-Bold";
+            font-size: 20.2697px;
+            --border-radius: 22px 0px 0px 0px;
+          }
         }
       }
     }

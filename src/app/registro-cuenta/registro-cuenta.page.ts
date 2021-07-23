@@ -153,7 +153,7 @@ export class RegistroCuentaPage implements OnInit {
     });
   }
 
-  //Se borra al usuario proveniente del home(Facebook o Google) o de registro.datos, para eliminar la persistencia del loggeo en firebase.
+  //Se borra al usuario proveniente del home(Facebook, Google o Apple) o de registro.datos, para eliminar la persistencia del loggeo en firebase.
   borrarUser(pagina){
     console.log(pagina);
     if (pagina == "datos"){
@@ -228,6 +228,10 @@ export class RegistroCuentaPage implements OnInit {
           .then(() => {
             this.fb.logout();
             this.gp.disconnect();
+            firebase.auth().onAuthStateChanged(user=>{
+              if(!user){
+              }
+            });
             this.router.navigate(['/home']);
           })
           .catch(function (error) {

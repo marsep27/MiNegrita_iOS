@@ -1,37 +1,37 @@
-<ion-header *ngIf="!finished" class="ion-no-border" mode="md">
-  <br>
-  <br>
-  <span mode="md">Basílica</span>
-</ion-header>
-
-<ion-header *ngIf="finished" class="final-header ion-no-border" id="headRo" mode="md">
-  <ion-button fill="clear" (click)="deleteRomeria()">
-    <ion-icon slot="icon-only" color="azul" name="arrow-back-outline"></ion-icon>
-  </ion-button>
-  <ion-card
-    href="https://kuula.co/share/collection/7lpZk?fs=1&vr=1&autorotate=0.08&autopalt=1&thumbs=1&chromeless=0&logo=1&logosize=64"
-    class="ion-no-padding">
-    <ion-grid class="ion-text-center ion-no-padding">
-      <ion-row>
-        <ion-col size="12">
-          <h1>¡Felicidades!</h1>
-        </ion-col>
-        <ion-col size="12">
-          <p>Ahora que finalizaste tu romería,<br>presioná la imagen de la Basílica<br>y visitá a la Negrita.</p>
-        </ion-col>
-        <ion-col size="12">
-          <ion-card-content class="ion-no-padding">
-            <img
-              href="https://kuula.co/share/collection/7lpZk?fs=1&vr=1&autorotate=0.08&autopalt=1&thumbs=1&chromeless=0&logo=1&logosize=64"
-              src="assets/imágenes/BasílicaAbierta.svg">
-          </ion-card-content>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-</ion-header>
-
 <ion-content mode="md">
+  <ion-header *ngIf="!finished" class="ion-no-border" mode="md">
+    <br>
+    <br>
+    <span mode="md">Basílica</span>
+  </ion-header>
+
+  <ion-header *ngIf="finished" class="final-header ion-no-border" id="headRo" mode="md">
+    <br>
+    <ion-button fill="clear" (click)="deleteRomeria()">
+      <ion-icon slot="icon-only" color="azul" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-card
+      href="https://kuula.co/share/collection/7lpZk?fs=1&vr=1&autorotate=0.08&autopalt=1&thumbs=1&chromeless=0&logo=1&logosize=64"
+      class="ion-no-padding">
+      <ion-grid class="ion-text-center ion-no-padding">
+        <ion-row>
+          <ion-col size="12">
+            <h1>¡Felicidades!</h1>
+          </ion-col>
+          <ion-col size="12">
+            <p>Ahora que finalizaste tu romería,<br>presioná la imagen de la Basílica<br>y visitá a la Negrita.</p>
+          </ion-col>
+          <ion-col size="12">
+            <ion-card-content class="ion-no-padding">
+              <img
+                href="https://kuula.co/share/collection/7lpZk?fs=1&vr=1&autorotate=0.08&autopalt=1&thumbs=1&chromeless=0&logo=1&logosize=64"
+                src="assets/imágenes/BasílicaAbierta.svg">
+            </ion-card-content>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </ion-header>
   <div class="not_finished" *ngIf="!finished" scrollY=true>
     <ion-grid class="ion-text-center">
       <ion-row>

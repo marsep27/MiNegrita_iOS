@@ -1,4 +1,5 @@
 import { async } from '@angular/core/testing';
+import { InAppBrowser} from '@ionic-native/in-app-browser/ngx';
 import { take } from 'rxjs/operators';
 import { FirestoreService } from './../services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
@@ -43,7 +44,7 @@ export class EventosPage {
   usuario:      Reference;
 
   bookable:     boolean = true;
-  linkMisa:     any;
+  linkMisa:     string;
   reservaMisa:  boolean;
 
   currNombre:    string;
@@ -76,6 +77,7 @@ export class EventosPage {
   horOficina:   string;
 
   constructor(public platform: Platform,
+    private inAppBrowser: InAppBrowser,
     private route: ActivatedRoute,
     private firestoreService: FirestoreService,
     private vibra: Vibration,
@@ -427,13 +429,21 @@ export class EventosPage {
 
   //Link para reservar el espacio en la misa
   goMisa() {
-    window.open(this.linkMisa);
+    if (this.platform.is("ios")){
+      this.inAppBrowser.create(this.linkMisa);
+    }else{
+      window.open(this.linkMisa);
+    }
   }
 
   //Link para ver más información de un evento
   masInformacion(link) {
     this.vibracion();
-    window.open(link);
+    if (this.platform.is("ios")){
+      this.inAppBrowser.create(link);
+    }else{
+      window.open(link);
+    }
   }
 
   //Función para agregar o remover los eventos favoritos del usuario.

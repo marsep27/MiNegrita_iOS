@@ -4,7 +4,6 @@ import { AlertController, ToastController, Platform } from '@ionic/angular';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
-import { Pedometer } from '@ionic-native/pedometer/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { take } from 'rxjs/operators';
 import * as firebase from 'firebase';
@@ -75,7 +74,6 @@ export class ContinuarRomeriaPage {
     private router: Router,
     private deviceMotion: DeviceMotion,
     private vibra: Vibration,
-    private pedometer: Pedometer,
     private firestoreService: FirestoreService,
     public alertController: AlertController,
     public platform: Platform,
